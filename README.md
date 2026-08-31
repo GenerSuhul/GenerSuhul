@@ -28,7 +28,7 @@ Mi perfil combina **ingeniería de software, SAP Business One, SAP HANA, bases d
   <img src="./assets/engineering-focus.svg" alt="Proceso de ingeniería end-to-end" width="100%" />
 </p>
 
-## Sistemas reales, no proyectos de demostración
+## Sistemas Destacados en Produccion
 
 Los proyectos que más representan mi experiencia **se encuentran actualmente en producción**. Son sistemas utilizados en procesos institucionales y empresariales donde la trazabilidad, seguridad, disponibilidad y calidad de los datos importan de verdad.
 
