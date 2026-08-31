@@ -1,0 +1,47 @@
+<svg width="1200" height="290" viewBox="0 0 1200 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accent" x1="120" y1="145" x2="1080" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A6ED1"/>
+      <stop offset="0.48" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="290" rx="22" fill="#0D1117"/>
+  <text x="60" y="50" fill="#F0F6FC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700">Especialidad: integraciones con SAP Business One</text>
+  <text x="60" y="78" fill="#8B949E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">Conecto procesos empresariales, ERP on-premise y aplicaciones modernas con una arquitectura segura y trazable.</text>
+
+  <path d="M236 157H365M545 157H674M854 157H965" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M352 149L365 157L352 165M661 149L674 157L661 165M952 149L965 157L952 165" stroke="#8CBDF2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <g transform="translate(55 112)">
+      <rect width="181" height="92" rx="16" fill="#101D2F" stroke="#0A6ED1" stroke-opacity="0.7"/>
+      <text x="22" y="34" fill="#7CC4FF" font-size="16" font-weight="700">SAP BUSINESS ONE</text>
+      <text x="22" y="59" fill="#F0F6FC" font-size="14">SAP HANA · ERP</text>
+      <text x="22" y="79" fill="#8B949E" font-size="12">Datos y procesos core</text>
+    </g>
+
+    <g transform="translate(365 112)">
+      <rect width="180" height="92" rx="16" fill="#102126" stroke="#22D3EE" stroke-opacity="0.7"/>
+      <text x="22" y="34" fill="#8CF4FF" font-size="16" font-weight="700">INTEGRACIÓN</text>
+      <text x="22" y="59" fill="#F0F6FC" font-size="14">Service Layer · SQL</text>
+      <text x="22" y="79" fill="#8B949E" font-size="12">Middleware · sincronización</text>
+    </g>
+
+    <g transform="translate(674 112)">
+      <rect width="180" height="92" rx="16" fill="#181B2C" stroke="#A78BFA" stroke-opacity="0.7"/>
+      <text x="22" y="34" fill="#C9B9FF" font-size="16" font-weight="700">PLATAFORMA</text>
+      <text x="22" y="59" fill="#F0F6FC" font-size="14">PostgreSQL · Supabase</text>
+      <text x="22" y="79" fill="#8B949E" font-size="12">APIs · Edge Functions</text>
+    </g>
+
+    <g transform="translate(965 112)">
+      <rect width="180" height="92" rx="16" fill="#161B22" stroke="#58A6FF" stroke-opacity="0.7"/>
+      <text x="22" y="34" fill="#9CCEFF" font-size="16" font-weight="700">SOLUCIONES</text>
+      <text x="22" y="59" fill="#F0F6FC" font-size="14">Web · reporting · loyalty</text>
+      <text x="22" y="79" fill="#8B949E" font-size="12">Automatización empresarial</text>
+    </g>
+  </g>
+
+  <text x="60" y="244" fill="#C8D5E3" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14">Experiencia práctica en lectura de datos, middleware, APIs, sincronización y diseño de soluciones que conviven con SAP B1 sin romper la operación del negocio.</text>
+</svg>
