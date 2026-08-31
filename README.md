@@ -130,7 +130,7 @@ Plataforma propia para capturar, procesar y consultar eventos de asistencia prov
 
 **Problema que resolvió**
 
-Los eventos de asistencia se originan en dispositivos físicos y deben convertirse en información confiable para operación y reportes. Depender totalmente de software de terceros limita el control sobre integraciones, históricos, reglas y evolución del sistema.
+Los eventos de asistencia se originan en dispositivos físicos y deben convertirse en información confiable para operación y reportes. Depender totalmente de software de terceros (HikCentral) limita el control sobre integraciones, históricos, reglas y evolución del sistema, optimizando tiempos ya que los reportes se envian mediente correos en formato HTML y XLSX, especificados por tienda, gerente, supervisor, rrhh, etc.
 
 **Lógica de la solución**
 
