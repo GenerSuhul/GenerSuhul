@@ -1,0 +1,54 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071426"/>
+      <stop offset="0.5" stop-color="#0B2447"/>
+      <stop offset="1" stop-color="#0A3A5C"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="170" y1="64" x2="930" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58A6FF"/>
+      <stop offset="0.55" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="24" fill="url(#grid)"/>
+
+  <circle cx="1060" cy="58" r="150" fill="#22D3EE" fill-opacity="0.055"/>
+  <circle cx="1110" cy="274" r="190" fill="#A78BFA" fill-opacity="0.05"/>
+  <circle cx="60" cy="290" r="130" fill="#58A6FF" fill-opacity="0.05"/>
+
+  <rect x="66" y="63" width="7" height="192" rx="3.5" fill="url(#accent)"/>
+
+  <text x="103" y="120" fill="#8CBDF2" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20" font-weight="600" letter-spacing="3">FULL-STACK · ENTERPRISE · PLATFORM</text>
+  <text x="100" y="183" fill="#FFFFFF" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="56" font-weight="800" letter-spacing="-1.5">Gener Suhul</text>
+  <text x="103" y="224" fill="#D7E7F7" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="500">Software Developer · Enterprise Integrations · DevOps / SRE</text>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">
+    <rect x="102" y="253" width="106" height="35" rx="17.5" fill="#FFFFFF" fill-opacity="0.08" stroke="#58A6FF" stroke-opacity="0.35"/>
+    <text x="125" y="276" fill="#CFE8FF">.NET / C#</text>
+
+    <rect x="220" y="253" width="132" height="35" rx="17.5" fill="#FFFFFF" fill-opacity="0.08" stroke="#22D3EE" stroke-opacity="0.35"/>
+    <text x="241" y="276" fill="#D5FBFF">TypeScript</text>
+
+    <rect x="364" y="253" width="154" height="35" rx="17.5" fill="#FFFFFF" fill-opacity="0.08" stroke="#A78BFA" stroke-opacity="0.35"/>
+    <text x="388" y="276" fill="#EEE7FF">SAP B1 / HANA</text>
+
+    <rect x="530" y="253" width="136" height="35" rx="17.5" fill="#FFFFFF" fill-opacity="0.08" stroke="#58A6FF" stroke-opacity="0.35"/>
+    <text x="553" y="276" fill="#CFE8FF">PostgreSQL</text>
+
+    <rect x="678" y="253" width="146" height="35" rx="17.5" fill="#FFFFFF" fill-opacity="0.08" stroke="#22D3EE" stroke-opacity="0.35"/>
+    <text x="703" y="276" fill="#D5FBFF">Docker / K8s</text>
+  </g>
+
+  <g transform="translate(1010 132)">
+    <path d="M0 38H66" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M32 6V72" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="32" cy="38" r="25" stroke="#D9F3FF" stroke-opacity="0.7" stroke-width="2"/>
+    <circle cx="32" cy="38" r="7" fill="#22D3EE"/>
+  </g>
+</svg>
