@@ -9,41 +9,56 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Full%20Stack-Desarrollo%20End--to--End-238636?style=flat-square" alt="Full Stack" />
-  <img src="https://img.shields.io/badge/SAP%20Business%20One-Integraciones%20Empresariales-0A6ED1?style=flat-square&logo=sap&logoColor=white" alt="SAP Business One" />
-  <img src="https://img.shields.io/badge/.NET-C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white" alt=".NET y C#" />
-  <img src="https://img.shields.io/badge/TypeScript-Aplicaciones%20Modernas-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/DevOps%20%2F%20SRE-Cloud%20%26%20Observabilidad-6E40C9?style=flat-square" alt="DevOps y SRE" />
+  <img src="https://img.shields.io/badge/Full%20Stack-Desarrollo%20End--to--End-238636?style=flat-square" />
+  <img src="https://img.shields.io/badge/SAP%20Business%20One-Integraciones%20Empresariales-0A6ED1?style=flat-square&logo=sap&logoColor=white" />
+  <img src="https://img.shields.io/badge/.NET-C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-Aplicaciones%20Modernas-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sistemas%20en%20Producci%C3%B3n-4-2EA44F?style=flat-square" />
 </p>
 
 ## Sobre mí
 
-Soy **Desarrollador Full Stack y profesional de IT** enfocado en construir soluciones que resuelven problemas reales de operación. Mi perfil combina **ingeniería de software, SAP Business One, bases de datos, integraciones empresariales, infraestructura y DevOps**.
+Soy **Desarrollador Full Stack y profesional de IT** enfocado en construir soluciones empresariales que llegan a producción y resuelven problemas operativos reales.
 
-No me limito a desarrollar pantallas o endpoints. Me gusta entender el proceso completo, diseñar la arquitectura, construir la solución, integrarla con los sistemas existentes, desplegarla, observarla en producción y hacerme responsable de que realmente funcione.
+Mi perfil combina **ingeniería de software, SAP Business One, SAP HANA, bases de datos, integraciones empresariales, infraestructura y DevOps**. Puedo participar en todo el ciclo: entender el proceso, modelar la solución, desarrollar frontend y backend, integrar sistemas, desplegar, observar el comportamiento en producción y resolver incidentes.
 
-> **Mi mayor fortaleza es conectar software moderno con la realidad de una empresa:** ERP, usuarios, dispositivos, procesos operativos, datos, infraestructura y continuidad del servicio.
+> **Mi mayor fortaleza es conectar software moderno con la realidad operativa de una empresa: ERP, usuarios, dispositivos, logística, datos, infraestructura y continuidad del servicio.**
 
 <p align="center">
-  <img src="./assets/engineering-focus.svg" alt="Proceso de trabajo end-to-end" width="100%" />
+  <img src="./assets/engineering-focus.svg" alt="Proceso de ingeniería end-to-end" width="100%" />
 </p>
 
-## Lo que aporto a un equipo
+## Sistemas reales, no proyectos de demostración
 
-| Área | Lo que puedo aportar |
-|---|---|
-| **Desarrollo Full Stack** | Diseño y desarrollo de aplicaciones completas con frontend, backend, APIs, autenticación, permisos, bases de datos y experiencia de usuario. |
-| **SAP Business One** | Integraciones con SAP B1 y SAP HANA mediante Service Layer, consultas SQL, middleware, sincronización y APIs para extender procesos del ERP. |
-| **Arquitectura** | Diseño de soluciones modulares, separación de responsabilidades, Clean Architecture, contratos API y flujos end-to-end. |
-| **DevOps / SRE** | Docker, Kubernetes, Linux, CI/CD, GitHub Actions, despliegues, observabilidad, métricas, health checks, recuperación y troubleshooting. |
-| **Mentalidad de producción** | Seguridad, roles, auditoría, secretos, backups, manejo de errores, datos reales y continuidad operativa desde el diseño. |
-| **Visión IT + negocio** | Capacidad para traducir necesidades operativas y empresariales en soluciones técnicas utilizables, mantenibles y escalables. |
+Los proyectos que más representan mi experiencia **se encuentran actualmente en producción**. Son sistemas utilizados en procesos institucionales y empresariales donde la trazabilidad, seguridad, disponibilidad y calidad de los datos importan de verdad.
+
+<p align="center">
+  <img src="./assets/production-systems.svg" alt="Sistemas desarrollados y operando en producción" width="100%" />
+</p>
+
+Esto significa que mi trabajo no termina cuando una aplicación compila. También considero:
+
+- operación diaria y experiencia del usuario;
+- permisos y separación de responsabilidades;
+- calidad y consistencia de datos;
+- manejo de errores y trazabilidad;
+- seguridad de credenciales y servicios;
+- documentación y soporte;
+- despliegues, observabilidad y mantenimiento;
+- evolución del sistema después de su puesta en marcha.
 
 ---
 
 ## Especialidad: SAP Business One + SAP HANA
 
-SAP Business One es una de las áreas que más definen mi perfil profesional. He trabajado alrededor del ERP construyendo soluciones que **consumen, sincronizan y extienden información empresarial** sin convertir el sistema externo en una isla desconectada.
+<p>
+  <img src="https://img.shields.io/badge/SAP-Business%20One-0A6ED1?style=for-the-badge&logo=sap&logoColor=white" />
+  <img src="https://img.shields.io/badge/SAP-HANA-0A6ED1?style=for-the-badge&logo=sap&logoColor=white" />
+  <img src="https://img.shields.io/badge/Service%20Layer-REST%20API-1F6FEB?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Middleware-Integraciones-6E40C9?style=for-the-badge" />
+</p>
+
+SAP Business One es una de las áreas centrales de mi perfil. He trabajado diseñando soluciones que **extienden el ERP sin convertir las aplicaciones externas en islas de información**.
 
 <p align="center">
   <img src="./assets/sap-integration.svg" alt="Arquitectura de integración con SAP Business One" width="100%" />
@@ -51,63 +66,73 @@ SAP Business One es una de las áreas que más definen mi perfil profesional. He
 
 Mi experiencia incluye:
 
-- **SAP Business One / SAP HANA** como fuente central de información empresarial.
-- Integración mediante **Service Layer**.
-- Consultas y extracción de información mediante **SAP HANA SQL** cuando el caso de uso lo requiere.
-- Desarrollo de **middleware** entre infraestructura on-premise y servicios cloud.
-- Sincronización de información para aplicaciones web, reporting y procesos operativos.
-- Diseño de APIs y capas intermedias para evitar acoplar directamente el frontend al ERP.
-- Integraciones orientadas a **ventas, clientes, inventario, fidelización y automatización**.
-- PostgreSQL / Supabase como plataformas complementarias para aplicaciones modernas conectadas al ecosistema SAP.
+- **SAP Business One / SAP HANA** como núcleo de procesos empresariales;
+- integración mediante **Service Layer**;
+- consultas y extracción mediante **SAP HANA SQL**;
+- middleware entre infraestructura **on-premise y cloud**;
+- sincronización de clientes, ventas, inventario y otros datos operativos;
+- diseño de APIs intermedias para evitar exponer el ERP directamente al frontend;
+- integración de aplicaciones modernas con PostgreSQL / Supabase alrededor del ecosistema SAP;
+- manejo de trazabilidad, errores, reintentos y consistencia entre sistemas.
 
-Para mí, integrar SAP no significa solamente consumir una API. Significa entender **qué dato es maestro, dónde debe vivir la lógica, cómo manejar errores, cómo reintentar, cómo mantener trazabilidad y cómo evitar afectar la operación principal**.
+Mi enfoque es mantener claro **qué sistema es la fuente de verdad**, dónde debe vivir cada regla y cómo integrar sin poner en riesgo el proceso principal del ERP.
 
 ---
 
-# Proyectos destacados
+# Sistemas destacados en producción
 
-Estos son los proyectos que mejor representan mi forma de trabajar. Algunos repositorios son privados porque contienen soluciones de uso institucional o empresarial; aun así forman parte de mi presentación profesional porque representan experiencia aplicada en entornos reales.
-
-## `buefete-umg` — Sistema jurídico institucional en producción
+## `buefete-umg` — Plataforma jurídica institucional
 
 <p>
-  <img src="https://img.shields.io/badge/Repositorio-Privado-6E7681?style=flat-square&logo=github&logoColor=white" alt="Repositorio privado" />
-  <img src="https://img.shields.io/badge/Estado-En%20producci%C3%B3n-238636?style=flat-square" alt="En producción" />
-  <img src="https://img.shields.io/badge/Instituci%C3%B3n-Universidad%20Mariano%20G%C3%A1lvez-0A66C2?style=flat-square" alt="Universidad Mariano Gálvez" />
+  <img src="https://img.shields.io/badge/ESTADO-EN%20PRODUCCI%C3%93N-2EA44F?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/ENTORNO-Universidad%20Mariano%20G%C3%A1lvez-0A66C2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/REPOSITORIO-PRIVADO-6E7681?style=for-the-badge&logo=github" />
 </p>
 
-Uno de mis proyectos de mayor impacto: una plataforma interna completa para la **gestión jurídica y académica del Bufete Popular / Clínica Jurídica de la Universidad Mariano Gálvez de Guatemala**, implementada para apoyar procesos reales dentro de la institución.
+Sistema institucional utilizado en la oficina de la **Universidad Mariano Gálvez de Guatemala** para centralizar la gestión jurídica y académica del Bufete Popular / Clínica Jurídica.
 
-**Stack principal:** `.NET 10` · `ASP.NET Core` · `React 19` · `TypeScript` · `PostgreSQL` · `EF Core` · `S3 / MinIO` · `Docker` · `GitHub Actions`
+**Problema que resolvió**
 
-El sistema cubre procesos como:
+La operación jurídica requiere manejar clientes, expedientes, alumnos, documentos, seguimiento procesal, revisiones y trazabilidad. Llevar estas actividades de forma fragmentada dificulta consultar el estado real de un caso, conocer quién realizó una acción y mantener organizada la documentación.
 
-- recepción y expediente digital de clientes;
+**Lógica de la solución**
+
+- expediente digital por cliente y caso;
 - administración de usuarios, roles y permisos;
 - asignación y seguimiento de casos jurídicos;
-- cronología procesal, memoriales, revisiones y notificaciones;
+- cronología procesal y actividad del expediente;
+- memoriales, revisiones, presentaciones y notificaciones;
 - digitalización y gestión documental multipágina;
-- versionado y almacenamiento privado de documentos;
-- búsqueda, reportes y trazabilidad de actividades;
-- auditoría e historial de operaciones críticas;
+- almacenamiento privado y versionado de archivos;
+- búsqueda, reportes y auditoría;
 - integración con escáner local;
-- arquitectura por capas, pruebas y controles de calidad.
+- arquitectura por capas con backend y frontend desacoplados.
 
-> **Impacto:** una solución que pasó del desarrollo a un contexto institucional real, con usuarios, procesos, documentos sensibles y necesidades operativas concretas.
+**Impacto operativo**
+
+Centraliza información que antes podía quedar distribuida entre personas, archivos y actividades independientes; mejora la trazabilidad de los expedientes y proporciona una herramienta institucional diseñada alrededor del flujo real de trabajo jurídico.
+
+**Stack:** `.NET 10` · `ASP.NET Core` · `React 19` · `TypeScript` · `PostgreSQL` · `EF Core` · `S3 / MinIO` · `Docker` · `GitHub Actions`
 
 [Referencia del repositorio — acceso restringido](https://github.com/GenerSuhul/buefete-umg)
 
 ---
 
-## [`time-and-asistant`](https://github.com/GenerSuhul/time-and-asistant) — Plataforma propia de asistencia e integración Hikvision
+## [`time-and-asistant`](https://github.com/GenerSuhul/time-and-asistant) — Control de asistencia e integración Hikvision
 
 <p>
-  <img src="https://img.shields.io/badge/Repositorio-P%C3%BAblico-238636?style=flat-square&logo=github&logoColor=white" alt="Repositorio público" />
-  <img src="https://img.shields.io/badge/Stack-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Integraci%C3%B3n-Hardware%20%2B%20Software-6E40C9?style=flat-square" alt="Integración hardware y software" />
+  <img src="https://img.shields.io/badge/ESTADO-EN%20PRODUCCI%C3%93N-2EA44F?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/REPOSITORIO-P%C3%9ABLICO-238636?style=for-the-badge&logo=github" />
+  <img src="https://img.shields.io/badge/INTEGRACI%C3%93N-Hikvision-CC0000?style=for-the-badge" />
 </p>
 
-Sistema diseñado para reemplazar la dependencia de una plataforma de terceros y obtener **control propio sobre eventos de asistencia y dispositivos Hikvision**.
+Plataforma propia para capturar, procesar y consultar eventos de asistencia provenientes de dispositivos Hikvision, reduciendo la dependencia de plataformas cerradas y dando control directo sobre el flujo de información.
+
+**Problema que resolvió**
+
+Los eventos de asistencia se originan en dispositivos físicos y deben convertirse en información confiable para operación y reportes. Depender totalmente de software de terceros limita el control sobre integraciones, históricos, reglas y evolución del sistema.
+
+**Lógica de la solución**
 
 ```text
 Dispositivo Hikvision
@@ -116,7 +141,7 @@ Dispositivo Hikvision
 ISUP / EHome / ISAPI
         |
         v
-Device Gateway — Node.js + TypeScript
+Device Gateway - Node.js + TypeScript
         |
         v
 Supabase PostgreSQL + Edge Functions
@@ -125,106 +150,175 @@ Supabase PostgreSQL + Edge Functions
 React Web App
 ```
 
-Incluye una arquitectura monorepo con:
+- gateway propio para recepción de eventos;
+- comunicación mediante ISUP/EHome e ISAPI;
+- sincronización y recuperación histórica;
+- almacenamiento estructurado en PostgreSQL;
+- frontend React para consulta y administración;
+- permisos y separación de datos de desarrollo/producción;
+- despliegue del gateway en Linux con PM2;
+- diseño preparado para trabajar con dispositivos reales, no datos simulados en producción.
 
-- **React + Vite + TypeScript + Material UI**;
-- gateway de dispositivos en **Node.js + TypeScript**;
-- comunicación mediante **ISUP/EHome e ISAPI**;
-- Supabase PostgreSQL, RLS y Edge Functions;
-- sincronización histórica de eventos;
-- separación estricta entre datos de prueba y producción;
-- secretos y service role únicamente en capas seguras;
-- despliegue del gateway en Linux con PM2.
+**Impacto operativo**
 
-Este proyecto demuestra mi capacidad para trabajar más allá de una aplicación web tradicional: **protocolos, hardware, backend, nube, seguridad, datos y operación**.
+Permite controlar directamente el ciclo del dato de asistencia: desde el dispositivo hasta el reporte. Esto mejora la capacidad de diagnóstico, automatiza la consolidación de eventos y reduce la dependencia tecnológica de una única plataforma propietaria.
+
+**Stack:** `React` · `TypeScript` · `Node.js` · `Supabase` · `PostgreSQL` · `Edge Functions` · `Linux` · `PM2`
 
 ---
 
 ## `renovagt` — Fidelización empresarial integrada con SAP Business One
 
 <p>
-  <img src="https://img.shields.io/badge/Repositorio-Privado-6E7681?style=flat-square&logo=github&logoColor=white" alt="Repositorio privado" />
-  <img src="https://img.shields.io/badge/SAP%20Business%20One-Integraci%C3%B3n-0A6ED1?style=flat-square&logo=sap&logoColor=white" alt="SAP Business One" />
-  <img src="https://img.shields.io/badge/Tipo-Proyecto%20empresarial-238636?style=flat-square" alt="Proyecto empresarial" />
+  <img src="https://img.shields.io/badge/ESTADO-EN%20PRODUCCI%C3%93N-2EA44F?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/SAP-Business%20One-0A6ED1?style=for-the-badge&logo=sap&logoColor=white" />
+  <img src="https://img.shields.io/badge/REPOSITORIO-PRIVADO-6E7681?style=for-the-badge&logo=github" />
 </p>
 
-Sistema de **fidelización y puntos** diseñado para trabajar conectado al ecosistema de **SAP Business One**, convirtiendo procesos que normalmente vivirían dispersos entre caja, clientes y ERP en una experiencia unificada.
+Sistema empresarial de **fidelización y puntos** conectado al ecosistema de SAP Business One. Es uno de los proyectos que mejor representa mi enfoque de integración entre software moderno y procesos reales de ERP.
+
+**Problema que resolvió**
+
+Un programa de fidelización necesita operar alrededor de ventas, clientes y reglas comerciales existentes. Si se construye completamente separado del ERP, aparecen duplicidad de datos, procesos manuales y riesgo de inconsistencias.
+
+**Lógica de la solución**
+
+- SAP Business One / SAP HANA se mantiene como pieza central del ecosistema empresarial;
+- middleware para comunicar infraestructura local con servicios cloud;
+- lógica de acumulación y utilización de puntos;
+- identificación mediante tarjetas NFC;
+- separación entre datos propios de fidelización y datos maestros/transaccionales del ERP;
+- APIs intermedias para evitar acceso directo del frontend a SAP;
+- validaciones y reglas para mantener trazabilidad de las operaciones;
+- experiencia web para operación y administración.
+
+**Impacto operativo**
+
+Convierte la fidelización en un proceso integrado al ecosistema empresarial en lugar de una herramienta aislada. Automatiza el flujo de puntos, mantiene alineados los datos relevantes con SAP B1 y crea una base tecnológica sobre la que el programa puede evolucionar sin comprometer la operación del ERP.
 
 **Stack actual:** `React 19` · `TypeScript` · `TanStack Start` · `TanStack Router` · `TanStack Query` · `Supabase` · `Tailwind CSS 4` · `Zod` · `Recharts`
 
-Entre los retos técnicos del proyecto están:
-
-- integración entre la aplicación y **SAP Business One / SAP HANA**;
-- lógica de acumulación y uso de puntos;
-- identificación mediante tarjetas **NFC**;
-- separación entre datos transaccionales del ERP y datos propios de la plataforma;
-- sincronización segura entre infraestructura local y servicios cloud;
-- diseño de APIs y middleware para no exponer directamente SAP al frontend;
-- experiencia de caja y administración orientada a operación real.
-
-Este proyecto representa especialmente bien el tipo de problemas que me interesa resolver: **software moderno que extiende un ERP empresarial sin romper sus procesos existentes**.
-
 [Referencia del repositorio — acceso restringido](https://github.com/GenerSuhul/renovagt)
+
+---
+
+## `agriflow-system` — Plataforma de logística y eficiencia operativa
+
+<p>
+  <img src="https://img.shields.io/badge/ESTADO-EN%20PRODUCCI%C3%93N-2EA44F?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/%C3%81REA-LOG%C3%8DSTICA-1F6FEB?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/REPOSITORIO-PRIVADO-6E7681?style=for-the-badge&logo=github" />
+</p>
+
+Plataforma de logística construida para transformar operaciones de transporte en un flujo trazable, medible y administrable desde una sola aplicación.
+
+**Problema que resolvió**
+
+En logística no basta con saber que “salió un camión”. Es necesario conocer qué operación se realiza, quién conduce, qué vehículo se utiliza, origen y destino, tiempos reales, evidencia, costos, devoluciones y si existen retrasos o cuellos de botella. Sin una plataforma central, esta información termina fragmentada y es difícil convertirla en decisiones operativas.
+
+**Lógica del sistema**
+
+AgriFlow modela dos grandes flujos:
+
+```text
+Envío a cliente
+Origen -> Conductor/Camión -> Carga -> Traslado -> Entrega -> Evidencia -> Cierre
+
+Traslado entre sucursales
+Sucursal origen -> Conductor/Camión -> Traslado -> Sucursal destino -> Registro -> Cierre
+```
+
+Cada operación puede administrar:
+
+- sucursal de origen y, cuando corresponde, sucursal destino;
+- conductor, camión, placas y tipo de operación;
+- envío a cliente o traslado interno;
+- prioridad, tipo de carga, peso y volumen estimado;
+- kilómetros estimados/reales y duración prevista;
+- peajes, viáticos, hospedaje y estimación de costos;
+- ventanas de entrega y objetivos SLA;
+- evidencia documental asociada a la operación;
+- registro de eventos con fecha/hora y coordenadas GPS;
+- devoluciones asociadas a una operación;
+- historial y trazabilidad de cambios;
+- roles diferenciados para administración, operación, control de calidad y conductores.
+
+El módulo de eficiencia transforma los eventos operativos en métricas de **espera, carga, traslado, descarga y tiempo total**, compara tiempos reales contra umbrales configurables y detecta automáticamente cuellos de botella. También permite analizar desempeño por sucursal, conductor y camión, relacionar costos/ingresos y exportar información para análisis.
+
+**Impacto operativo**
+
+AgriFlow convierte una operación logística dispersa en información estructurada y accionable. Aporta una vista única del proceso, mejora la trazabilidad desde la creación hasta el cierre, permite detectar dónde se pierde tiempo y ofrece datos reales para tomar decisiones sobre eficiencia, recursos y cumplimiento operativo.
+
+**Stack:** `React 18` · `TypeScript` · `Supabase` · `PostgreSQL` · `TanStack Query` · `Recharts` · `Zod` · `PWA` · `PDF/Excel`
+
+[Referencia del repositorio — acceso restringido](https://github.com/GenerSuhul/agriflow-system)
+
+---
+
+## Lo que aporto a un equipo
+
+| Área | Aporte |
+|---|---|
+| **Desarrollo Full Stack** | Construcción de aplicaciones completas: frontend, backend, APIs, autenticación, permisos, datos y UX. |
+| **SAP Business One** | Service Layer, SAP HANA SQL, middleware, sincronización e integración de aplicaciones empresariales con el ERP. |
+| **Sistemas en producción** | Experiencia llevando soluciones fuera del entorno de desarrollo y adaptándolas al uso operativo real. |
+| **Arquitectura** | Separación de responsabilidades, contratos API, modelado de datos, flujos end-to-end y diseño mantenible. |
+| **DevOps / Operación** | Docker, Kubernetes, Linux, CI/CD, GitHub Actions, despliegues, observabilidad y troubleshooting. |
+| **IT + negocio** | Capacidad para entender el proceso operativo antes de convertirlo en código. |
 
 ---
 
 ## Stack técnico
 
 ### Desarrollo
+
 <p>
   <img src="https://skillicons.dev/icons?i=cs,dotnet,java,spring,ts,js,nodejs,react,angular,html,css,tailwind,vite" alt="Stack de desarrollo" />
 </p>
 
-### Datos
+### Datos e integración
+
 <p>
   <img src="https://skillicons.dev/icons?i=postgres,mysql,supabase" alt="Stack de datos" />
 </p>
 
-**También:** SQL Server · SAP HANA · Oracle Database · EF Core · REST APIs · JWT · RLS · Zod · TanStack Query · TanStack Router
+**También:** SAP Business One · SAP HANA · Service Layer · SQL Server · Oracle Database · EF Core · REST APIs · JWT · RLS · Zod · TanStack Query
 
-### Infraestructura, DevOps y operación
+### Infraestructura y entrega
+
 <p>
-  <img src="https://skillicons.dev/icons?i=docker,kubernetes,linux,git,github,githubactions,vercel,cloudflare,nginx" alt="DevOps e infraestructura" />
+  <img src="https://skillicons.dev/icons?i=docker,kubernetes,linux,git,github,githubactions,vercel,cloudflare,nginx" alt="Infraestructura y DevOps" />
 </p>
 
-**También:** Prometheus · Grafana · PM2 · VPS · CI/CD · Docker Compose · observabilidad · networking · troubleshooting de producción
+**También:** Prometheus · Grafana · PM2 · VPS · Docker Compose · CI/CD · observabilidad · networking · troubleshooting de producción
 
 ---
 
-## Mi enfoque de ingeniería
+## Cómo abordo un sistema
 
 ```text
-Necesidad real
-    |
-    v
-Proceso de negocio
-    |
-    v
-Arquitectura y modelo de datos
-    |
-    v
+Problema operativo
+      |
+      v
+Proceso y reglas de negocio
+      |
+      v
+Arquitectura + modelo de datos
+      |
+      v
 Backend + Frontend + Integraciones
-    |
-    v
+      |
+      v
 Seguridad + pruebas + automatización
-    |
-    v
-Despliegue
-    |
-    v
+      |
+      v
+Despliegue a producción
+      |
+      v
 Observabilidad + soporte + mejora continua
 ```
 
-Valoro especialmente:
-
-- código mantenible antes que soluciones rápidas difíciles de operar;
-- seguridad y manejo de secretos desde el inicio;
-- APIs claras y responsabilidades bien separadas;
-- validación de datos y reglas de negocio explícitas;
-- pruebas y quality gates;
-- logs, métricas y capacidad de diagnóstico;
-- documentación que permita a otra persona operar el sistema;
-- no esconder fallos con datos falsos o comportamientos mock en producción.
+No considero un sistema terminado únicamente porque funciona en mi equipo. Me interesa que sea **operable, trazable, mantenible y útil para las personas que dependen de él**.
 
 ---
 
@@ -243,18 +337,19 @@ Valoro especialmente:
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=GenerSuhul&theme=github-compact&hide_border=true&area=true&custom_title=Actividad%20de%20contribuci%C3%B3n" width="100%" alt="Gráfica de actividad" />
 </p>
 
-> **Nota:** varios de mis proyectos con mayor impacto son privados por tratarse de soluciones institucionales o empresariales. Por esa razón, las estadísticas públicas de GitHub no representan la totalidad de mi trabajo.
+> Varios de mis sistemas más importantes son repositorios privados porque contienen soluciones institucionales o empresariales en producción. Por esa razón, las estadísticas públicas de GitHub no representan la totalidad de mi experiencia ni del software que mantengo.
 
 ---
 
 ## Áreas donde puedo generar valor
 
-**Full Stack Development** · **Backend .NET / C#** · **React / Angular / TypeScript** · **SAP Business One Integrations** · **SAP HANA** · **PostgreSQL** · **Arquitectura de APIs** · **DevOps / SRE** · **Docker / Kubernetes** · **Automatización** · **Sistemas empresariales**
+**Full Stack Development** · **Backend .NET / C#** · **React / Angular / TypeScript** · **SAP Business One** · **SAP HANA** · **Integraciones ERP** · **PostgreSQL** · **Arquitectura de APIs** · **DevOps / SRE** · **Docker / Kubernetes** · **Automatización** · **Sistemas empresariales** · **Logística**
 
-Si un reto requiere entender **software + infraestructura + operación + negocio**, es el tipo de reto en el que más disfruto trabajar.
+Si un reto requiere entender **software, integración, infraestructura, operación y negocio al mismo tiempo**, es el tipo de problema en el que más valor puedo aportar.
 
 ---
 
 <p align="center">
-  <b>Construyo software para resolver problemas reales, integrarse con sistemas reales y operar en entornos reales.</b>
+  <b>Gener Suhul</b><br/>
+  Full Stack Developer · SAP Business One · Integraciones Empresariales · Sistemas en Producción
 </p>
