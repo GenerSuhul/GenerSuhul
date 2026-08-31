@@ -7,41 +7,41 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="250" rx="22" fill="#0D1117"/>
-  <text x="60" y="52" fill="#F0F6FC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700">Engineering focus</text>
-  <text x="60" y="79" fill="#8B949E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">End-to-end delivery: product → integration → platform → reliability</text>
+  <text x="60" y="52" fill="#F0F6FC" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700">Cómo trabajo</text>
+  <text x="60" y="79" fill="#8B949E" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">Entrega end-to-end: producto → integración → plataforma → confiabilidad</text>
   <path d="M173 139H1025" stroke="url(#line)" stroke-opacity="0.55" stroke-width="3"/>
 
   <g font-family="Inter,Segoe UI,Arial,sans-serif">
     <g transform="translate(55 104)">
       <rect width="238" height="104" rx="16" fill="#161B22" stroke="#30363D"/>
       <circle cx="28" cy="31" r="10" fill="#58A6FF"/>
-      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">BUILD</text>
+      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">CONSTRUIR</text>
       <text x="22" y="67" fill="#B8C7D9" font-size="14">.NET · React · Angular</text>
-      <text x="22" y="88" fill="#8B949E" font-size="13">APIs, UX, business workflows</text>
+      <text x="22" y="88" fill="#8B949E" font-size="13">APIs, UX y procesos de negocio</text>
     </g>
 
     <g transform="translate(323 104)">
       <rect width="238" height="104" rx="16" fill="#161B22" stroke="#30363D"/>
       <circle cx="28" cy="31" r="10" fill="#22D3EE"/>
-      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">INTEGRATE</text>
-      <text x="22" y="67" fill="#B8C7D9" font-size="14">SAP B1 · HANA · Devices</text>
-      <text x="22" y="88" fill="#8B949E" font-size="13">Middleware, sync, data pipelines</text>
+      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">INTEGRAR</text>
+      <text x="22" y="67" fill="#B8C7D9" font-size="14">SAP B1 · HANA · Dispositivos</text>
+      <text x="22" y="88" fill="#8B949E" font-size="13">Middleware, sincronización y datos</text>
     </g>
 
     <g transform="translate(591 104)">
       <rect width="238" height="104" rx="16" fill="#161B22" stroke="#30363D"/>
       <circle cx="28" cy="31" r="10" fill="#3FB950"/>
-      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">RUN</text>
+      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">OPERAR</text>
       <text x="22" y="67" fill="#B8C7D9" font-size="14">Docker · Kubernetes · Linux</text>
-      <text x="22" y="88" fill="#8B949E" font-size="13">Cloud, CI/CD, secure deployments</text>
+      <text x="22" y="88" fill="#8B949E" font-size="13">Cloud, CI/CD y despliegues seguros</text>
     </g>
 
     <g transform="translate(859 104)">
       <rect width="286" height="104" rx="16" fill="#161B22" stroke="#30363D"/>
       <circle cx="28" cy="31" r="10" fill="#A78BFA"/>
-      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">OBSERVE &amp; IMPROVE</text>
-      <text x="22" y="67" fill="#B8C7D9" font-size="14">Prometheus · Grafana · Automation</text>
-      <text x="22" y="88" fill="#8B949E" font-size="13">Metrics, resilience, operational quality</text>
+      <text x="49" y="37" fill="#F0F6FC" font-size="18" font-weight="700">MEDIR Y MEJORAR</text>
+      <text x="22" y="67" fill="#B8C7D9" font-size="14">Prometheus · Grafana · Automatización</text>
+      <text x="22" y="88" fill="#8B949E" font-size="13">Métricas, resiliencia y calidad operativa</text>
     </g>
   </g>
 </svg>
