@@ -18,7 +18,12 @@ FONTS={
 _font={}
 def ft(sz,kind='regular'):
     k=(sz,kind)
-    if k not in _font:_font[k]=ImageFont.truetype(FONTS[kind],sz)
+    if k not in _font:
+        path=Path(FONTS[kind])
+        if not path.exists():
+            fallback='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf' if kind in ('bold','semibold') else '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+            path=Path(fallback)
+        _font[k]=ImageFont.truetype(str(path),sz)
     return _font[k]
 THEMES={
  'dark':{
