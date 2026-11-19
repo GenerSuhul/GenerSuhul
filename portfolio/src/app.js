@@ -82,3 +82,10 @@ document.addEventListener("keydown", (event) => {
 setTimeout(() => {
   if (!whatsappInteracted) setWhatsappOpen(true);
 }, 7000);
+
+// Show the return-to-top control only after the visitor scrolls down.
+const backToTop = document.querySelector('.back-to-top');
+function syncBackToTop() { backToTop.hidden = window.scrollY < 500; }
+window.addEventListener('scroll', syncBackToTop, { passive: true });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: motion.matches ? 'instant' : 'smooth' }));
+syncBackToTop();
