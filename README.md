@@ -1,21 +1,15 @@
 <div align="center">
 
-<a href="https://gener-suhul-portfolio.vercel.app/"><img src="./assets/portfolio-banner.svg" alt="Gener Suhul — abrí el portafolio interactivo" width="100%"></a>
+<a href="https://gener-suhul-portfolio.vercel.app/"><img src="./assets/portfolio-banner.svg" alt="Gener Alexander Suhul Amador — Full Stack Developer" width="100%"></a>
 
-### [▶ EXPLORAR EL PORTAFOLIO WEB INTERACTIVO](https://gener-suhul-portfolio.vercel.app/)
-
-*Animaciones propias en Canvas · Diagrama interactivo · Proyectos filtrables · Estudios técnicos*
-
-[GitHub](https://github.com/GenerSuhul) · [Correo](mailto:gsuhula1@miumg.edu.gt)
+[**Sitio web**](https://gener-suhul-portfolio.vercel.app/) &nbsp; · &nbsp; [**Repositorios**](https://github.com/GenerSuhul?tab=repositories) &nbsp; · &nbsp; [**Correo**](mailto:gsuhula1@miumg.edu.gt)
 
 </div>
+
 ---
+## Desarrollo de software · Backend e integraciones
 
-# Gener Alexander Suhul Amador
-
-**Desarrollador de software Full Stack | Backend .NET y Java | Integraciones empresariales**
-
-Poptún, Petén, Guatemala · [Contacto](mailto:gsuhula1@miumg.edu.gt) · [Repositorios públicos](https://github.com/GenerSuhul?tab=repositories)
+Poptún, Petén, Guatemala
 
 ## Perfil profesional
 
@@ -85,4 +79,4 @@ Algunos desarrollos tienen repositorios privados por su naturaleza operativa. Co
 
 **Contacto:** [gsuhula1@miumg.edu.gt](mailto:gsuhula1@miumg.edu.gt) · [GitHub](https://github.com/GenerSuhul)
 
-*Los repositorios públicos muestran una parte de mi trabajo. Los proyectos empresariales se describen a nivel funcional y técnico para respetar su confidencialidad.*
+*Los repositorios públicos permiten revisar código y documentación. Los proyectos empresariales se describen sin información confidencial.*
