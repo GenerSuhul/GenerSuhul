@@ -11,7 +11,7 @@
 <title>Gener Suhul | Desarrollo de software</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-:root{color-scheme:dark;--bg:#071B3F;--surface:#0B2D6B;--surface2:#163B73;--edge:#2D4D82;--text:#F8FAFC;--muted:#C6D5E8;--accent:#14B8A6;--teal:#14B8A6;--shadow:0 20px 60px #071B3F24}
+:root{color-scheme:dark;--bg:#10151B;--surface:#19212A;--surface2:#222C37;--edge:#303D4A;--text:#EDF2F7;--muted:#ADB9C5;--accent:#91B5FF;--teal:#4ECABA;--shadow:0 18px 55px #00000035}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden}button,a{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}::selection{background:#e6ba82;color:#101820}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}#progress{height:2px;position:fixed;top:0;left:0;z-index:100;background:var(--accent);width:0;pointer-events:none}.container{width:min(1180px,calc(100% - 48px));margin:auto}
 .gridbg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#d9e5ee08 1px,transparent 1px),linear-gradient(90deg,#d9e5ee08 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(#0007,transparent 75%)}
 header{position:sticky;top:0;z-index:50;background:#0B2D6Bdf;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}header .inner{display:flex;justify-content:space-between;align-items:center;min-height:73px;gap:16px}.brand{font:500 15px Inter,sans-serif;letter-spacing:.08em;display:flex;align-items:center;gap:11px}.brand i{display:inline-block;width:12px;height:12px;border:2px solid var(--accent);transform:rotate(45deg)}nav{display:flex;align-items:center;gap:24px}nav a{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s}nav a:hover{color:var(--text)}.header-actions{display:flex;gap:9px;align-items:center}.tiny-btn{border:1px solid var(--edge);background:var(--surface);color:var(--text);padding:9px 12px;border-radius:7px;font:500 12px Inter,sans-serif}.tiny-btn:hover{border-color:var(--accent)}.navcta{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--accent);border-radius:7px;padding:10px 14px;color:var(--accent);font-size:12px;font-weight:800}
@@ -97,6 +97,117 @@ html.light .skillbox{background:#FFFFFF}
 html.light .source{color:#0B2D6B;border-color:#2563EB}
 html.light .project-status{color:#4B6789;border-color:#C7D5E7}
 @media(max-width:740px){.hero{padding:60px 0}.hero h1{font-size:clamp(50px,12vw,79px)}.hero-layout{gap:35px}.contact{padding:28px}.section-title h2{font-size:clamp(29px,8vw,44px)}}
+
+
+/* DARK MODE — neutral structure, corporate color used sparingly.
+   Backgrounds are carbon/blue-gray; cobalt #2563EB and teal #14B8A6 are accents. */
+html:not(.light) body{background:#10151B;color:#EDF2F7}
+html:not(.light) .gridbg{
+  opacity:.36;
+  background-image:linear-gradient(#B8CBD508 1px,transparent 1px),linear-gradient(90deg,#B8CBD508 1px,transparent 1px);
+  background-size:66px 66px;
+}
+html:not(.light) header{
+  background:#131B24F5;
+  border-bottom:1px solid #283540;
+  box-shadow:0 8px 28px #00000010;
+}
+html:not(.light) header .brand,html:not(.light) header .brand span,html:not(.light) nav a{color:#DCE5ED}
+html:not(.light) header nav a:hover{color:#91B5FF}
+html:not(.light) header .tiny-btn{background:#1C2630;border:1px solid #394653;color:#DCE5ED}
+html:not(.light) header .tiny-btn:hover{border-color:#6998EF;background:#263241}
+html:not(.light) header .navcta{background:#2563EB;color:white;border-color:#2563EB}
+html:not(.light) header .navcta:hover{background:#1D4ED8}
+html:not(.light) .hero h1{color:#F3F6FA}
+html:not(.light) .hero h1 span{color:#90B2F7}
+html:not(.light) .hero-sub{color:#D9E4EC}
+html:not(.light) .hero-desc{color:#B3C0CD}
+html:not(.light) .eyebrow,html:not(.light) .kicker{color:#90B2F7}
+html:not(.light) .eyebrow:before{background:#4ECABA;box-shadow:0 0 0 4px #4ECABA13}
+html:not(.light) .hero-foot{color:#9EADBA}
+html:not(.light) .hero-foot span:before{color:#4ECABA}
+html:not(.light) .btn:not(.primary){
+  color:#E6EDF4;background:#1B242E;border:1px solid #3B4856;
+}
+html:not(.light) .btn:not(.primary):hover{background:#243140;border-color:#6687C1}
+html:not(.light) .btn.primary{background:#2563EB;border-color:#2563EB;color:#FFFFFF}
+html:not(.light) .btn.primary:hover{background:#1D4ED8;border-color:#1D4ED8}
+html:not(.light) .arch{
+  background:linear-gradient(155deg,#192430 0%,#131B25 100%);
+  border:1px solid #354456;
+  border-radius:12px;
+  box-shadow:0 24px 65px #00000030;
+}
+html:not(.light) .arch-head{border-bottom:1px solid #34414F}
+html:not(.light) .arch-head strong{color:#E8EEF5}
+html:not(.light) .arch-head span,html:not(.light) .arch-hint{color:#A7B9CB}
+html:not(.light) .arch-head span b{background:#4ECABA}
+html:not(.light) .nodeinfo{
+  background:#202C38;border:1px solid #38495B;color:#E8EEF5;
+}
+html:not(.light) .nodeinfo .n-label{color:#5DCEC0}
+html:not(.light) .nodeinfo h3{color:#F1F5F9}
+html:not(.light) .nodeinfo p{color:#B5C4D2}
+html:not(.light) section{border-top:1px solid #29343F}
+html:not(.light) .section-title p{color:#AEBECA}
+html:not(.light) .facts{
+  background:#29353F;border:1px solid #33424E;border-radius:10px;
+}
+html:not(.light) .fact{background:#1A232C;color:#E9EFF5}
+html:not(.light) .fact:nth-child(2){background:#1D2731}
+html:not(.light) .fact .tag,
+html:not(.light) .project-index,
+html:not(.light) .skillbox .number,
+html:not(.light) .award .place,
+html:not(.light) .experience .date{color:#8FAFFC}
+html:not(.light) .fact .value{color:#F1F5F9}
+html:not(.light) .fact p{color:#ACBCC9}
+html:not(.light) .filter{
+  border:1px solid #3A4755;background:#19222B;color:#BBC8D5;
+}
+html:not(.light) .filter:hover{border-color:#6E91C8;background:#242F3A;color:#F3F6F9}
+html:not(.light) .filter[aria-pressed=true]{
+  border-color:#2563EB;background:#2563EB;color:white;
+}
+html:not(.light) .project{
+  background:#19222B;border:1px solid #35424F;
+  box-shadow:0 4px 18px #00000012;
+}
+html:not(.light) .project:hover{
+  background:#1E2833;border-color:#5B789A;box-shadow:0 16px 38px #00000021;
+}
+html:not(.light) .project h3{color:#EDF2F7}
+html:not(.light) .project p,html:not(.light) .project .detail-text{color:#AEBDC9}
+html:not(.light) .project-status{color:#B1C1CD;border:1px solid #435261;background:#202B36}
+html:not(.light) .tags .tag-item{
+  background:#253240;border:1px solid #354B60;color:#C9D7E5;
+}
+html:not(.light) .project details{border-top:1px solid #35424F}
+html:not(.light) .project summary{color:#92B4FA}
+html:not(.light) .project .source{color:#D5E3F0;border-bottom:1px solid #668FE4}
+html:not(.light) .project .source:hover{color:#99B8FB}
+html:not(.light) .hiddennotice{color:#98AABA}
+html:not(.light) .skillbox{
+  background:#19222B;border:1px solid #34424F;
+}
+html:not(.light) .skillbox h3{color:#EEF3F9}
+html:not(.light) .skillbox p{color:#ADBBC8}
+html:not(.light) .experience{border-top-color:#35414C}
+html:not(.light) .experience h3{color:#EAF0F7}
+html:not(.light) .experience p,html:not(.light) .experience li{color:#B6C1CC}
+html:not(.light) .award{
+  background:#19232D;border:1px solid #344451;
+}
+html:not(.light) .award h3{color:#EDF2F7}
+html:not(.light) .award p{color:#AEBECB}
+html:not(.light) .contact{
+  background:linear-gradient(130deg,#1F2A36,#19222C);
+  border:1px solid #3B4B5A;box-shadow:0 16px 42px #0000001D;
+}
+html:not(.light) .contact h2{color:#F3F6FA}
+html:not(.light) .contact p{color:#B4C2CF}
+html:not(.light) footer{border-top:1px solid #34414C;color:#9EADBA}
+html:not(.light) #progress{background:#2563EB}
 
 </style>
 </head>
@@ -184,11 +295,12 @@ html.light .project-status{color:#4B6789;border-color:#C7D5E7}
   function setActive(i){active=i;const n=nodes[i];info.querySelector('.n-label').textContent=n.category;info.querySelector('h3').textContent=n.title;info.querySelector('p').textContent=n.description;draw()}
   function draw(){
     if(!w)return;ctx.clearRect(0,0,w,h);
+    const dark=!document.documentElement.classList.contains('light');
     ctx.strokeStyle='rgba(116,164,188,.09)';ctx.lineWidth=1;
     for(let x=0;x<w;x+=25){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}
     for(let y=0;y<h;y+=25){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
-    edges.forEach((e,i)=>{const a=coord(e[0]),b=coord(e[1]),mx=(a[0]+b[0])/2;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.bezierCurveTo(mx,a[1],mx,b[1],b[0],b[1]);ctx.strokeStyle='rgba(120,200,187,.35)';ctx.lineWidth=1.5;ctx.stroke();if(motion){const pos=curve(e[0],e[1],(tick*(.0008+i*.00009)+i*.27)%1);ctx.beginPath();ctx.arc(pos[0],pos[1],3.2,0,Math.PI*2);ctx.fillStyle='#14B8A6';ctx.fill()}});
-    nodes.forEach((n,i)=>{const p=coord(i),selected=i===active;const boxW=Math.min(n.w,w*.28),x=p[0]-boxW/2,y=p[1]-19;ctx.fillStyle=selected?'#1D4ED8':'#143B79';ctx.strokeStyle=selected?'#14B8A6':'#6184A5';ctx.lineWidth=selected?2:1;rounded(x,y,boxW,38,8);ctx.fill();ctx.stroke();ctx.fillStyle=selected?'#F8FAFC':'#F8FAFC';ctx.font='500 '+(w<390?'9':'10')+'px Inter, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n.label,p[0],p[1]);});
+    edges.forEach((e,i)=>{const a=coord(e[0]),b=coord(e[1]),mx=(a[0]+b[0])/2;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.bezierCurveTo(mx,a[1],mx,b[1],b[0],b[1]);ctx.strokeStyle=dark?'rgba(121,151,178,.43)':'rgba(120,200,187,.35)';ctx.lineWidth=1.5;ctx.stroke();if(motion){const pos=curve(e[0],e[1],(tick*(.0008+i*.00009)+i*.27)%1);ctx.beginPath();ctx.arc(pos[0],pos[1],3.2,0,Math.PI*2);ctx.fillStyle='#14B8A6';ctx.fill()}});
+    nodes.forEach((n,i)=>{const p=coord(i),selected=i===active;const boxW=Math.min(n.w,w*.28),x=p[0]-boxW/2,y=p[1]-19;ctx.fillStyle=dark?(selected?'#304762':'#233140'):(selected?'#1D4ED8':'#143B79');ctx.strokeStyle=dark?(selected?'#7DA5F4':'#4B657C'):(selected?'#14B8A6':'#6184A5');ctx.lineWidth=selected?2:1;rounded(x,y,boxW,38,8);ctx.fill();ctx.stroke();ctx.fillStyle='#F8FAFC';ctx.font='500 '+(w<390?'9':'10')+'px Inter, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n.label,p[0],p[1]);});
   }
   function rounded(x,y,w1,h1,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w1,y,x+w1,y+h1,r);ctx.arcTo(x+w1,y+h1,x,y+h1,r);ctx.arcTo(x,y+h1,x,y,r);ctx.arcTo(x,y,x+w1,y,r);ctx.closePath()}
   function frame(){if(!motion)return;tick++;draw();raf=requestAnimationFrame(frame)}
@@ -208,7 +320,7 @@ html.light .project-status{color:#4B6789;border-color:#C7D5E7}
   document.querySelectorAll('[data-reveal]').forEach(e=>{if(observer)observer.observe(e);else e.classList.add('visible')});
   const savedTheme=localStorage.getItem('gs-portfolio-theme');if(savedTheme!=='dark')document.documentElement.classList.add('light');
   function syncTheme(){document.getElementById('theme').textContent=document.documentElement.classList.contains('light')?'Oscuro':'Claro';document.getElementById('theme').setAttribute('aria-label',document.documentElement.classList.contains('light')?'Activar tema oscuro':'Activar tema claro')}
-  syncTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme()});
+  syncTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme();draw()});
   document.getElementById('copy').addEventListener('click',async function(){try{await navigator.clipboard.writeText('gsuhula1@miumg.edu.gt');const old=this.textContent;this.textContent='Correo copiado';setTimeout(()=>this.textContent=old,1900)}catch(e){window.location.href='mailto:gsuhula1@miumg.edu.gt'}});
   function progress(){const doc=document.documentElement,max=doc.scrollHeight-innerHeight;document.getElementById('progress').style.width=(max>0?scrollY/max*100:0)+'%'}window.addEventListener('scroll',progress,{passive:true});progress();
 })();
