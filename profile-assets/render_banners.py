@@ -131,8 +131,8 @@ def picture(theme='dark',progress=0.0,animated=False,include_active=True):
  parts += [text(45,137,'Aplicaciones  /  Servicios y seguridad  /  Middleware  /  SAP Business One',17,c['body'],500)]
  parts += [rect(1044,35,350,83,c['surface'],c['edge'],10,1)]
  parts += [text(1060,60,'SECUENCIA DE UNA SOLICITUD',12,c['muted'],650,1)]
- parts += [text(1060,88,current[0],24,c['title'],750)]
- parts += [text(1060,108,current[1],12,c['body'],500)]
+ parts += [f'<text id="architecture-phase-title" x="1060" y="88" fill="{c["title"]}" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="750">{current[0]}</text>']
+ parts += [f'<text id="architecture-phase-detail" x="1060" y="108" fill="{c["body"]}" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="500">{current[1]}</text>']
  parts += [f'<line x1="43" y1="161" x2="1397" y2="161" stroke="{c["edge"]}" stroke-width="1"/>']
  # Four architectural zones.
  for x,right,num,title,desc in AREAS:
@@ -147,30 +147,32 @@ def picture(theme='dark',progress=0.0,animated=False,include_active=True):
   col=c['line'] if kind in ('main','return') else c['lineFade']
   dash='stroke-dasharray="6 7"' if kind=='return' else ''
   sw=2 if kind in ('main','return') else 1.6
-  parts += [f'<path d="{d}" class="route" stroke="{col}" stroke-width="{sw}" {dash} />']
+  parts += [f'<path d="{d}" class="route" data-route="{name}" stroke="{col}" stroke-width="{sw}" {dash} />']
  # Route badges.
  badges=[(334,350,'HTTPS'),(655,351,'REST'),(990,351,'SL')]
  for x,y,label in badges:
   parts += [rect(x-5,y-10,36 if label!='HTTPS' else 45,17,c['bg'],radius=4),text(x,y+2,label,10,c['muted'],700)]
  # Cards: each uses the same consistent rhythm, spacing and genuine functional icon.
  for ident,x,y,w,h,title,desc,accent,short in NODES:
-  tint=c[accent];selected=ident in current[2]
+  tint=c[accent];selected=include_active and ident in current[2]
   stroke=tint if selected else c['edge']
+  parts += [f'<g data-node="{ident}">']
   parts += [rect(x+2,y+4,w,h,c['shadow'],radius=11)]
-  parts += [rect(x,y,w,h,c['card'],stroke,11,2 if selected else 1)]
+  parts += [f'<rect data-card="{ident}" x="{x}" y="{y}" width="{w}" height="{h}" rx="11" fill="{c["card"]}" stroke="{stroke}" stroke-width="{2 if selected else 1}"/>']
   parts += [rect(x,y+15,4,h-30,tint, radius=1)]
   parts += [icon_path(short,x+16,y+23,tint)]
   parts += [text(x+54,y+39,title,17,c['title'],720,-.1)]
   parts += [text(x+54,y+69,desc,13,c['body'],450)]
-  parts += [f'<circle cx="{x+w-19}" cy="{y+20}" r="4" fill="{c["green"] if selected else c["edge"]}"/>']
+  parts += [f'<circle data-dot="{ident}" cx="{x+w-19}" cy="{y+20}" r="4" fill="{c["green"] if selected else c["edge"]}"/>']
   if selected:
    parts += [rect(x+8,y+7,w-16,h-14,'none',tint,9,1)]
+  parts += ['</g>']
  # Stage timeline intentionally changes several elements (step, nodes, routes, label, progress).
  parts += [rect(43,750,1355,48,c['footer'],c['edge'],8)]
  steptext=['01 SOLICITUD','02 SEGURIDAD','03 MIDDLEWARE','04 SAP','05 HANA','06 RESPUESTA']
  for i,label in enumerate(steptext):
   x=63+i*224
-  parts += [f'<circle cx="{x}" cy="773" r="5" fill="{c["teal"] if i<=phase else c["lineFade"]}"/>']
+  parts += [f'<circle data-step="{i}" cx="{x}" cy="773" r="5" fill="{c["teal"] if i<=phase else c["lineFade"]}"/>']
   parts += [text(x+15,779,label,13,c['title'] if i==phase else c['muted'],720 if i==phase else 500)]
  # Active path overlay. For animated SVG, individual paths and active card accents alternate
  # through a coordinated 6s cycle; for GIF, each frame's phase is rendered explicitly.
@@ -181,7 +183,7 @@ def picture(theme='dark',progress=0.0,animated=False,include_active=True):
    parts += [f'<path d="{d}" class="route {animation_class}" stroke="{c["teal"]}" stroke-width="4" opacity=".92"/>']
  # Progress advances with each frame (not only a traveling dot).
  parts += [rect(43,739,1355,3,c['edgeSoft'],radius=1)]
- parts += [rect(43,739,int(1355*(progress%1)),3,c['teal'],radius=1)]
+ parts += [f'<rect id="architecture-progress" x="43" y="739" width="{int(1355*(progress%1))}" height="3" rx="1" fill="{c["teal"]}"/>']
  parts += ['</svg>']
  return ''.join(parts)
 def svg_animated(theme):
