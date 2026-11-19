@@ -51,3 +51,34 @@
 .icon-stack .tech-tags { margin-bottom:0; }
 @media(max-width:600px){.icon-stack{grid-template-columns:1fr}.tech-icon{width:42px;height:42px}.tech-icon-mark{width:22px;height:22px}}
 @media(prefers-reduced-motion:reduce){.tech-icon{transition:none}}
+/* Compact navigation and a quieter dark palette. */
+:root {
+  --bg: #080f1e;
+  --surface: #101c30;
+  --raised: #192840;
+  --text: #f2f5fc;
+  --muted: #b7c3d5;
+  --line: #2b3b53;
+  --accent: #a8c5ff;
+  --halo: #1a4da525;
+  --header: #0b1629f5;
+}
+:root[data-theme=light] {
+  --bg: #f8fafc;
+  --surface: #fff;
+  --raised: #edf3fc;
+  --text: #0b2d6b;
+  --muted: #4e6079;
+  --line: #cad6e7;
+  --accent: #2563eb;
+  --halo: #2563eb0c;
+  --header: #f8fafcf5;
+}
+.header-inner { min-height: 64px; }
+.header .brand { font-size: 1.12rem; }
+.header .brand svg { width: 24px; }
+.header nav { gap: 20px; }
+.header nav a, .header-actions { font-size: .8rem; }
+html { scroll-padding-top: 80px; }
+@media(max-width:850px){ .header-inner { min-height: 60px; } .header nav { top:60px; } }
+@media(max-width:600px){ .header-inner { min-height: 58px; } .header nav { top:58px; } html { scroll-padding-top: 72px; } }
