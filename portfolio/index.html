@@ -216,6 +216,17 @@ html:not(.light) #progress{background:#5A8CD0}
 .architecture-note{font:500 12px Inter,system-ui,sans-serif;color:var(--muted);text-align:right;margin:15px 0 0}
 html:not(.light) .architecture-shell{background:#111820;border-color:#354455}
 @media(max-width:740px){.diagram-showcase{padding:56px 0}.architecture-shell{overflow-x:auto}.architecture-shell img{min-width:850px}}
+
+.architecture-controlbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:18px}
+.architecture-steps{display:flex;gap:5px;flex-wrap:wrap}
+.architecture-step,.architecture-play{border:1px solid var(--edge);border-radius:6px;background:var(--surface);color:var(--muted);padding:9px 13px;font:600 11px Inter,system-ui,sans-serif;transition:background .25s,border-color .25s,color .25s}
+.architecture-step[aria-pressed=true]{background:#2563EB;color:#FFF;border-color:#2563EB}
+html:not(.light) .architecture-step[aria-pressed=true]{background:#315D9D;border-color:#6685B8}
+.architecture-play{color:var(--text)}
+.architecture-step:hover,.architecture-play:hover{border-color:var(--accent)}
+.architecture-shell svg{display:block;width:100%;height:auto;aspect-ratio:1440/810}
+@media(max-width:740px){.architecture-shell svg{min-width:850px}.architecture-steps{gap:4px}.architecture-step{padding:8px 10px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.architecture-step,.architecture-play{transition:none}}
 </style>
 </head>
 <body>
@@ -250,10 +261,21 @@ html:not(.light) .architecture-shell{background:#111820;border-color:#354455}
       <div><div class="kicker">Arquitectura</div><h2>Integraciones con SAP Business One.</h2></div>
       <p>Este esquema representa el recorrido de una solicitud desde una aplicación hasta SAP y su respuesta. Incluye los controles de autenticación, auditoría y sincronización. No muestra tráfico de producción.</p>
     </div>
-    <div class="architecture-shell" data-reveal>
-      <img id="architecture-svg" src="./architecture-light.svg" alt="Diagrama vectorial animado de cuatro capas: aplicaciones, API y control, integración, SAP Business One y bases de datos." loading="lazy" decoding="async" width="1440" height="810"/>
+    <div class="architecture-shell" id="architecture-host" data-reveal>
+      <img src="./architecture-light.svg" alt="Diagrama de integración: aplicaciones, API, middleware y SAP Business One" loading="lazy" width="1440" height="810"/>
     </div>
-    <p class="architecture-note">Secuencia ilustrativa de solicitud, validación, adaptación, consulta y respuesta.</p>
+    <div class="architecture-controlbar" role="group" aria-label="Etapas de integración">
+      <div class="architecture-steps">
+        <button class="architecture-step" type="button" data-arch-step="0" aria-pressed="true">01 Solicitud</button>
+        <button class="architecture-step" type="button" data-arch-step="1" aria-pressed="false">02 Seguridad</button>
+        <button class="architecture-step" type="button" data-arch-step="2" aria-pressed="false">03 Middleware</button>
+        <button class="architecture-step" type="button" data-arch-step="3" aria-pressed="false">04 SAP</button>
+        <button class="architecture-step" type="button" data-arch-step="4" aria-pressed="false">05 HANA</button>
+        <button class="architecture-step" type="button" data-arch-step="5" aria-pressed="false">06 Respuesta</button>
+      </div>
+      <button class="architecture-play" id="architecture-play" type="button" aria-pressed="false">Pausar</button>
+    </div>
+    <p class="architecture-note">Secuencia ilustrativa, no lectura en tiempo real de SAP.</p>
   </div>
 </section>
 
@@ -341,7 +363,87 @@ html:not(.light) .architecture-shell{background:#111820;border-color:#354455}
   document.querySelectorAll('[data-reveal]').forEach(e=>{if(observer)observer.observe(e);else e.classList.add('visible')});
   const savedTheme=localStorage.getItem('gs-portfolio-theme');if(savedTheme!=='dark')document.documentElement.classList.add('light');
   function syncTheme(){document.getElementById('theme').textContent=document.documentElement.classList.contains('light')?'Oscuro':'Claro';document.getElementById('theme').setAttribute('aria-label',document.documentElement.classList.contains('light')?'Activar tema oscuro':'Activar tema claro')}
-  function syncDiagramTheme(){const el=document.getElementById('architecture-svg');if(el)el.src=document.documentElement.classList.contains('light')?'./architecture-light.svg':'./architecture-dark.svg'}syncTheme();syncDiagramTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme();syncDiagramTheme();draw()});
+  const archSequence=[
+  {title:'SOLICITUD',detail:'Interfaz web → API',nodes:['pwa','api'],routes:['front']},
+  {title:'VALIDACIÓN',detail:'API → identidad y permisos',nodes:['api','iam'],routes:['api_auth','front']},
+  {title:'ADAPTACIÓN',detail:'API → middleware .NET',nodes:['api','middleware'],routes:['api_mid']},
+  {title:'CONSULTA ERP',detail:'Middleware → Service Layer',nodes:['middleware','sl','sap'],routes:['mid_sl','sl_sap']},
+  {title:'PERSISTENCIA',detail:'SAP Business One → HANA',nodes:['sap','hana'],routes:['sap_hana']},
+  {title:'RESPUESTA',detail:'SAP → API → aplicación',nodes:['sl','middleware','api','pwa'],routes:['response','mid_sl','api_mid','front']}
+];
+const archHost=document.getElementById('architecture-host');
+const archPlay=document.getElementById('architecture-play');
+let archStep=0,archRunning=!prefersReduced.matches,archTimer=null,archRequest=0;
+function paintArchitecture(step){
+  archStep=((step%archSequence.length)+archSequence.length)%archSequence.length;
+  const svg=archHost.querySelector('svg');if(!svg)return;
+  const phase=archSequence[archStep];
+  const dark=!document.documentElement.classList.contains('light');
+  const focus=dark?'#72AED4':'#2563EB',idle=dark?'#394B5D':'#D4E0ED',tone=dark?'#51CEBF':'#14B8A6';
+  svg.querySelectorAll('[data-card]').forEach(el=>{
+    const active=phase.nodes.includes(el.getAttribute('data-card'));
+    el.style.stroke=active?focus:idle;el.style.strokeWidth=active?'3':'1';
+    el.style.transition='stroke .45s ease,stroke-width .45s ease';
+  });
+  svg.querySelectorAll('[data-dot]').forEach(el=>{
+    el.style.fill=phase.nodes.includes(el.getAttribute('data-dot'))?tone:idle;
+  });
+  svg.querySelectorAll('[data-route]').forEach(el=>{
+    const active=phase.routes.includes(el.getAttribute('data-route'));
+    el.style.stroke=active?tone:idle;
+    el.style.strokeWidth=active?'4':'2';
+    el.style.opacity=active?'1':'.62';
+    el.style.strokeDasharray=active?'9 6':'none';
+    el.style.transition='stroke .45s ease,opacity .45s ease';
+  });
+  const ttl=svg.querySelector('#architecture-phase-title');
+  const sub=svg.querySelector('#architecture-phase-detail');
+  if(ttl)ttl.textContent=phase.title;
+  if(sub)sub.textContent=phase.detail;
+  const progress=svg.querySelector('#architecture-progress');
+  if(progress)progress.setAttribute('width',String(Math.round((archStep+1)/6*1355)));
+  svg.querySelectorAll('[data-step]').forEach(el=>{
+    el.style.fill=Number(el.getAttribute('data-step'))<=archStep?tone:idle;
+  });
+  document.querySelectorAll('[data-arch-step]').forEach(btn=>
+    btn.setAttribute('aria-pressed',String(Number(btn.dataset.archStep)===archStep)));
+}
+function archAutoplay(){
+  if(archTimer){clearInterval(archTimer);archTimer=null}
+  archPlay.textContent=archRunning?'Pausar':'Reproducir';
+  archPlay.setAttribute('aria-pressed',String(!archRunning));
+  if(archRunning)archTimer=setInterval(()=>{if(!document.hidden)paintArchitecture(archStep+1)},1350);
+}
+async function syncDiagramTheme(){
+  const token=++archRequest;
+  const file=document.documentElement.classList.contains('light')?'./architecture-light.svg':'./architecture-dark.svg';
+  try{
+    const response=await fetch(file,{cache:'default'});
+    if(!response.ok)throw Error('SVG no disponible');
+    const markup=await response.text();
+    if(token!==archRequest)return;
+    archHost.innerHTML=markup;
+    const svg=archHost.querySelector('svg');
+    if(!svg)throw Error('SVG inválido');
+    svg.querySelectorAll('animate').forEach(a=>a.remove());
+    svg.setAttribute('focusable','false');
+    svg.setAttribute('aria-label','Arquitectura de integración empresarial con once componentes. Selecciona las etapas para explorar el recorrido.');
+    paintArchitecture(archStep);
+  }catch(err){
+    if(token!==archRequest)return;
+    const fallback=document.createElement('img');
+    fallback.alt='Arquitectura de integración empresarial';
+    fallback.src=file;
+    fallback.width=1440;fallback.height=810;
+    archHost.replaceChildren(fallback);
+  }
+}
+document.querySelectorAll('[data-arch-step]').forEach(btn=>btn.addEventListener('click',()=>{
+  archRunning=false;archAutoplay();paintArchitecture(Number(btn.dataset.archStep));
+}));
+archPlay.addEventListener('click',()=>{archRunning=!archRunning;archAutoplay()});
+prefersReduced.addEventListener('change',e=>{archRunning=!e.matches;archAutoplay()});
+archAutoplay();syncTheme();syncDiagramTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme();syncDiagramTheme();draw()});
   document.getElementById('copy').addEventListener('click',async function(){try{await navigator.clipboard.writeText('gsuhula1@miumg.edu.gt');const old=this.textContent;this.textContent='Correo copiado';setTimeout(()=>this.textContent=old,1900)}catch(e){window.location.href='mailto:gsuhula1@miumg.edu.gt'}});
   function progress(){const doc=document.documentElement,max=doc.scrollHeight-innerHeight;document.getElementById('progress').style.width=(max>0?scrollY/max*100:0)+'%'}window.addEventListener('scroll',progress,{passive:true});progress();
 })();
