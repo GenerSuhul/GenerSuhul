@@ -205,23 +205,118 @@ def scene(theme,phase,animated=False):
     ]
     return ''.join(parts)
 
+def compact_scene(theme, phase):
+    """Low-height header for GitHub: information first, illustration second."""
+    c = THEMES[theme]
+    bg, ink, mute, accent, teal = c["bg"], c["ink"], c["muted"], c["accent"], c["teal"]
+    card, stroke, soft = c["card"], c["fine"], c["soft"]
+    t = phase * 2 * math.pi
+    active = int(phase * 4) % 4
+    x0, y0 = 914, 168
+    teeth = gear_points(x0, y0, 43, 10, phase * 36)
+    parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330">',
+        f'<rect width="1200" height="330" fill="{bg}"/>',
+        f'<rect width="5" height="330" fill="{accent}"/>',
+        f'<path d="M42 49H594" stroke="{c["faint"]}" stroke-width="1.4"/>',
+        txt(43,35,"GENER SUHUL / DESARROLLO DE SOFTWARE",accent,12,750),
+        txt(42,112,"Gener Alexander",ink,45,750),
+        txt(42,164,"Suhul Amador",ink,45,750),
+        txt(45,211,"Backend e integraciones empresariales",ink,19,650),
+        txt(45,250,".NET   ·   Java   ·   TypeScript   ·   SAP B1",mute,15,500),
+        f'<path d="M44 293H570" stroke="{c["faint"]}" stroke-width="2"/>',
+        f'<path d="M44 293H152" stroke="{teal}" stroke-width="3.5"/>',
+        # Vertical separator and quiet composition panel.
+        f'<path d="M650 38V297" stroke="{c["faint"]}" stroke-width="1.4"/>',
+        # Connection traces stay behind the icons and away from labels.
+        f'<path d="M800 104C840 108 866 132 884 148" fill="none" stroke="{stroke}" stroke-width="2.5"/>',
+        f'<path d="M1034 107C987 111 966 134 946 146" fill="none" stroke="{stroke}" stroke-width="2.5"/>',
+        f'<path d="M797 252C839 246 853 212 881 190" fill="none" stroke="{stroke}" stroke-width="2.5"/>',
+        f'<path d="M1037 253C985 247 970 214 948 191" fill="none" stroke="{stroke}" stroke-width="2.5"/>',
+    ]
+    # A short, progressing highlight follows each route in order.
+    routes = [
+        ("M800 104C840 108 866 132 884 148", (840,115)),
+        ("M1034 107C987 111 966 134 946 146", (990,119)),
+        ("M948 191C970 214 985 247 1037 253", (988,229)),
+        ("M881 190C853 212 839 246 797 252", (843,229)),
+    ]
+    for i,(path,spot) in enumerate(routes):
+        if active == i:
+            parts.append(f'<path d="{path}" fill="none" stroke="{teal}" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="18 8" opacity=".85"/>')
+            radius = 3.5 + 1.5 * (1 + math.sin(t*2))/2
+            parts.append(circle(spot[0],spot[1],radius,teal))
+    # Computer with phone.
+    parts += [
+        f'<rect x="724" y="55" width="104" height="65" rx="6" fill="{soft}" stroke="{accent}" stroke-width="2.8"/>',
+        f'<rect x="733" y="63" width="86" height="48" rx="3" fill="{card}"/>',
+        f'<rect x="733" y="63" width="86" height="9" rx="2" fill="{accent}" opacity=".9"/>',
+        f'<rect x="739" y="79" width="37" height="26" rx="2" fill="{c["strong"]}" opacity=".75"/>',
+        f'<rect x="782" y="79" width="30" height="7" rx="2" fill="{teal}" opacity=".8"/>',
+        f'<rect x="782" y="91" width="27" height="6" rx="2" fill="{stroke}" opacity=".7"/>',
+        f'<path d="M768 120v9m-23 1h46" stroke="{accent}" stroke-width="3" stroke-linecap="round"/>',
+        f'<rect x="809" y="83" width="29" height="52" rx="5" fill="{card}" stroke="{accent}" stroke-width="2.3"/>',
+        f'<rect x="814" y="91" width="19" height="31" rx="2" fill="{soft}"/>',
+        f'<rect x="816" y="95" width="15" height="8" rx="1.5" fill="{teal}"/>',
+        txt(775,149,"APP",mute,12,750,"middle"),
+    ]
+    # Cloud and two small gears.
+    parts += [
+        f'<path d="M1006 109c-9-14-3-29 11-34 4-16 24-24 39-14 16-13 42-5 45 17 22 1 31 26 14 41z" fill="{soft}" stroke="{accent}" stroke-width="2.8" stroke-linejoin="round"/>',
+        f'<circle cx="1062" cy="88" r="18" fill="none" stroke="{accent}" stroke-width="2.5"/>',
+        f'<path d="M1044 88h36m-18-18c-9 11-9 27 0 36m0-36c9 11 9 27 0 36" fill="none" stroke="{accent}" stroke-width="1.4" opacity=".6"/>',
+        f'<polygon points="{gear_points(1074,92,12,7,phase*44)}" fill="{teal}"/>',
+        circle(1074,92,4,soft),
+        txt(1061,149,"CLOUD",mute,12,750,"middle"),
+    ]
+    # Main API mechanism. A rotating gear is visibly part of the system.
+    parts += [
+        f'<circle cx="{x0}" cy="{y0}" r="58" fill="none" stroke="{teal}" stroke-width="1.8" stroke-dasharray="3 10" opacity=".65"/>',
+        f'<polygon points="{teeth}" fill="{accent}"/>',
+        circle(x0,y0,29,bg),
+        txt(x0,y0+8,"API",ink,21,750,"middle"),
+    ]
+    # Server racks with status LEDs.
+    parts += [
+        f'<rect x="727" y="236" width="109" height="58" rx="5" fill="{soft}" stroke="{accent}" stroke-width="2.5"/>',
+    ]
+    for i in range(3):
+        y=241+i*17
+        parts.extend([
+            f'<rect x="734" y="{y}" width="95" height="13" rx="2.3" fill="{card}" stroke="{stroke}" stroke-width=".7"/>',
+            f'<rect x="742" y="{y+4}" width="45" height="5" rx="2" fill="{accent}" opacity=".65"/>',
+            circle(817,y+7,3,teal if (i+active)%2==0 else stroke),
+        ])
+    parts += [txt(781,313,"SERVIDOR",mute,12,750,"middle")]
+    # Database cylinder with segmented disks.
+    parts += [
+        f'<rect x="1010" y="247" width="103" height="40" fill="{soft}"/>',
+        f'<path d="M1010 249V285Q1061 305 1113 285V249" fill="{soft}" stroke="{accent}" stroke-width="2.5"/>',
+        f'<ellipse cx="1062" cy="249" rx="52" ry="14" fill="{card}" stroke="{accent}" stroke-width="2.5"/>',
+        f'<path d="M1010 266Q1062 286 1113 266M1010 284Q1062 304 1113 284" fill="none" stroke="{accent}" stroke-width="1.8"/>',
+        txt(1062,313,"DATOS",mute,12,750,"middle"),
+        '</svg>',
+    ]
+    return ''.join(parts)
+
 def render(theme):
-    svg=scene(theme,0,True)
-    (ASSETS/f'overview-{theme}.svg').write_text(svg,encoding='utf-8')
-    (PORTFOLIO/f'overview-{theme}.svg').write_text(svg,encoding='utf-8')
-
-    images=[]
+    # Keep full-size SVG illustration for the web portfolio.
+    animated_svg = scene(theme, 0, True)
+    (ASSETS / f'overview-{theme}.svg').write_text(animated_svg, encoding='utf-8')
+    (PORTFOLIO / f'overview-{theme}.svg').write_text(animated_svg, encoding='utf-8')
+    # Compact animated GIF only for GitHub's first-screen banner.
+    frames = []
     for i in range(FRAMES):
-        svg=scene(theme,i/FRAMES,False)
-        png=cairosvg.svg2png(bytestring=svg.encode(),output_width=900,output_height=593)
-        im=Image.open(io.BytesIO(png)).convert('RGB')
-        images.append(im)
-
-    palette=images[0].quantize(colors=96,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
-    q=[im.quantize(palette=palette,dither=Image.Dither.NONE) for im in images]
-    target=ASSETS/f'profile-{theme}.gif'
-    q[0].save(target,save_all=True,append_images=q[1:],loop=0,duration=FRAME_MS,disposal=1,optimize=True)
-    print(f"{target}: {target.stat().st_size} bytes / {FRAMES} frames / 900x593")
+        svg = compact_scene(theme, i / FRAMES)
+        png = cairosvg.svg2png(bytestring=svg.encode(), output_width=960, output_height=264)
+        im = Image.open(io.BytesIO(png)).convert('RGB')
+        frames.append(im)
+    pal = frames[0].quantize(colors=96, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    frames = [fr.quantize(palette=pal, dither=Image.Dither.NONE) for fr in frames]
+    dest = ASSETS / f'profile-{theme}.gif'
+    frames[0].save(dest, save_all=True, append_images=frames[1:], loop=0,
+                   duration=FRAME_MS, disposal=1, optimize=True)
+    print(f'{dest.name}: {dest.stat().st_size} bytes, 960x264, {FRAMES} frames')
 
 if __name__=="__main__":
     for theme in ("dark","light"):
