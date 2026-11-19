@@ -1,0 +1,11 @@
+{
+  "name": "gener-suhul-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test scripts/content.test.mjs",
+    "dev": "node scripts/serve.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
