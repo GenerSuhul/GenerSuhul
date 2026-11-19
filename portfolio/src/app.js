@@ -46,7 +46,20 @@ if (!motion.matches && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
   }, {threshold:0.05});
-  document.querySelectorAll(".featured, .expertise article, .impact-grid article").forEach((element) => {
+  document.querySelectorAll(".expertise article, .impact-grid article").forEach((element) => {
     element.classList.add("reveal-ready"); observer.observe(element);
+  });
+}
+
+// Animate the project image and text independently as each case enters the viewport.
+if (!motion.matches && "IntersectionObserver" in window) {
+  const projectObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      entry.target.classList.toggle("project-in-view", entry.isIntersecting);
+    }
+  }, { rootMargin: "-8% 0px -12% 0px", threshold: 0.12 });
+  document.querySelectorAll(".featured").forEach((project) => {
+    project.classList.add("project-motion-ready");
+    projectObserver.observe(project);
   });
 }
