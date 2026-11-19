@@ -22,17 +22,6 @@ navigation.addEventListener("click", (event) => { if (event.target.closest("a"))
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && navigation.classList.contains("open")) { closeMenu(); menuButton.focus(); }
 });
-const lightbox = document.querySelector("#lightbox");
-document.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-image]");
-  if (!button) return;
-  document.querySelector("#lightbox-image").src = button.dataset.image;
-  document.querySelector("#lightbox-image").alt = button.dataset.caption;
-  document.querySelector("#lightbox-caption").textContent = button.dataset.caption;
-  lightbox.showModal();
-});
-lightbox.querySelector("[data-close]").addEventListener("click", () => lightbox.close());
-lightbox.addEventListener("click", (event) => { if (event.target === lightbox) lightbox.close(); });
 document.querySelector("#copy-email")?.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("generalexandersuhul22@gmail.com");
@@ -84,12 +73,12 @@ whatsappClose.addEventListener("click", () => {
   whatsappTrigger.focus();
 });
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !whatsappPanel.hidden && !lightbox.open) {
+  if (event.key === "Escape" && !whatsappPanel.hidden) {
     whatsappInteracted = true;
     setWhatsappOpen(false);
     whatsappTrigger.focus();
   }
 });
 setTimeout(() => {
-  if (!whatsappInteracted && !lightbox.open) setWhatsappOpen(true);
+  if (!whatsappInteracted) setWhatsappOpen(true);
 }, 7000);

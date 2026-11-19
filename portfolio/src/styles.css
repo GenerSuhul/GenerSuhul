@@ -158,3 +158,8 @@ html { scroll-padding-top: 80px; }
 .tech-icon-image { display:block; flex:0 0 24px; width:24px; height:24px; object-fit:contain; }
 .tech-icon-aws { background:#fff; border-radius:3px; }
 :root:not([data-theme=light]) :is(.tech-icon-openjdk,.tech-icon-mysql,.tech-icon-oracle,.tech-icon-sqlserver,.tech-icon-nginx) { background:#fff; border-radius:4px; padding:2px; }
+
+/* Project screenshots retain their original proportions and link to the case. */
+.project-picture img, .featured .project-picture img, .evidence-grid .project-picture img { width:100%; height:auto; aspect-ratio:auto; object-fit:contain; object-position:center; }
+.project-image-link { display:block; border-radius:8px; }
+.project-image-link:hover img { box-shadow:0 15px 45px #0003; }
