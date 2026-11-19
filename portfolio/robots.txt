@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /content/
 Disallow: /scripts/
-Sitemap: https://gener-suhul-portfolio.vercel.app/sitemap.xml
+Sitemap: https://dev.kyrosoftgs.com/sitemap.xml

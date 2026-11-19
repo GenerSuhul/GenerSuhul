@@ -132,3 +132,25 @@ html { scroll-padding-top: 80px; }
 .whatsapp-body a { display:block; text-align:center; padding:12px; border-radius:9px; background:#20bb5a; color:#071c10; font-size:.9rem; font-weight:700; }
 .whatsapp-trigger:hover,.whatsapp-body a:hover { filter:brightness(1.08); }
 @media(prefers-reduced-motion:no-preference){.whatsapp-panel:not([hidden]){animation:whatsapp-in .25s ease-out}@keyframes whatsapp-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+
+/* Personal identity and contact actions */
+.identity-core { width:180px; height:180px; border-radius:50%; overflow:hidden; transform:none; background:radial-gradient(circle at 50% 30%,#1b5194,#0b2348); }
+.identity-core img { width:100%; height:100%; object-fit:contain; object-position:center bottom; display:block; }
+@media(prefers-reduced-motion:no-preference){.identity-core{animation:portrait-float 8s ease-in-out infinite}@keyframes portrait-float{50%{transform:translateY(-8px)}}}
+@media(max-width:600px){.identity-core{width:120px;height:120px;border-radius:50%}}
+.contact-section .actions svg { width:19px; height:19px; flex:none; }
+.contact-section .actions .button,.contact-section .actions .plain-link { display:inline-flex; align-items:center; justify-content:center; gap:10px; }
+.whatsapp-panel { background:#f4f8fb; border:1px solid #d4e0ea; box-shadow:0 18px 50px #0005; }
+.whatsapp-head { background:#0b2d52; padding:16px; gap:12px; }
+.whatsapp-person { display:flex; align-items:center; gap:12px; min-width:0; }
+.whatsapp-person img { width:48px; height:48px; object-fit:contain; border-radius:50%; background:#1e568c; flex:none; }
+.whatsapp-person span { display:flex; flex-direction:column; line-height:1.4; }
+.whatsapp-person strong { font-size:.95rem; }
+.whatsapp-person small { color:#c5dbec; font-size:.72rem; }
+.whatsapp-close { flex:none; background:#ffffff1c; }
+.whatsapp-body { padding:18px; }
+.whatsapp-body p { color:#20374d; background:#fff; border:1px solid #e1e9ef; border-radius:4px 14px 14px 14px; }
+.whatsapp-body a { display:flex; align-items:center; justify-content:center; gap:9px; background:#20c467; color:#062c18; }
+.whatsapp-body a svg { width:19px; height:19px; }
+.whatsapp-note { display:block; color:#52677b; font-size:.7rem; line-height:1.45; margin-top:10px; text-align:center; }
+.whatsapp-trigger { border:3px solid #fff; background:#12b960; }
