@@ -152,8 +152,7 @@ html { scroll-padding-top: 80px; }
 .whatsapp-body p { color:#20374d; background:#fff; border:1px solid #e1e9ef; border-radius:4px 14px 14px 14px; }
 .whatsapp-body a { display:flex; align-items:center; justify-content:center; gap:9px; background:#20c467; color:#062c18; }
 .whatsapp-body a svg { width:19px; height:19px; }
-.whatsapp-note { display:block; color:#52677b; font-size:.7rem; line-height:1.45; margin-top:10px; text-align:center; }
-.whatsapp-trigger { border:3px solid #fff; background:#12b960; }
+.whatsapp-trigger { border:0; background:#12b960; box-shadow:0 8px 24px #087c4940, 0 0 20px #12b96038; }
 
 /* Preserve the original, multicolor technology artwork. */
 .tech-icon-image { display:block; flex:0 0 24px; width:24px; height:24px; object-fit:contain; }
