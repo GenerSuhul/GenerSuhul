@@ -1,3 +1,22 @@
+<div align="center">
+
+# Gener Suhul
+### Software Engineer · Full Stack · Backend & Enterprise Integrations
+
+**Desarrollo sistemas que conectan aplicaciones, datos y operación.**
+
+### [▶ EXPLORAR MI PORTAFOLIO INTERACTIVO](https://gener-suhul-portfolio.vercel.app/)
+
+[![Portfolio en vivo](https://img.shields.io/badge/PORTAFOLIO-ABRIR%20EXPERIENCIA%20INTERACTIVA-DFAE7A?style=for-the-badge&labelColor=11202F&color=DFAE7A)](https://gener-suhul-portfolio.vercel.app/)
+
+*Arquitectura animada en Canvas · Proyectos filtrables · Estudios técnicos · Diseño responsive*
+
+[GitHub](https://github.com/GenerSuhul) · [Contacto](mailto:gsuhula1@miumg.edu.gt)
+
+</div>
+
+---
+
 # Gener Alexander Suhul Amador
 
 **Desarrollador de software Full Stack | Backend .NET y Java | Integraciones empresariales**
