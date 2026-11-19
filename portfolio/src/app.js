@@ -35,7 +35,7 @@ lightbox.querySelector("[data-close]").addEventListener("click", () => lightbox.
 lightbox.addEventListener("click", (event) => { if (event.target === lightbox) lightbox.close(); });
 document.querySelector("#copy-email")?.addEventListener("click", async () => {
   try {
-    await navigator.clipboard.writeText("gsuhula1@miumg.edu.gt");
+    await navigator.clipboard.writeText("generalexandersuhul22@gmail.com");
     document.querySelector("#status").textContent = "Correo copiado";
   } catch {
     document.querySelector("#status").textContent = "Puedes copiar el correo visible o abrir el enlace de contacto.";
@@ -63,3 +63,33 @@ if (!motion.matches && "IntersectionObserver" in window) {
     projectObserver.observe(project);
   });
 }
+
+// The panel opens once after seven seconds, unless the visitor already used it.
+const whatsappTrigger = document.querySelector(".whatsapp-trigger");
+const whatsappPanel = document.querySelector("#whatsapp-panel");
+const whatsappClose = document.querySelector(".whatsapp-close");
+let whatsappInteracted = false;
+function setWhatsappOpen(open) {
+  whatsappPanel.hidden = !open;
+  whatsappTrigger.setAttribute("aria-expanded", String(open));
+  whatsappTrigger.setAttribute("aria-label", open ? "Cerrar contacto de WhatsApp" : "Abrir contacto de WhatsApp");
+}
+whatsappTrigger.addEventListener("click", () => {
+  whatsappInteracted = true;
+  setWhatsappOpen(whatsappPanel.hidden);
+});
+whatsappClose.addEventListener("click", () => {
+  whatsappInteracted = true;
+  setWhatsappOpen(false);
+  whatsappTrigger.focus();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !whatsappPanel.hidden && !lightbox.open) {
+    whatsappInteracted = true;
+    setWhatsappOpen(false);
+    whatsappTrigger.focus();
+  }
+});
+setTimeout(() => {
+  if (!whatsappInteracted && !lightbox.open) setWhatsappOpen(true);
+}, 7000);

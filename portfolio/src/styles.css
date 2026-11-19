@@ -115,3 +115,20 @@ html { scroll-padding-top: 80px; }
   border-color:#338dff;
   box-shadow:0 0 45px #1686ff38;
 }
+/* Electric blue details preserve the deep navy foundation. */
+:root:not([data-theme=light]) { --accent:#72c2ff; --halo:#1679ff45; }
+:root:not([data-theme=light]) .header { border-bottom-color:#1688ff88; }
+:root:not([data-theme=light]) .eyebrow, :root:not([data-theme=light]) .brand-muted, :root:not([data-theme=light]) .case-link { color:#72c2ff; }
+:root:not([data-theme=light]) .flow-node { border-color:#1688ff88; box-shadow:0 0 18px #1688ff22; }
+.whatsapp-widget { position:fixed; z-index:40; right:max(20px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+.whatsapp-trigger { width:60px; height:60px; display:grid; place-items:center; color:white; background:#20bb5a; border:0; border-radius:50%; box-shadow:0 8px 28px #0005; }
+.whatsapp-trigger svg { width:31px; height:31px; }
+.whatsapp-panel { width:min(330px,calc(100vw - 40px)); border-radius:16px; overflow:hidden; background:#15211d; box-shadow:0 12px 40px #0006; }
+.whatsapp-panel[hidden] { display:none; }
+.whatsapp-head { display:flex; align-items:center; justify-content:space-between; color:white; background:#148d48; padding:14px 18px; }
+.whatsapp-close { display:grid; place-items:center; width:40px; height:40px; border:0; border-radius:50%; color:white; background:#0b6834; font-size:1.5rem; line-height:1; }
+.whatsapp-body { padding:18px; }
+.whatsapp-body p { color:#f8fafc; background:#394641; border-radius:12px; padding:12px 14px; margin:0 0 16px; font-size:.9rem; }
+.whatsapp-body a { display:block; text-align:center; padding:12px; border-radius:9px; background:#20bb5a; color:#071c10; font-size:.9rem; font-weight:700; }
+.whatsapp-trigger:hover,.whatsapp-body a:hover { filter:brightness(1.08); }
+@media(prefers-reduced-motion:no-preference){.whatsapp-panel:not([hidden]){animation:whatsapp-in .25s ease-out}@keyframes whatsapp-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
