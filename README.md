@@ -1,6 +1,10 @@
-[![Gener Suhul — encabezado oscuro animado](./assets/profile-dark.gif#gh-dark-mode-only)](https://gener-suhul-portfolio.vercel.app/)
-
-[![Gener Suhul — encabezado claro animado](./assets/profile-light.gif#gh-light-mode-only)](https://gener-suhul-portfolio.vercel.app/)
+<a href="https://gener-suhul-portfolio.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-dark.gif">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/profile-light.gif">
+    <img src="./assets/profile-light.gif" alt="Gener Alexander Suhul Amador — desarrollo de software" width="100%">
+  </picture>
+</a>
 
 <p align="center">
   <a href="https://gener-suhul-portfolio.vercel.app/">Sitio web</a> &nbsp;·&nbsp;
