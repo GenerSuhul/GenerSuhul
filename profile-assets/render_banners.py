@@ -105,7 +105,7 @@ def icon_path(kind,x,y,color):
   'HANA':f'<ellipse cx="{x+14}" cy="{y+6}" rx="12" ry="5"/><path d="M{x+2} {y+6}v17c0 7 24 7 24 0V6"/>',
  }
  return f'<g stroke="{color}" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{icons[kind]}</g>'
-def picture(theme='dark',progress=0.0,animated=False):
+def picture(theme='dark',progress=0.0,animated=False,include_active=True):
  c=COLORS[theme]
  phase=min(5,int(progress*6))
  current=PHASES[phase]
@@ -174,9 +174,11 @@ def picture(theme='dark',progress=0.0,animated=False):
   parts += [text(x+15,779,label,13,c['title'] if i==phase else c['muted'],720 if i==phase else 500)]
  # Active path overlay. For animated SVG, individual paths and active card accents alternate
  # through a coordinated 6s cycle; for GIF, each frame's phase is rendered explicitly.
- for name in current[3]:
-  d=PATHS[name][0]
-  parts += [f'<path d="{d}" class="route {"animated-route" if animated else ""}" stroke="{c["teal"]}" stroke-width="4" opacity=".92"/>']
+ if include_active:
+  for name in current[3]:
+   d=PATHS[name][0]
+   animation_class='animated-route' if animated else ''
+   parts += [f'<path d="{d}" class="route {animation_class}" stroke="{c["teal"]}" stroke-width="4" opacity=".92"/>']
  # Progress advances with each frame (not only a traveling dot).
  parts += [rect(43,739,1355,3,c['edgeSoft'],radius=1)]
  parts += [rect(43,739,int(1355*(progress%1)),3,c['teal'],radius=1)]
@@ -186,28 +188,31 @@ def svg_animated(theme):
  # Multiple synchronized visual changes: six phase panels, route highlights, status label,
  # card rings and progress track, using SMIL as graceful browser-native enhancement.
  c=COLORS[theme]
- base=picture(theme,0,False)
+ base=picture(theme,0,False,False)
  base=base.replace('</svg>','')
  # Hide static label in this dynamic version by overlaying matching background
  # with stage labels that animate opacity at staggered intervals.
  phases=[]
  for idx,p in enumerate(PHASES):
   start=idx
+  a=max(0.001,start/6)
+  b=(idx+1)/6
+  timing=f'0;{a:.4f};{b-.012:.4f};{b:.4f};1'
   phases.append(f'<g opacity="0"><rect x="1055" y="63" width="325" height="47" fill="{c["surface"]}"/>'
     + text(1060,88,p[0],24,c['title'],750)
     + text(1060,108,p[1],12,c['body'],500)
-    + f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1s" begin="{start}s;phase{idx}.end+5s" repeatCount="indefinite" id="phase{idx}"/></g>')
+    + f'<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="{timing}" dur="6s" begin="0s" repeatCount="indefinite" id="phase{idx}"/></g>')
   for key in p[3]:
    d=PATHS[key][0]
-   phases.append(f'<path d="{d}" class="route" fill="none" stroke="{c["teal"]}" stroke-width="4" stroke-linecap="round" opacity="0">'
-      f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.08;.85;1" dur="1s" begin="{start}s" repeatCount="indefinite" />'
-      f'<animate attributeName="stroke-dashoffset" from="80" to="0" dur="1s" begin="{start}s" repeatCount="indefinite" />'
+   phases.append(f'<path d="{d}" class="route" fill="none" stroke="{c["teal"]}" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 7" opacity="0">'
+      f'<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="{timing}" dur="6s" begin="0s" repeatCount="indefinite" />'
+      f'<animate attributeName="stroke-dashoffset" from="85" to="-85" dur="1.2s" begin="0s" repeatCount="indefinite" />'
       '</path>')
   for id in p[2]:
    item=next(n for n in NODES if n[0]==id)
    _,x,y,w,h,*rest=item
    phases.append(f'<rect x="{x+8}" y="{y+7}" width="{w-16}" height="{h-14}" rx="9" fill="none" stroke="{c["teal"]}" stroke-width="2" opacity="0">'
-      f'<animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.08;.88;1" dur="1s" begin="{start}s" repeatCount="indefinite"/></rect>')
+      f'<animate attributeName="opacity" values="0;.85;.85;0;0" keyTimes="{timing}" dur="6s" begin="0s" repeatCount="indefinite"/></rect>')
  return base+''.join(phases)+'</svg>'
 def render(theme):
  from PIL import Image
