@@ -25,7 +25,7 @@ jobs:
         run: python profile-assets/render_banners.py
       - name: Publicar archivos generados
         run: |
-          git add assets/profile-dark.gif assets/profile-light.gif assets/architecture-dark.svg assets/architecture-light.svg portfolio/architecture-dark.svg portfolio/architecture-light.svg
+          git add assets/profile-dark.gif assets/profile-light.gif assets/overview-dark.svg assets/overview-light.svg portfolio/overview-dark.svg portfolio/overview-light.svg
           if ! git diff --cached --quiet; then
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'assets(profile): generar GIF claro y oscuro'
             git push origin HEAD:main
