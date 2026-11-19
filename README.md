@@ -1,20 +1,14 @@
 <div align="center">
 
-# Gener Suhul
-### Software Engineer · Full Stack · Backend & Enterprise Integrations
+<a href="https://gener-suhul-portfolio.vercel.app/"><img src="./assets/portfolio-banner.svg" alt="Gener Suhul — abrí el portafolio interactivo" width="100%"></a>
 
-**Desarrollo sistemas que conectan aplicaciones, datos y operación.**
+### [▶ EXPLORAR EL PORTAFOLIO WEB INTERACTIVO](https://gener-suhul-portfolio.vercel.app/)
 
-### [▶ EXPLORAR MI PORTAFOLIO INTERACTIVO](https://gener-suhul-portfolio.vercel.app/)
+*Animaciones propias en Canvas · Diagrama interactivo · Proyectos filtrables · Estudios técnicos*
 
-[![Portfolio en vivo](https://img.shields.io/badge/PORTAFOLIO-ABRIR%20EXPERIENCIA%20INTERACTIVA-DFAE7A?style=for-the-badge&labelColor=11202F&color=DFAE7A)](https://gener-suhul-portfolio.vercel.app/)
-
-*Arquitectura animada en Canvas · Proyectos filtrables · Estudios técnicos · Diseño responsive*
-
-[GitHub](https://github.com/GenerSuhul) · [Contacto](mailto:gsuhula1@miumg.edu.gt)
+[GitHub](https://github.com/GenerSuhul) · [Correo](mailto:gsuhula1@miumg.edu.gt)
 
 </div>
-
 ---
 
 # Gener Alexander Suhul Amador
