@@ -86,7 +86,7 @@ export const projects = [
     stack: ["ASP.NET Core 10", "C#", "Next.js", "React 19", "PostgreSQL 18", "EF Core", "S3 / MinIO"],
     implemented: ["Recepción, expedientes y asignación de casos a alumnos.", "Cronología procesal, revisiones y notificaciones.", "Documentos versionados y digitalización multipágina.", "Búsqueda, reportes, roles y auditoría."],
     pending: ["Confirmación del estado de despliegue y aceptación institucional.", "Configuración, despliegue y aceptación institucional en destino."],
-    production: "El repositorio público contiene código, pruebas y guías. La captura proporcionada muestra el panel; el estado productivo y la aceptación institucional requieren confirmación.",
+    production: "El repositorio público contiene código, pruebas y guías. El estado productivo y la aceptación institucional requieren confirmación.",
     status: "Código público · estado por confirmar", impact: "Organiza el seguimiento del expediente, conserva la autoría de acciones y conecta los documentos con la actividad académica y jurídica.",
     flow: ["Recepción", "Expediente", "Seguimiento", "Auditoría"],
     source: "https://github.com/GenerSuhul/buefete-umg", sourceLabel: "Repositorio público · arquitectura y código disponibles",

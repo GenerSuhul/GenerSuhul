@@ -82,3 +82,36 @@
 html { scroll-padding-top: 80px; }
 @media(max-width:850px){ .header-inner { min-height: 60px; } .header nav { top:60px; } }
 @media(max-width:600px){ .header-inner { min-height: 58px; } .header nav { top:58px; } html { scroll-padding-top: 72px; } }
+/* Technology labels remain visible beside each symbol. */
+.tech-tags { gap: 10px 12px; }
+.tech-icon { width:auto; min-height:42px; height:auto; padding:8px 13px; border-radius:8px; gap:9px; display:inline-flex; justify-content:flex-start; }
+.tech-icon-mark { flex:0 0 21px; width:21px; height:21px; }
+.tech-name { color:var(--text); font-size:.8125rem; font-weight:600; line-height:1.3; white-space:nowrap; }
+@media(max-width:600px){.tech-icon{width:auto;height:auto;min-height:42px}.tech-icon-mark{width:20px;height:20px;flex-basis:20px}}
+/* Dark mode: electric blue accents over deep navy. */
+:root:not([data-theme=light]) {
+  --bg:#071733;
+  --surface:#10294c;
+  --raised:#16355d;
+  --text:#f4f8ff;
+  --muted:#c0d1e8;
+  --line:#34577f;
+  --accent:#74baff;
+  --halo:#1686ff33;
+  --header:#081a36f5;
+}
+:root:not([data-theme=light]) body {
+  background:radial-gradient(ellipse 70% 450px at 50% 100px,#0b3e8055,transparent),var(--bg);
+}
+:root:not([data-theme=light]) .featured-visual:before {
+  background:radial-gradient(ellipse,#1686ff38,transparent 70%);
+}
+:root:not([data-theme=light]) .button.primary {
+  background:#0865f2;
+  border-color:#348dff;
+  box-shadow:0 8px 28px #0077ff33;
+}
+:root:not([data-theme=light]) .identity-core {
+  border-color:#338dff;
+  box-shadow:0 0 45px #1686ff38;
+}
