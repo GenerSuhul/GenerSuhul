@@ -1,10 +1,12 @@
-<div align="center">
+[![Gener Suhul — encabezado oscuro animado](./assets/profile-dark.gif#gh-dark-mode-only)](https://gener-suhul-portfolio.vercel.app/)
 
-<a href="https://gener-suhul-portfolio.vercel.app/"><img src="./assets/portfolio-banner.svg" alt="Gener Alexander Suhul Amador — Full Stack Developer" width="100%"></a>
+[![Gener Suhul — encabezado claro animado](./assets/profile-light.gif#gh-light-mode-only)](https://gener-suhul-portfolio.vercel.app/)
 
-[**Sitio web**](https://gener-suhul-portfolio.vercel.app/) &nbsp; · &nbsp; [**Repositorios**](https://github.com/GenerSuhul?tab=repositories) &nbsp; · &nbsp; [**Correo**](mailto:gsuhula1@miumg.edu.gt)
-
-</div>
+<p align="center">
+  <a href="https://gener-suhul-portfolio.vercel.app/">Sitio web</a> &nbsp;·&nbsp;
+  <a href="https://github.com/GenerSuhul?tab=repositories">Repositorios</a> &nbsp;·&nbsp;
+  <a href="mailto:gsuhula1@miumg.edu.gt">Correo</a>
+</p>
 
 ---
 ## Desarrollo de software · Backend e integraciones
