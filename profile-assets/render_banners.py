@@ -1,68 +1,114 @@
-"""Gener Suhul profile — locally rendered animated GIFs for both GitHub themes."""
+"""Create a restrained, meaningful animated integration flow for GitHub README.
+
+A four-second loop follows an application request through validation,
+SAP Business One and the response. No fabricated real-time metrics.
+"""
 from pathlib import Path
-from math import pi,sin
-from PIL import Image,ImageDraw,ImageFont
+from math import cos, pi
+from PIL import Image, ImageDraw, ImageFont
 
-W,H,FRAMES=960,260,24
-OUT=Path(__file__).resolve().parents[1]/'assets'
-OUT.mkdir(exist_ok=True)
-THEMES={
- 'dark':dict(bg='#10151B',text='#F8FAFC',secondary='#B4C1CE',line='#3C4D5F',card='#19222B',card_edge='#425365',accent='#88ADEF',teal='#4ECABA',button='#315D9D'),
- 'light':dict(bg='#F8FAFC',text='#0B2D6B',secondary='#52657B',line='#D5DFEA',card='#FFFFFF',card_edge='#CAD6E3',accent='#2563EB',teal='#14B8A6',button='#2563EB')
+WIDTH, HEIGHT, FRAMES, FRAME_MS = 960, 250, 80, 50
+OUTPUT = Path(__file__).resolve().parents[1] / "assets"
+OUTPUT.mkdir(parents=True, exist_ok=True)
+
+COLORS = {
+    "dark": {
+        "bg": "#10151B", "text": "#F2F5F8", "muted": "#AFBCC8",
+        "line": "#394959", "surface": "#1B2631", "border": "#3B4A59",
+        "accent": "#8FB1EE", "primary": "#2563EB", "teal": "#4ECABA",
+        "line_on": "#4ECABA",
+    },
+    "light": {
+        "bg": "#F8FAFC", "text": "#0B2D6B", "muted": "#51667F",
+        "line": "#CBD6E4", "surface": "#FFFFFF", "border": "#D4DEE9",
+        "accent": "#2563EB", "primary": "#2563EB", "teal": "#14B8A6",
+        "line_on": "#14B8A6",
+    },
 }
-def fonts():
-    paths=[
-      ('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'),
-      ('C:/Windows/Fonts/arialbd.ttf','C:/Windows/Fonts/arial.ttf')]
-    for bold,regular in paths:
-        if Path(bold).exists() and Path(regular).exists():
-            return lambda n,b=False:ImageFont.truetype(bold if b else regular,n)
-    return lambda n,b=False:ImageFont.load_default()
-font=fonts()
 
-def put(d,xy,text,fill,size,bold=False):
-    d.text(xy,text,font=font(size,bold),fill=fill)
+FONT_DIR = Path("/usr/share/fonts/opentype/inter")
+FONTS = {
+    "bold": str(FONT_DIR / "InterDisplay-Bold.otf") if (FONT_DIR / "InterDisplay-Bold.otf").exists() else "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "medium": str(FONT_DIR / "InterDisplay-Medium.otf") if (FONT_DIR / "InterDisplay-Medium.otf").exists() else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "regular": str(FONT_DIR / "InterDisplay-Regular.otf") if (FONT_DIR / "InterDisplay-Regular.otf").exists() else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+}
 
-def node(d,xy,w,title,c,selected=False):
-    x,y=xy
-    d.rounded_rectangle((x,y,x+w,y+42),radius=7,fill=c['button'] if selected else c['card'],outline=c['accent'] if selected else c['card_edge'],width=2 if selected else 1)
-    bb=d.textbbox((0,0),title,font=font(13,True))
-    d.text((x+(w-(bb[2]-bb[0]))//2,y+12),title,fill='#FFFFFF' if selected else c['text'],font=font(13,True))
+def font(size, weight="regular"):
+    return ImageFont.truetype(FONTS[weight], size)
 
-def frame(theme,tick):
-    c=THEMES[theme]
-    im=Image.new('RGB',(W,H),c['bg']);d=ImageDraw.Draw(im)
-    d.rectangle((0,0,5,H),fill=c['accent'])
-    d.line((38,43,922,43),fill=c['line'],width=1)
-    put(d,(42,18),'GENER SUHUL  /  SOFTWARE ENGINEERING',c['accent'],11,True)
-    put(d,(39,70),'Gener Alexander',c['text'],39,True)
-    put(d,(39,118),'Suhul Amador',c['text'],39,True)
-    put(d,(42,177),'Desarrollo backend e integraciones',c['text'],17,True)
-    put(d,(42,205),'.NET  /  Java  /  TypeScript  /  SAP Business One',c['secondary'],12)
-    d.line((42,240,565,240),fill=c['line'],width=1)
-    d.line((42,240,130,240),fill=c['teal'],width=3)
-    d.rounded_rectangle((584,58,920,239),radius=12,fill=c['card'],outline=c['card_edge'],width=1)
-    put(d,(600,72),'SISTEMAS / INTEGRACIÓN',c['secondary'],10,True)
-    d.line((705,164,728,164),fill=c['line'],width=2)
-    d.line((806,164,814,164,814,133,827,133),fill=c['line'],width=2,joint='curve')
-    d.line((806,164,814,164,814,202,827,202),fill=c['line'],width=2,joint='curve')
-    node(d,(611,143),94,'CLIENTE',c)
-    node(d,(728,143),78,'API',c,True)
-    node(d,(827,112),83,'SAP B1',c)
-    node(d,(827,181),83,'SQL',c)
-    cycle=tick/FRAMES
-    x=704+24*cycle
-    d.ellipse((x-3,161,x+3,167),fill=c['teal'])
-    for x,y,color in [(814,164-31*cycle,c['accent']),(814,164+38*((cycle+.38)%1),c['teal'])]:
-        d.ellipse((x-3,y-3,x+3,y+3),fill=color)
-    d.ellipse((893,76,901,84),fill=c['teal'] if sin(tick*2*pi/FRAMES)>.0 else c['secondary'])
+STAGES = (
+    ("APP", "01 / Solicitud"),
+    ("API", "02 / Validación"),
+    ("SAP B1", "03 / Consulta"),
+    ("RESP.", "04 / Respuesta"),
+)
+
+def frame(theme, index):
+    c = COLORS[theme]
+    stage = index // (FRAMES // 4)
+    phase = (index % (FRAMES // 4)) / (FRAMES // 4)
+    im = Image.new("RGB", (WIDTH, HEIGHT), c["bg"])
+    d = ImageDraw.Draw(im)
+
+    # Static typographic layer: nothing here blinks or changes position.
+    d.rectangle((0, 0, 5, HEIGHT), fill=c["accent"])
+    d.line((39, 43, 925, 43), fill=c["line"], width=1)
+    d.text((41, 15), "GENER SUHUL  /  DESARROLLO DE SOFTWARE", font=font(12, "bold"), fill=c["accent"])
+    d.text((39, 67), "Gener Alexander", font=font(43, "bold"), fill=c["text"])
+    d.text((39, 115), "Suhul Amador", font=font(43, "bold"), fill=c["text"])
+    d.text((42, 181), "Backend e integraciones empresariales", font=font(17, "medium"), fill=c["text"])
+    d.text((42, 213), ".NET  ·  Java  ·  TypeScript  ·  SAP Business One", font=font(12), fill=c["muted"])
+
+    d.rounded_rectangle((560, 64, 930, 222), radius=9, fill=c["surface"], outline=c["border"], width=1)
+    d.text((580, 78), "FLUJO DE INTEGRACIÓN", font=font(11, "bold"), fill=c["muted"])
+
+    xs = [580, 664, 748, 832]
+    box_w, y0, y1 = 77, 119, 166
+    cy = (y0 + y1) / 2
+
+    for i in range(3):
+        left = xs[i] + box_w + 1
+        right = xs[i + 1] - 1
+        d.line((left, cy, right, cy), fill=c["line_on"] if stage > i else c["line"], width=3 if stage > i else 2)
+        if stage == i:
+            # Exactly one signal moves along the active connection, left to right.
+            px = left + (right - left) * phase
+            d.ellipse((px - 2.5, cy - 2.5, px + 2.5, cy + 2.5), fill=c["teal"])
+
+    for j, (label, _) in enumerate(STAGES):
+        selected = stage == j
+        x = xs[j]
+        if selected:
+            d.rounded_rectangle((x - 3, y0 - 3, x + box_w + 3, y1 + 3), radius=8, outline=c["accent"], width=1)
+        d.rounded_rectangle(
+            (x, y0, x + box_w, y1), radius=6,
+            fill=c["primary"] if selected else c["surface"],
+            outline=c["accent"] if selected else c["border"],
+            width=2 if selected else 1,
+        )
+        f = font(12, "bold")
+        box = d.textbbox((0, 0), label, font=f)
+        d.text((x + (box_w - (box[2] - box[0])) / 2, y0 + 15), label, font=f,
+               fill="#FFFFFF" if selected else c["text"])
+
+    d.text((580, 183), STAGES[stage][1], font=font(12, "medium"), fill=c["accent"])
+    d.rounded_rectangle((580, 206, 910, 208), radius=1, fill=c["line"])
+    end = 580 + (910 - 580) * ((index + 1) / FRAMES)
+    d.rounded_rectangle((580, 206, end, 208), radius=1, fill=c["teal"])
     return im
 
 def render(theme):
-    frames=[frame(theme,i).quantize(colors=96,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE) for i in range(FRAMES)]
-    target=OUT/f'profile-{theme}.gif'
-    frames[0].save(target,save_all=True,append_images=frames[1:],loop=0,duration=100,disposal=2,optimize=True)
-    print(f'{target}: {target.stat().st_size} bytes, {FRAMES} frames')
-if __name__=='__main__':
-    for theme in ('dark','light'):
-        render(theme)
+    frames = [
+        frame(theme, i).quantize(colors=96, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+        for i in range(FRAMES)
+    ]
+    target = OUTPUT / f"profile-{theme}.gif"
+    frames[0].save(
+        target, save_all=True, append_images=frames[1:], loop=0,
+        duration=FRAME_MS, disposal=2, optimize=True
+    )
+    print(f"{target.name}: {target.stat().st_size} bytes / {FRAMES} frames / 20 fps")
+
+if __name__ == "__main__":
+    for name in ("dark", "light"):
+        render(name)
