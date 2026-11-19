@@ -1,7 +1,8 @@
 const base = "https://dev.kyrosoftgs.com";
 export const escape = (value) => String(value).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const technologyIcons = {
-  "AWS": ["aws", "#FFB35C"], "Azure": ["azure", "#55BAFF"],
+  "AWS": ["aws", "#FF9900"], "Azure": ["azure", "#55BAFF"],
+  "SQL Server": ["sqlserver", "#CC2927"], "Oracle Database": ["oracle", "#F80000"],
   "Kubernetes": ["kubernetes", "#719DFF"], "GitHub Actions": ["githubactions", "#78B6FF"],
   "Prometheus": ["prometheus", "#FF885C"], "Grafana": ["grafana", "#FFAE55"],
   "NGINX": ["nginx", "#5BD482"], "Flyway": ["flyway", "#FF7777"],
@@ -11,9 +12,9 @@ const technologyIcons = {
   "JavaScript": ["javascript", "#F7DF1E"], "Vite": ["vite", "#BD80FF"],
   "PostgreSQL": ["postgresql", "#669FD1"], "PostgreSQL 18": ["postgresql", "#669FD1"],
   "Supabase": ["supabase", "#3ECF8E"], ".NET": ["dotnet", "#A994FF"],
-  "ASP.NET Core 10": ["dotnet", "#A994FF"], "C#": ["dotnet", "#A994FF"],
-  "SAP B1": ["sap", "#4CB5E6"], "SAP HANA": ["sap", "#4CB5E6"], "SAP Business One": ["sap", "#4CB5E6"],
-  "Service Layer": ["sap", "#4CB5E6"], "PWA": ["pwa", "#C7A8FF"],
+  "ASP.NET Core 10": ["dotnet", "#A994FF"], "C#": ["csharp", "#512BD4"],
+  "SAP B1": ["sap", "#0FA5DA"], "SAP HANA": ["sap", "#0FA5DA"], "SAP Business One": ["sap", "#0FA5DA"],
+  "Service Layer": ["sap", "#0FA5DA"], "PWA": ["pwa", "#C7A8FF"],
   "Bootstrap": ["bootstrap", "#B59BFF"], "Capacitor": ["capacitor", "#77B7FF"],
   "Material UI": ["mui", "#69B6FF"], "Next.js": ["nextdotjs", "currentColor"],
   "EF Core": ["dotnet", "#A994FF"], "MySQL": ["mysql", "#71B2D9"],
@@ -26,7 +27,9 @@ const technologyIcons = {
 const technology = (name) => {
   const icon = technologyIcons[name];
   if (!icon) return '<span class="tech-fallback">'+escape(name)+'</span>';
-  return '<span class="tech-icon" style="--icon-color:'+icon[1]+'" title="'+escape(name)+'"><span class="tech-icon-mark" style="--icon-url:url(/public/tech/'+icon[0]+'.svg)" aria-hidden="true"></span><span class="tech-name">'+escape(name)+'</span></span>';
+  const colored = new Set(["aws", "azure", "csharp", "dotnet", "nodedotjs", "openjdk", "springboot", "react", "typescript", "javascript", "html5", "css", "tailwindcss", "vite", "angular", "postgresql", "mysql", "docker", "kubernetes", "githubactions", "nginx", "prometheus", "grafana", "flyway", "supabase", "linux", "bootstrap", "sqlserver", "oracle"]);
+  const mark = colored.has(icon[0]) ? '<img class="tech-icon-image tech-icon-'+icon[0]+'" src="/public/tech/'+icon[0]+(icon[0] === "aws" ? '' : '-color')+'.svg" alt="" width="24" height="24" loading="lazy">' : '<span class="tech-icon-mark" style="--icon-url:url(/public/tech/'+icon[0]+'.svg)" aria-hidden="true"></span>';
+  return '<span class="tech-icon" style="--icon-color:'+icon[1]+'" title="'+escape(name)+'">'+mark+'<span class="tech-name">'+escape(name)+'</span></span>';
 };
 const tags = (items) => '<ul class="tags tech-tags" aria-label="Tecnologías utilizadas">'+items.map(item=>'<li>'+technology(item)+'</li>').join("")+'</ul>';
 const stackGroups = [
