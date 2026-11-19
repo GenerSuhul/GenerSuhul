@@ -209,13 +209,20 @@ html:not(.light) .contact p{color:#B4C2CF}
 html:not(.light) footer{border-top:1px solid #34414C;color:#9EADBA}
 html:not(.light) #progress{background:#5A8CD0}
 
+
+.diagram-showcase{padding:88px 0 80px}
+.architecture-shell{overflow:hidden;border-radius:14px;border:1px solid var(--edge);background:var(--surface);box-shadow:var(--shadow)}
+.architecture-shell img{display:block;width:100%;height:auto;aspect-ratio:1440/810}
+.architecture-note{font:500 12px Inter,system-ui,sans-serif;color:var(--muted);text-align:right;margin:15px 0 0}
+html:not(.light) .architecture-shell{background:#111820;border-color:#354455}
+@media(max-width:740px){.diagram-showcase{padding:56px 0}.architecture-shell{overflow-x:auto}.architecture-shell img{min-width:850px}}
 </style>
 </head>
 <body>
 <div id="progress"></div><div class="gridbg" aria-hidden="true"></div>
 <header><div class="container inner">
   <a class="brand" href="#inicio" aria-label="Ir al inicio"><i aria-hidden="true"></i><span>GENER SUHUL</span></a>
-  <nav aria-label="Navegación principal"><a href="#sobre-mi">Perfil</a><a href="#proyectos">Proyectos</a><a href="#tecnologias">Stack</a><a href="#experiencia">Trayectoria</a></nav>
+  <nav aria-label="Navegación principal"><a href="#sobre-mi">Perfil</a><a href="#arquitectura">Arquitectura</a><a href="#proyectos">Proyectos</a><a href="#tecnologias">Stack</a><a href="#experiencia">Trayectoria</a></nav>
   <div class="header-actions"><button class="tiny-btn" id="theme" type="button" aria-label="Cambiar tema">Tema</button><button class="tiny-btn" id="motion" type="button" aria-pressed="false" aria-label="Pausar animación">Pausar</button><a class="navcta" href="#contacto">Contacto</a></div>
 </div></header>
 <main id="inicio">
@@ -235,6 +242,20 @@ html:not(.light) #progress{background:#5A8CD0}
       <div class="nodeinfo" id="nodeinfo" aria-live="polite"><div class="n-label">API Y MIDDLEWARE</div><h3>Backend e integraciones</h3><p>Servicios .NET / Node.js que validan, transforman y sincronizan información entre aplicaciones y sistemas empresariales.</p></div>
     </div>
   </div></div>
+
+
+<section id="arquitectura" class="diagram-showcase">
+  <div class="container">
+    <div class="section-title" data-reveal>
+      <div><div class="kicker">Arquitectura</div><h2>Integraciones con SAP Business One.</h2></div>
+      <p>Este esquema representa el recorrido de una solicitud desde una aplicación hasta SAP y su respuesta. Incluye los controles de autenticación, auditoría y sincronización. No muestra tráfico de producción.</p>
+    </div>
+    <div class="architecture-shell" data-reveal>
+      <img id="architecture-svg" src="./architecture-light.svg" alt="Diagrama vectorial animado de cuatro capas: aplicaciones, API y control, integración, SAP Business One y bases de datos." loading="lazy" decoding="async" width="1440" height="810"/>
+    </div>
+    <p class="architecture-note">Secuencia ilustrativa de solicitud, validación, adaptación, consulta y respuesta.</p>
+  </div>
+</section>
 
   <section id="sobre-mi"><div class="container"><div class="section-title" data-reveal><div><div class="kicker">Perfil</div><h2>Experiencia profesional<br>en desarrollo y operación.</h2></div><p>Desde octubre de 2024 trabajo en Agrisystems S.A., desarrollando aplicaciones e integraciones y atendiendo necesidades de infraestructura y operación.</p></div>
     <div class="facts" data-reveal><div class="fact"><div class="tag">EXPERIENCIA PROFESIONAL</div><div class="value">Oct. 2024 — hoy</div><p>IT, desarrollo e integraciones empresariales.</p></div><div class="fact"><div class="tag">FORMACIÓN</div><div class="value">7.º semestre</div><p>Ingeniería en Sistemas, Universidad Mariano Gálvez.</p></div><div class="fact"><div class="tag">ENFOQUE</div><div class="value">Backend + Full Stack</div><p>APIs, sistemas empresariales y datos.</p></div></div>
@@ -320,7 +341,7 @@ html:not(.light) #progress{background:#5A8CD0}
   document.querySelectorAll('[data-reveal]').forEach(e=>{if(observer)observer.observe(e);else e.classList.add('visible')});
   const savedTheme=localStorage.getItem('gs-portfolio-theme');if(savedTheme!=='dark')document.documentElement.classList.add('light');
   function syncTheme(){document.getElementById('theme').textContent=document.documentElement.classList.contains('light')?'Oscuro':'Claro';document.getElementById('theme').setAttribute('aria-label',document.documentElement.classList.contains('light')?'Activar tema oscuro':'Activar tema claro')}
-  syncTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme();draw()});
+  function syncDiagramTheme(){const el=document.getElementById('architecture-svg');if(el)el.src=document.documentElement.classList.contains('light')?'./architecture-light.svg':'./architecture-dark.svg'}syncTheme();syncDiagramTheme();document.getElementById('theme').addEventListener('click',function(){document.documentElement.classList.toggle('light');localStorage.setItem('gs-portfolio-theme',document.documentElement.classList.contains('light')?'light':'dark');syncTheme();syncDiagramTheme();draw()});
   document.getElementById('copy').addEventListener('click',async function(){try{await navigator.clipboard.writeText('gsuhula1@miumg.edu.gt');const old=this.textContent;this.textContent='Correo copiado';setTimeout(()=>this.textContent=old,1900)}catch(e){window.location.href='mailto:gsuhula1@miumg.edu.gt'}});
   function progress(){const doc=document.documentElement,max=doc.scrollHeight-innerHeight;document.getElementById('progress').style.width=(max>0?scrollY/max*100:0)+'%'}window.addEventListener('scroll',progress,{passive:true});progress();
 })();
