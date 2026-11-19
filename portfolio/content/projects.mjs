@@ -20,7 +20,7 @@ export const projects = [
     status: "Release documentado", impact: "Centraliza las reglas y el historial del programa. Permite seguir el origen y la reversión de cada movimiento sin depender de registros dispersos.",
     flow: ["Venta", "Reglas de puntos", "Historial", "Canje"],
     source: "", sourceLabel: "Repositorio privado · revisión de código y registro de release",
-    evidence: [{src:"/public/evidence/renova-puntos/acceso-publico.png",alt:"Acceso público real de RENOVA Puntos, programa de fidelización.",caption:"Captura del acceso público de puntos.renovagt.com · 19 nov 2026. Acredita la pantalla de acceso disponible. Los flujos autenticados se describen con su evidencia técnica."}]
+    evidence: [{src:"/public/evidence/renova-puntos/captura-proporcionada.png",alt:"Panel de fidelización de RENOVA Puntos.",caption:"Captura del panel proporcionada por Gener Suhul. La imagen muestra información de una fecha específica."},{src:"/public/evidence/renova-puntos/acceso-publico.png",alt:"Acceso público real de RENOVA Puntos, programa de fidelización.",caption:"Captura del acceso público de puntos.renovagt.com · 19 nov 2026. Acredita la pantalla de acceso disponible. Los flujos autenticados se describen con su evidencia técnica."}]
   },
   {
     slug: "renova-sales", title: "RENOVA Sales", category: "FUERZA DE VENTAS / WEB + ANDROID",
@@ -48,7 +48,7 @@ export const projects = [
     status: "Ensayo AWS documentado", impact: "Relaciona documentos y etapas de un envío para consultar su recorrido y analizar tiempos con información estructurada.",
     flow: ["Documento", "Bodega", "Traslado", "Recepción"],
     source: "", sourceLabel: "Repositorio privado · código y estado de ensayo AWS",
-    evidence: []
+    evidence: [{src:"/public/evidence/agri-flow/captura-proporcionada.png",alt:"Panel de control logístico de AgriFlow.",caption:"Captura del panel de logística proporcionada por Gener Suhul."}]
   },
   {
     slug: "asistencia-hikvision", title: "Asistencia Hikvision", category: "INTEGRACIÓN / AUTOMATIZACIÓN",
@@ -62,7 +62,7 @@ export const projects = [
     status: "Operación documentada", impact: "Centraliza la consulta de eventos y automatiza la preparación de reportes. La recuperación y el historial facilitan revisar diferencias sin ir dispositivo por dispositivo.",
     flow: ["Dispositivo", "Gateway", "Historial", "Reportes"],
     source: "", sourceLabel: "Repositorio privado · gateway, scheduler y registro de verificación",
-    evidence: []
+    evidence: [{src:"/public/evidence/asistencia-hikvision/captura-proporcionada.png",alt:"Panel de asistencia y dispositivos Hikvision.",caption:"Captura del panel de asistencia proporcionada por Gener Suhul."}]
   },
   {
     slug: "streamline", title: "Streamline + SAP", category: "MIDDLEWARE / INTEGRACIÓN DE DATOS",
@@ -85,11 +85,11 @@ export const projects = [
     solution: "Una plataforma interna por capas que organiza expedientes, documentos y práctica de alumnos, con permisos y auditoría.",
     stack: ["ASP.NET Core 10", "C#", "Next.js", "React 19", "PostgreSQL 18", "EF Core", "S3 / MinIO"],
     implemented: ["Recepción, expedientes y asignación de casos a alumnos.", "Cronología procesal, revisiones y notificaciones.", "Documentos versionados y digitalización multipágina.", "Búsqueda, reportes, roles y auditoría."],
-    pending: ["Preparación del manifiesto productivo en el servidor.", "Configuración, despliegue y aceptación institucional en destino."],
-    production: "El repositorio público contiene código, pruebas y guías. Su README indica que los Compose son locales y deja la preparación de producción pendiente.",
-    status: "Código público · entrega local", impact: "Organiza el seguimiento del expediente, conserva la autoría de acciones y conecta los documentos con la actividad académica y jurídica.",
+    pending: ["Confirmación del estado de despliegue y aceptación institucional.", "Configuración, despliegue y aceptación institucional en destino."],
+    production: "El repositorio público contiene código, pruebas y guías. La captura proporcionada muestra el panel; el estado productivo y la aceptación institucional requieren confirmación.",
+    status: "Código público · estado por confirmar", impact: "Organiza el seguimiento del expediente, conserva la autoría de acciones y conecta los documentos con la actividad académica y jurídica.",
     flow: ["Recepción", "Expediente", "Seguimiento", "Auditoría"],
     source: "https://github.com/GenerSuhul/buefete-umg", sourceLabel: "Repositorio público · arquitectura y código disponibles",
-    evidence: []
+    evidence: [{src:"/public/evidence/bufete-umg/captura-proporcionada.png",alt:"Resumen operativo de Bufete Popular UMG.",caption:"Captura del panel del Bufete Popular UMG proporcionada por Gener Suhul."}]
   }
 ];

@@ -39,3 +39,15 @@
 }
 @media(prefers-reduced-motion:reduce){.project-motion-ready .featured-copy,.project-motion-ready .featured-visual{opacity:1;transform:none}}
 #proyectos { overflow: clip; }
+/* Technology icons preserve accessible names and use the product's actual brands. */
+.tech-tags { gap: 10px; align-items:center; }
+.tech-tags li { display:flex; align-items:center; }
+.tech-icon { display:inline-grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--raised); border:1px solid var(--line); transition:transform .2s ease,border-color .2s ease; }
+.tech-icon:hover { transform:translateY(-3px); border-color:var(--accent); }
+.tech-icon-mark { width:23px; height:23px; background:var(--icon-color); -webkit-mask:var(--icon-url) center / contain no-repeat; mask:var(--icon-url) center / contain no-repeat; }
+.tech-fallback { display:inline-flex; align-items:center; min-height:42px; padding:0 12px; border:1px solid var(--line); border-radius:25px; color:var(--text); font-size:.75rem; }
+.icon-stack { grid-template-columns:repeat(2,1fr); }
+.icon-stack article { padding:24px 0; }
+.icon-stack .tech-tags { margin-bottom:0; }
+@media(max-width:600px){.icon-stack{grid-template-columns:1fr}.tech-icon{width:42px;height:42px}.tech-icon-mark{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){.tech-icon{transition:none}}

@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /content/
 Disallow: /scripts/
-Disallow: /src/
 Sitemap: https://gener-suhul-portfolio.vercel.app/sitemap.xml

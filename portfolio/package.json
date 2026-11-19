@@ -7,5 +7,10 @@
     "test": "node --test scripts/content.test.mjs",
     "dev": "node scripts/serve.mjs"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "simple-icons": "^16.38.0"
+  }
 }

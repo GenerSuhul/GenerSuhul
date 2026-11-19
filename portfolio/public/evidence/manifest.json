@@ -1,12 +1,32 @@
 {
   "reviewedAt": "2026-11-19",
-  "policy": "Only authorized screenshots without credentials, employee/client data or internal host information may be published.",
+  "policy": "Capturas proporcionadas expresamente por el usuario para el portafolio. La captura de Sales se sustituyó por la versión del acceso con campos vacíos.",
   "projects": {
-    "renova-puntos": { "directory": "/public/evidence/renova-puntos/", "state": "public-login-captured", "source": "https://puntos.renovagt.com/login" },
-    "renova-sales": { "directory": "/public/evidence/renova-sales/", "state": "public-login-captured", "source": "https://renova-sales.vercel.app/" },
-    "agri-flow": { "directory": "/public/evidence/agri-flow/", "state": "authorized-screenshots-pending" },
-    "asistencia-hikvision": { "directory": "/public/evidence/asistencia-hikvision/", "state": "authorized-screenshots-pending" },
-    "streamline": { "directory": "/public/evidence/streamline/", "state": "authorized-screenshots-pending" },
-    "bufete-umg": { "directory": "/public/evidence/bufete-umg/", "state": "authorized-screenshots-pending" }
+    "renova-puntos": {
+      "directory": "/public/evidence/renova-puntos/",
+      "state": "user-supplied-screenshot",
+      "source": "https://puntos.renovagt.com/login"
+    },
+    "renova-sales": {
+      "directory": "/public/evidence/renova-sales/",
+      "state": "public-login-captured",
+      "source": "https://renova-sales.vercel.app/"
+    },
+    "agri-flow": {
+      "directory": "/public/evidence/agri-flow/",
+      "state": "user-supplied-screenshot"
+    },
+    "asistencia-hikvision": {
+      "directory": "/public/evidence/asistencia-hikvision/",
+      "state": "user-supplied-screenshot"
+    },
+    "streamline": {
+      "directory": "/public/evidence/streamline/",
+      "state": "authorized-screenshots-pending"
+    },
+    "bufete-umg": {
+      "directory": "/public/evidence/bufete-umg/",
+      "state": "user-supplied-screenshot"
+    }
   }
 }

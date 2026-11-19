@@ -1,6 +1,35 @@
 const base = "https://gener-suhul-portfolio.vercel.app";
 export const escape = (value) => String(value).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const tags = (items) => '<ul class="tags">'+items.map(item=>'<li>'+escape(item)+'</li>').join("")+'</ul>';
+const technologyIcons = {
+  "React": ["react", "#61DAFB"], "React 19": ["react", "#61DAFB"],
+  "Node.js": ["nodedotjs", "#6DAA45"], "TypeScript": ["typescript", "#3178C6"],
+  "JavaScript": ["javascript", "#F7DF1E"], "Vite": ["vite", "#BD80FF"],
+  "PostgreSQL": ["postgresql", "#669FD1"], "PostgreSQL 18": ["postgresql", "#669FD1"],
+  "Supabase": ["supabase", "#3ECF8E"], ".NET": ["dotnet", "#A994FF"],
+  "ASP.NET Core 10": ["dotnet", "#A994FF"], "C#": ["dotnet", "#A994FF"],
+  "SAP B1": ["sap", "#4CB5E6"], "SAP HANA": ["sap", "#4CB5E6"], "SAP Business One": ["sap", "#4CB5E6"],
+  "Service Layer": ["sap", "#4CB5E6"], "PWA": ["pwa", "#C7A8FF"],
+  "Bootstrap": ["bootstrap", "#B59BFF"], "Capacitor": ["capacitor", "#77B7FF"],
+  "Material UI": ["mui", "#69B6FF"], "Next.js": ["nextdotjs", "currentColor"],
+  "EF Core": ["dotnet", "#A994FF"], "MySQL": ["mysql", "#71B2D9"],
+  "Express": ["express", "currentColor"], "Java": ["openjdk", "currentColor"],
+  "Spring Boot": ["springboot", "#8BCB59"], "Angular": ["angular", "#FF6B82"],
+  "Docker": ["docker", "#66B9F0"], "Linux": ["linux", "currentColor"],
+  "GitHub": ["github", "currentColor"], "Vercel": ["vercel", "currentColor"],
+  "PM2": ["pm2", "#78B9FC"], "JWT": ["jsonwebtokens", "currentColor"], "NFC": ["nfc", "currentColor"]
+};
+const technology = (name) => {
+  const icon = technologyIcons[name];
+  if (!icon) return '<span class="tech-fallback">'+escape(name)+'</span>';
+  return '<span class="tech-icon" style="--icon-color:'+icon[1]+'" title="'+escape(name)+'"><span class="tech-icon-mark" style="--icon-url:url(/public/tech/'+icon[0]+'.svg)" aria-hidden="true"></span><span class="sr-only">'+escape(name)+'</span></span>';
+};
+const tags = (items) => '<ul class="tags tech-tags" aria-label="Tecnologías utilizadas">'+items.map(item=>'<li>'+technology(item)+'</li>').join("")+'</ul>';
+const stackGroups = [
+  ["Backend", ["C#", ".NET", "Node.js", "Express", "Java", "Spring Boot"]],
+  ["Frontend", ["React", "Next.js", "TypeScript", "Vite", "Angular", "PWA"]],
+  ["Datos e integración", ["PostgreSQL", "MySQL", "SAP HANA", "SAP Business One", "JWT", "NFC"]],
+  ["Cloud y entrega", ["Supabase", "Docker", "Linux", "GitHub", "Vercel", "PM2"]]
+];
 const list = (items) => '<ul class="checklist">'+items.map(item=>'<li>'+escape(item)+'</li>').join("")+'</ul>';
 const icon = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10 4 20l10 10M26 10l10 10-10 10M23 6l-6 28" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
 export function flow(project, large=false) {
@@ -8,15 +37,17 @@ export function flow(project, large=false) {
 }
 function visual(project) {
   const image=project.evidence[0];
-  return image ? '<figure class="project-picture"><button class="image-button" type="button" data-image="'+escape(image.src)+'" data-caption="'+escape(image.caption)+'" aria-label="Ampliar captura de '+escape(project.title)+'"><img src="'+escape(image.src)+'" alt="'+escape(image.alt)+'" width="1536" height="674" loading="lazy"></button><figcaption>'+escape(image.caption)+'</figcaption></figure>' : flow(project);
+  return image ? '<figure class="project-picture"><button class="image-button" type="button" data-image="'+escape(image.src)+'" data-caption="'+escape(image.caption)+'" aria-label="Ampliar captura de '+escape(project.title)+'"><img src="'+escape(image.src)+'" alt="'+escape(image.alt)+'" title="'+escape(image.alt)+'" width="1917" height="1020" loading="lazy"></button><figcaption>'+escape(image.caption)+'</figcaption></figure>' : flow(project);
 }
-export function layout({title,description,path,body}) {
+export function layout({title,description,path,body,images=[]}) {
   const schema={"@context":"https://schema.org","@type":"Person",name:"Gener Alexander Suhul Amador",url:base,jobTitle:"Software Developer",sameAs:["https://github.com/GenerSuhul"]};
+  const imageSchemas = images.map(image => ({"@context":"https://schema.org","@type":"ImageObject",contentUrl:base+image.src,name:image.alt,description:image.caption}));
+  const socialImage = images.length && path !== "/" ? base+images[0].src : base+"/public/social.png";
   return `<!doctype html><html lang="es-GT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link rel="canonical" href="${base+path}">
-<meta name="theme-color" content="#081427"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${base+path}"><meta property="og:image" content="${base}/public/social.png"><meta name="twitter:card" content="summary_large_image">
+<title>${escape(title)}</title><meta name="robots" content="${path === "/404.html" ? "noindex, follow" : "index, follow, max-image-preview:large"}"><meta name="description" content="${escape(description)}"><link rel="canonical" href="${base+path}">
+<meta name="theme-color" content="#081427"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${base+path}"><meta property="og:image" content="${escape(socialImage)}"><meta property="og:image:alt" content="${escape(images[0]?.alt || title)}"><meta property="og:locale" content="es_GT"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/public/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/styles.css">
-<script src="/src/theme.js"></script><script type="module" src="/src/app.js"></script><script type="application/ld+json">${JSON.stringify(schema).replace(/</g,"\\u003c")}</script></head>
+<script src="/src/theme.js"></script><script type="module" src="/src/app.js"></script><script type="application/ld+json">${JSON.stringify([schema,...imageSchemas]).replace(/</g,"\\u003c")}</script></head>
 <body><a class="skip" href="#contenido">Saltar al contenido</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="Gener Suhul, inicio">${icon}<span>gener<span class="brand-muted">suhul.</span></span></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation">Menú</button><nav id="navigation" aria-label="Navegación principal">${[["Inicio","inicio"],["Sobre mí","sobre-mi"],["Proyectos","proyectos"],["Impacto","impacto"],["Stack","tecnologias"],["Evidencia","evidencia"]].map(([label,id])=>'<a href="/#'+id+'">'+label+'</a>').join("")}</nav><div class="header-actions"><button id="theme" class="theme-toggle" type="button" aria-label="Activar tema claro">Claro</button><a class="header-contact" href="/#contacto">Contacto</a></div></div></header>
 <main id="contenido">${body}</main><footer class="footer"><div class="container"><a class="brand" href="/">gener<span class="brand-muted">suhul.</span></a><p>Gener Alexander Suhul Amador<br>Software · Backend · Integraciones</p><div><a href="https://github.com/GenerSuhul">GitHub</a><a href="mailto:gsuhula1@miumg.edu.gt">Correo</a><a href="/public/gener-suhul-cv.pdf" download>Descargar CV</a></div><span>2026 · Guatemala</span></div></footer>
 <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-caption"><button type="button" data-close aria-label="Cerrar imagen">Cerrar</button><img alt="" id="lightbox-image"><p id="lightbox-caption"></p></dialog><p class="sr-only" role="status" id="status"></p></body></html>`;
@@ -33,8 +64,8 @@ ${heading("TRABAJO SELECCIONADO","Proyectos con contexto.<br><em>Decisiones con 
 <div class="project-index" aria-label="Índice de proyectos">${projects.map(p=>'<a href="#'+p.slug+'">'+escape(p.title)+'</a>').join("")}</div>
 <div class="featured-projects">${projects.map((p,index)=>'<article class="featured" id="'+p.slug+'"><div class="featured-copy"><span class="project-position" aria-hidden="true">'+String(index+1).padStart(2,"0")+' / 06</span><p class="eyebrow">'+escape(p.category)+'</p><h3><a href="/casos/'+p.slug+'/">'+escape(p.title)+'</a></h3><div class="project-summary"><p>'+escape(p.summary)+'</p><span class="status-label">'+escape(p.status)+'</span></div>'+tags(p.stack.slice(0,5))+'<a class="case-link" href="/casos/'+p.slug+'/">Leer caso de estudio</a></div><div class="featured-visual">'+visual(p)+'</div></article>').join("")}</div></section>
 <section id="impacto" class="section impact-section"><div class="container">${heading("IMPACTO EN LA OPERACIÓN","Menos información dispersa.<br><em>Más contexto para trabajar.</em>","El valor funcional de los proyectos, explicado sin atribuir resultados numéricos que no se han medido.")}<div class="impact-grid">${[["Centralización","Clientes, documentos, visitas y marcaciones relacionados dentro de su proceso."],["Trazabilidad","Historial y estados para entender qué ocurrió y cómo continuar."],["Continuidad","Colas y sincronización para flujos con conectividad limitada."],["Automatización","Extracción de datos y reportes programados para tareas repetitivas."]].map(([title,text])=>'<article><h3>'+title+'</h3><p>'+text+'</p></article>').join("")}</div></div></section>
-<section id="tecnologias" class="section container">${heading("CONOCIMIENTO APLICADO","Las herramientas cambian.<br><em>El criterio conecta.</em>","Tecnologías utilizadas según el contexto de cada proyecto. AWS forma parte de mi aprendizaje y de las entregas revisadas, sin afirmar certificaciones.")}<div class="stack-grid">${[["Backend",["C# / ASP.NET Core","Node.js / Express","Java / Spring Boot"]],["Frontend",["React / Next.js","TypeScript / Vite","Angular / PWA"]],["Datos",["PostgreSQL / SQL Server","SAP HANA / Oracle","MySQL"]],["Integración",["SAP Business One","Service Layer / REST","JWT / NFC / Hikvision"]],["Cloud y entrega",["Azure / AWS","Docker / Linux","GitHub / Vercel / PM2"]]].map(([title,items])=>'<article><h3>'+title+'</h3>'+list(items)+'</article>').join("")}</div></section>
-<section id="evidencia" class="section container">${heading("EVIDENCIA","Primero el trabajo.<br><em>Después, la presentación.</em>","Las capturas publicadas muestran accesos públicos reales. Los diagramas son explicativos. La revisión de código y los registros de release se detallan en cada caso.")}
+<section id="tecnologias" class="section container">${heading("CONOCIMIENTO APLICADO","Las herramientas cambian.<br><em>El criterio conecta.</em>","Tecnologías utilizadas según el contexto de cada proyecto. AWS forma parte de mi aprendizaje y de las entregas revisadas, sin afirmar certificaciones.")}<div class="stack-grid icon-stack">${stackGroups.map(([title,items])=>'<article><h3>'+title+'</h3>'+tags(items)+'</article>').join("")}</div></section>
+<section id="evidencia" class="section container">${heading("EVIDENCIA","Primero el trabajo.<br><em>Después, la presentación.</em>","Capturas de los sistemas proporcionadas por Gener Suhul, junto con diagramas explicativos y evidencia técnica de cada caso.")}
 <div class="evidence-grid">${projects.map(p=>'<article><h3>'+escape(p.title)+'</h3>'+visual(p)+'<a class="case-link" href="/casos/'+p.slug+'/#evidencia">Revisar evidencia y alcance</a></article>').join("")}</div></section>
 <section id="contacto" class="section container contact-section"><p class="eyebrow">CONTACTO</p><h2>Conversemos sobre<br><em>lo que necesitas construir.</em></h2><p>Disponible para colaborar en desarrollo backend, integraciones empresariales y aplicaciones internas con contexto de operación.</p><a class="contact-email" href="mailto:gsuhula1@miumg.edu.gt">gsuhula1@miumg.edu.gt</a><div class="actions"><a class="button primary" href="mailto:gsuhula1@miumg.edu.gt">Escríbeme</a><a class="button" href="https://github.com/GenerSuhul">GitHub</a><a class="button" href="/public/gener-suhul-cv.pdf" download>Descargar CV</a><button type="button" class="plain-link" id="copy-email">Copiar correo</button></div></section>`;
 }
@@ -43,6 +74,6 @@ return `<article class="case-study"><section class="case-hero container"><a clas
 <section class="container section case-columns"><div><p class="eyebrow">CÓDIGO REVISADO</p><h2>Implementado</h2>${list(project.implemented)}</div><div><p class="eyebrow">ALCANCE PENDIENTE</p><h2>Por validar o completar</h2>${list(project.pending)}</div></section>
 <section class="production-note container"><p class="eyebrow">ESTADO Y LÍMITES</p><h2>Qué acredita la evidencia</h2><p>${escape(project.production)}</p><p class="source-label">${escape(project.sourceLabel)} · Revisión del 19 de noviembre de 2026.</p>${project.source?'<a class="case-link" href="'+project.source+'">Revisar repositorio público</a>':""}</section>
 <section class="container section"><div class="case-columns"><div><p class="eyebrow">IMPACTO FUNCIONAL</p><h2>Lo que aporta al proceso</h2><p>${escape(project.impact)}</p></div>${flow(project,true)}</div></section>
-<section id="evidencia" class="container section"><p class="eyebrow">EVIDENCIA VISUAL</p><h2>El sistema y su contexto</h2>${project.evidence.length?project.evidence.map(e=>'<figure class="evidence-large"><button class="image-button" data-image="'+escape(e.src)+'" data-caption="'+escape(e.caption)+'" type="button" aria-label="Ampliar captura"><img src="'+escape(e.src)+'" alt="'+escape(e.alt)+'" loading="lazy" width="1536" height="674"></button><figcaption>'+escape(e.caption)+'</figcaption></figure>').join(""):'<div class="evidence-pending"><h3>Capturas internas pendientes de publicación</h3><p>La evidencia visual disponible para este caso es el diagrama explicativo. Las pantallas autenticadas requieren una selección autorizada que proteja información de clientes, empleados y operación.</p></div>'}</section>
+<section id="evidencia" class="container section"><p class="eyebrow">EVIDENCIA VISUAL</p><h2>El sistema y su contexto</h2>${project.evidence.length?project.evidence.map(e=>'<figure class="evidence-large"><button class="image-button" data-image="'+escape(e.src)+'" data-caption="'+escape(e.caption)+'" type="button" aria-label="Ampliar captura"><img src="'+escape(e.src)+'" alt="'+escape(e.alt)+'" title="'+escape(e.alt)+'" loading="lazy" width="1917" height="1020"></button><figcaption>'+escape(e.caption)+'</figcaption></figure>').join(""):'<div class="evidence-pending"><h3>Capturas internas pendientes de publicación</h3><p>La evidencia visual disponible para este caso es el diagrama explicativo. Las pantallas autenticadas requieren una selección autorizada que proteja información de clientes, empleados y operación.</p></div>'}</section>
 <section class="container section contact-section"><h2>¿Un reto parecido?</h2><p>Podemos conversar sobre el proceso, las integraciones y el alcance técnico.</p><div class="actions"><a class="button primary" href="mailto:gsuhula1@miumg.edu.gt?subject=${encodeURIComponent('Consulta sobre '+project.title)}">Conversemos</a><a class="button" href="/#proyectos">Explorar otros proyectos</a></div></section></article>`;
 }
