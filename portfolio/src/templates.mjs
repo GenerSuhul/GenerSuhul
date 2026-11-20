@@ -1,3 +1,4 @@
+import { processArt } from "./process-art.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 const assetVersion = (file) => createHash("sha256").update(readFileSync(new URL(file, import.meta.url))).digest("hex").slice(0, 12);
@@ -55,13 +56,39 @@ const flowIconSets = {
   "streamline": ["database", "server", "database", "code"],
   "bufete-umg": ["inbox", "folder", "search", "shield"]
 };
-const flowDetails = {
-  "renova-puntos": ["Compras registradas", "Reglas de fidelización", "Movimientos trazables", "Canje de recompensas"],
-  "renova-sales": ["Ventas en campo", "Trabajo sin conexión", "Datos conectados", "Seguimiento comercial"],
-  "agri-flow": ["Documentos vinculados", "Despachos de bodega", "Operación en ruta", "Registro de entradas"],
-  "asistencia-hikvision": ["Eventos del dispositivo", "Recepción de eventos", "Registros y consultas", "Reportes programados"],
-  "streamline": ["Datos empresariales", "Extracción y validación", "Información preparada", "Consulta de datos"],
-  "bufete-umg": ["Ingreso de casos", "Gestión documental", "Actividad procesal", "Roles y trazabilidad"]
+const projectFlows = {
+  "renova-puntos": [
+    ["Ventas", "Compras registradas", "shop"], ["Clientes", "Gestión de socios", "person"],
+    ["Puntos", "Acumulación y reglas", "points"], ["Movimientos", "Historial trazable", "data"],
+    ["Recompensas", "Opciones de canje", "points"], ["Integración SAP", "Adaptador empresarial", "gateway"]
+  ],
+  "renova-sales": [
+    ["Vendedores", "Operación en campo", "person"], ["Catálogo", "Productos y existencias", "shop"],
+    ["Cotizaciones", "Preparación comercial", "document"], ["Sin conexión", "Persistencia local", "phone"],
+    ["Sincronización", "Actualización de datos", "data"], ["Supervisión", "Rutas y seguimiento", "chart"]
+  ],
+  "agri-flow": [
+    ["Operaciones", "Envíos y traslados", "document"], ["Bodega", "Despacho y entradas", "warehouse"],
+    ["Documentos SAP", "Archivos vinculados", "folder"], ["Transporte", "Seguimiento de etapas", "truck"],
+    ["Recepción", "Registro de entradas", "document"], ["Reportes", "Análisis operativo", "chart"],
+    ["Accesos", "Control por roles", "shield"]
+  ],
+  "asistencia-hikvision": [
+    ["Dispositivos", "Eventos de marcación", "phone"], ["Gateway", "Recepción de eventos", "gateway"],
+    ["Historial", "Sincronización de datos", "data"], ["Consultas", "Revisión por rango", "person"],
+    ["Ajustes", "Gestión de registros", "document"], ["Reportes", "Preparación programada", "chart"]
+  ],
+  "streamline": [
+    ["SAP", "Lectura de datos", "data"], ["Worker", "Extracción programada", "gateway"],
+    ["Staging", "Información preparada", "data"], ["Validación", "Revisión de esquema", "shield"],
+    ["Custom API", "Consulta de datos", "phone"], ["Comparación", "Reportes de diferencias", "chart"]
+  ],
+  "bufete-umg": [
+    ["Recepción", "Ingreso de casos", "person"], ["Expedientes", "Gestión jurídica", "folder"],
+    ["Documentos", "Archivo digital", "document"], ["Seguimiento", "Cronología procesal", "chart"],
+    ["Alumnos", "Asignación de casos", "person"], ["Notificaciones", "Revisiones y avisos", "phone"],
+    ["Auditoría", "Roles y trazabilidad", "shield"]
+  ]
 };
 const flowBrands = {
   "renova-puntos": {tech:["React", "SAP B1", "AWS"]},
@@ -72,12 +99,17 @@ const flowBrands = {
   "bufete-umg": {tech:["ASP.NET Core 10", "PostgreSQL", "Azure"]}
 };
 export function flow(project, large=false) {
-  const icons = flowIconSets[project.slug];
   const brand = flowBrands[project.slug];
-
+  const steps = projectFlows[project.slug];
   const techLogos = brand.tech.map(name => technology(name)).join("");
-  const nodes = project.flow.map((step, i) => '<li class="flow-card flow-card-'+i+'"><span class="flow-card-icon">'+flowIcons[icons[i]]+'</span><span><strong>'+escape(step)+'</strong><small>'+escape(flowDetails[project.slug][i])+'</small></span></li>').join("");
-  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="flow-map-stage"><svg class="flow-connections" viewBox="0 0 600 380" preserveAspectRatio="none" aria-hidden="true"><path d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/><path class="flow-signals" d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/></svg><div class="flow-hub"><strong>'+escape(project.title)+'</strong></div><ol class="flow-map-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
+  const rows = Math.ceil(steps.length / 2);
+  const connections = steps.map((_, i) => {
+    const y = (Math.floor(i / 2) + .5) * 1000 / rows;
+    const x = i % 2 ? 840 : 160;
+    return `M500 500 C${i % 2 ? 660 : 340} 500 ${i % 2 ? 660 : 340} ${y} ${x} ${y}`;
+  }).join(" ");
+  const nodes = steps.map(([title, detail, artwork], i) => '<li class="process-card"><span class="process-art">'+processArt(artwork)+'</span><span class="process-copy"><strong>'+escape(title)+'</strong><small>'+escape(detail)+'</small></span></li>').join("");
+  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="process-stage"><svg class="process-connections" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path d="'+connections+'"/><path class="process-signals" d="'+connections+'"/></svg><div class="process-hub"><span>SISTEMA</span><strong>'+escape(project.title)+'</strong></div><ol class="process-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
 }
 const capabilityHeadings = {
   "renova-puntos": ["Programa de fidelización", "Puntos y canjes", "Experiencia digital", "Integración empresarial"],
