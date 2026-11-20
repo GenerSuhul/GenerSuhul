@@ -170,3 +170,37 @@ html { scroll-padding-top: 80px; }
 .back-to-top svg { width:21px; height:21px; }
 @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
 
+/* Project process maps: original SVG illustrations with animated connections. */
+.flow-section { display:grid; grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr); gap:clamp(32px,5vw,72px); align-items:center; }
+.flow-section-copy p:last-child { max-width:440px; }
+.flow-map { --map-border:#375b85; --map-card:#102e54; --map-line:#398dd3; --map-text:#f4f8ff; --map-muted:#bbd1ed; margin:0; position:relative; overflow:hidden; border:1px solid var(--map-border); border-radius:20px; color:var(--map-text); background:radial-gradient(circle at 50% 55%,#195aa566,transparent 46%),linear-gradient(145deg,#0d2749,#091a35); box-shadow:0 22px 60px #03102030; padding:25px 26px 22px; }
+.flow-map::before { content:""; position:absolute; inset:0; background-image:radial-gradient(#71b9ff28 1px,transparent 1px); background-size:18px 18px; pointer-events:none; }
+.flow-map figcaption { position:relative; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px; margin:0; }
+.flow-map figcaption span { width:100%; color:#83c7ff; font-size:.68rem; font-weight:700; letter-spacing:.14em; }
+.flow-map figcaption strong { font:600 1.05rem/1.3 Inter,sans-serif; letter-spacing:-.02em; }
+.flow-map figcaption small { color:var(--map-muted); font-size:.7rem; }
+.flow-map-stage { position:relative; height:360px; margin-top:10px; }
+.flow-connections { position:absolute; inset:0; width:100%; height:100%; overflow:visible; fill:none; stroke:var(--map-line); stroke-width:1.4; opacity:.6; pointer-events:none; }
+.flow-connections .flow-signals { stroke:#a7e6ff; stroke-width:3; stroke-linecap:round; stroke-dasharray:1 26; opacity:1; }
+.flow-hub { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; justify-content:center; width:132px; height:132px; border-radius:50%; border:1px solid #62b7ff; background:radial-gradient(circle at 40% 25%,#2568ad,#10345c 72%); box-shadow:0 0 0 10px #2a85dc18,0 0 45px #1b86ef3b; text-align:center; padding:13px; }
+.flow-hub span { font-size:.57rem; letter-spacing:.13em; color:#a9d8ff; font-weight:700; }
+.flow-hub strong { font:700 .86rem/1.2 Inter,sans-serif; color:#fff; margin-top:5px; }
+.flow-map-grid { list-style:none; padding:0; margin:0; }
+.flow-card { position:absolute; display:flex; gap:10px; align-items:center; width:32%; min-height:77px; padding:12px; border:1px solid #5383b1; border-radius:13px; background:linear-gradient(135deg,#1a416b,#102b4d); box-shadow:0 8px 22px #03112655; }
+.flow-card-0 { top:12px; left:0; }.flow-card-1 { top:12px; right:0; }.flow-card-2 { bottom:12px; left:0; }.flow-card-3 { bottom:12px; right:0; }
+.flow-card-icon { display:grid; place-items:center; width:40px; height:40px; flex:none; border:1px solid #4da7eb88; background:#15538a; border-radius:11px; color:#a8e5ff; }
+.flow-card-icon svg { width:25px; height:25px; }
+.flow-card span:last-child { min-width:0; }
+.flow-card small { display:block; font-size:.6rem; letter-spacing:.1em; color:#91ccff; line-height:1.2; }
+.flow-card strong { display:block; color:#fff; font:600 .8rem/1.25 Inter,sans-serif; overflow-wrap:anywhere; margin-top:3px; }
+.flow-map-compact { padding:20px; }
+.flow-map-compact .flow-map-stage { height:290px; }
+.flow-map-compact .flow-hub { width:105px; height:105px; }
+.flow-map-compact .flow-card { width:37%; min-height:70px; padding:9px; }
+.flow-map-compact .flow-card-icon { width:34px; height:34px; }
+.flow-map-compact .flow-card-icon svg { width:21px; height:21px; }
+.flow-map-compact .flow-card strong { font-size:.7rem; }
+@media (prefers-reduced-motion:no-preference) { .flow-signals { animation:flow-travel 3s linear infinite; } .flow-hub { animation:flow-glow 4s ease-in-out infinite; } @keyframes flow-travel { to { stroke-dashoffset:-54; } } @keyframes flow-glow { 50% { box-shadow:0 0 0 14px #2a85dc18,0 0 55px #1b86ef70; } } }
+@media (max-width:850px) { .flow-section { grid-template-columns:1fr; } .flow-section-copy p:last-child { max-width:650px; } }
+@media (max-width:600px) { .flow-map { padding:20px 15px 16px; border-radius:16px; } .flow-map-stage,.flow-map-compact .flow-map-stage { height:320px; } .flow-card,.flow-map-compact .flow-card { width:43%; padding:8px; min-height:68px; gap:7px; } .flow-card-icon,.flow-map-compact .flow-card-icon { width:34px; height:34px; } .flow-card-icon svg,.flow-map-compact .flow-card-icon svg { width:21px; height:21px; } .flow-card strong,.flow-map-compact .flow-card strong { font-size:.72rem; } .flow-hub,.flow-map-compact .flow-hub { width:104px; height:104px; } .flow-hub strong { font-size:.72rem; } }
+@media (max-width:600px) { .flow-card,.flow-map-compact .flow-card { width:46%; gap:6px; } .flow-card-icon,.flow-map-compact .flow-card-icon { width:28px; height:28px; } .flow-card-icon svg,.flow-map-compact .flow-card-icon svg { width:19px; height:19px; } .flow-card strong,.flow-map-compact .flow-card strong { font-size:.7rem; } }

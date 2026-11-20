@@ -46,8 +46,40 @@ const stackGroups = [
 ];
 const list = (items) => '<ul class="checklist">'+items.map(item=>'<li>'+escape(item)+'</li>').join("")+'</ul>';
 const icon = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10 4 20l10 10M26 10l10 10-10 10M23 6l-6 28" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
+const flowIcons = {
+  sale: '<path d="M3 8h18l-2 12H5L3 8Z"/><path d="M7 8a5 5 0 0 1 10 0M8 12h8"/>',
+  reward: '<path d="M12 3v18M4 10h16v10H4zM3 7h18v3H3z"/><path d="M12 7C7 7 7 3 9.5 3 11 3 12 5 12 7Zm0 0c5 0 5-4 2.5-4C13 3 12 5 12 7Z"/>',
+  history: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M3 7v4h4"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
+  person: '<circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/>',
+  device: '<rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M10 18h4M9 6h6"/>',
+  sync: '<path d="M20 7h-4V3M4 17h4v4"/><path d="M5 10a7 7 0 0 1 12-4l3 1M19 14a7 7 0 0 1-12 4l-3-1"/>',
+  chart: '<path d="M4 20V5M4 20h16M8 16v-4M12 16V7M16 16v-6"/>',
+  document: '<path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/>',
+  warehouse: '<path d="m3 9 9-6 9 6v11H3zM7 20v-8h10v8M7 15h10"/>',
+  truck: '<path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>',
+  receive: '<path d="M4 12v8h16v-8M12 3v12m-4-4 4 4 4-4"/>',
+  gateway: '<rect x="4" y="8" width="16" height="10" rx="2"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 5a6 6 0 0 1 8 0"/>',
+  database: '<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3 3 7 3s7-1.3 7-3v-7"/>',
+  server: '<rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/>',
+  code: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+  inbox: '<path d="M4 4h16v16H4zM4 13h5l1 3h4l1-3h5"/>',
+  folder: '<path d="M3 6h7l2 2h9v11H3z"/><path d="M7 12h10M7 15h7"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5M8 10h5M10.5 8v5"/>',
+  shield: '<path d="M12 3 20 6v5c0 5-3 8-8 10-5-2-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/>'
+};
+const flowIconSets = {
+  "renova-puntos": ["sale", "reward", "history", "check"],
+  "renova-sales": ["person", "device", "sync", "chart"],
+  "agri-flow": ["document", "warehouse", "truck", "receive"],
+  "asistencia-hikvision": ["device", "gateway", "history", "chart"],
+  "streamline": ["database", "server", "database", "code"],
+  "bufete-umg": ["inbox", "folder", "search", "shield"]
+};
 export function flow(project, large=false) {
-  return '<figure class="flow-figure '+(large?'large':'')+'"><figcaption>Arquitectura resumida · diagrama conceptual</figcaption><div class="flow-track">'+project.flow.map((step,i)=>'<div><span class="flow-node">'+icon+'</span><strong>'+escape(step)+'</strong></div>').join("")+'</div><p>'+escape(project.category)+'</p></figure>';
+  const icons = flowIconSets[project.slug];
+  const nodes = project.flow.map((step, i) => '<li class="flow-card flow-card-'+i+'"><span class="flow-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">'+flowIcons[icons[i]]+'</svg></span><span><small>0'+(i+1)+'</small><strong>'+escape(step)+'</strong></span></li>').join("");
+  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="flow-map-stage"><svg class="flow-connections" viewBox="0 0 600 380" preserveAspectRatio="none" aria-hidden="true"><path d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/><path class="flow-signals" d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/></svg><div class="flow-hub"><span>PLATAFORMA</span><strong>'+escape(project.title)+'</strong></div><ol class="flow-map-grid">'+nodes+'</ol></div></figure>';
 }
 function visual(project, linkToCase = true) {
   const image = project.evidence[0];
@@ -91,7 +123,7 @@ export function caseStudy(project) {
 return `<article class="case-study"><section class="case-hero container"><a class="plain-link" href="/#proyectos">Todos los proyectos</a><p class="eyebrow">${escape(project.category)}</p><h1>${escape(project.title)}</h1><p class="case-lead">${escape(project.summary)}</p>${tags(project.stack)}<span class="status-label">${escape(project.status)}</span></section><section class="container case-intro"><div><h2>El problema</h2><p>${escape(project.problem)}</p><h2>La solución</h2><p>${escape(project.solution)}</p><p class="case-context">Participación técnica en el contexto descrito. Los proyectos empresariales corresponden a trabajo de operación e integración, y Bufete UMG al ámbito académico.</p></div><div>${visual(project, false)}</div></section>
 <section class="container section"><div><p class="eyebrow">CÓDIGO REVISADO</p><h2>Implementado</h2>${list(project.implemented)}</div></section>
 <section class="production-note container"><p class="eyebrow">ESTADO Y LÍMITES</p><h2>Qué acredita la evidencia</h2><p>${escape(project.production)}</p><p class="source-label">${escape(project.sourceLabel)} · Revisión del 19 de noviembre de 2026.</p>${project.source?'<a class="case-link" href="'+project.source+'">Revisar repositorio público</a>':""}</section>
-<section class="container section"><div class="case-columns"><div><p class="eyebrow">IMPACTO FUNCIONAL</p><h2>Lo que aporta al proceso</h2><p>${escape(project.impact)}</p></div>${flow(project,true)}</div></section>
+<section class="container section flow-section"><div class="flow-section-copy"><p class="eyebrow">IMPACTO FUNCIONAL</p><h2>Lo que aporta al proceso</h2><p>${escape(project.impact)}</p></div>${flow(project,true)}</section>
 <section id="evidencia" class="container section"><p class="eyebrow">EVIDENCIA VISUAL</p><h2>El sistema y su contexto</h2>${project.evidence.length?project.evidence.map(e=>'<figure class="evidence-large"><img src="'+escape(e.src)+'" alt="'+escape(e.alt)+'" title="'+escape(e.alt)+'" loading="lazy"></figure>').join(""):'<div class="evidence-pending"><h3>Arquitectura y flujos</h3><p>El diagrama explicativo presenta los componentes y el flujo técnico de esta solución.</p></div>'}</section>
 <section class="container section contact-section"><h2>¿Un reto parecido?</h2><p>Podemos conversar sobre el proceso, las integraciones y el alcance técnico.</p><div class="actions"><a class="button primary" href="mailto:generalexandersuhul22@gmail.com?subject=${encodeURIComponent('Consulta sobre '+project.title)}">Conversemos</a><a class="button" href="/#proyectos">Explorar otros proyectos</a></div></section></article>`;
 }
