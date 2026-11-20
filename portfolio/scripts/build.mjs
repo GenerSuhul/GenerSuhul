@@ -6,10 +6,10 @@ import { layout, home, caseStudy } from "../src/templates.mjs";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const base = "https://dev.kyrosoftgs.com";
 const seo = {
-  "renova-puntos": ["Sistema de fidelización y puntos | RENOVA Puntos", "Caso de estudio de software de fidelización con puntos, canjes e integración SAP Business One. Desarrollo de Gener Suhul en Guatemala."],
+  "renova-puntos": ["Software de fidelización de clientes y puntos | RENOVA", "Programa de fidelización de clientes con acumulación de puntos, canjes y recompensas. Desarrollo de software en Petén, Guatemala."],
   "renova-sales": ["Software de ventas en campo | RENOVA Sales", "Aplicación de ventas en campo con cotizaciones, consulta de inventario y sincronización. Proyecto de desarrollo de software en Guatemala."],
-  "agri-flow": ["Sistema de logística y despachos en Guatemala | AgriFlow", "Sistema logístico para seguimiento de envíos, traslados, despachos de bodega y documentos. Proyecto de Gener Suhul en Petén, Guatemala."],
-  "asistencia-hikvision": ["Sistema de control de asistencia Hikvision | Guatemala", "Sistema para centralizar marcaciones de dispositivos Hikvision y generar reportes de asistencia. Desarrollo de software en Guatemala."],
+  "agri-flow": ["Software de logística, bodega y picking | AgriFlow", "Sistema de logística en Guatemala: envíos, traslados, picking, preparación de pedidos y despachos de bodega. Desarrollo en Petén."],
+  "asistencia-hikvision": ["Tiempo y asistencia Hikvision en Guatemala", "Sistema de tiempo y asistencia Hikvision: marcaciones, horarios y reportes automatizados para sucursales. Desarrollo de software en Guatemala."],
   "streamline": ["Integración SAP Business One y Streamline | Middleware", "Caso de estudio de integración de información empresarial para su consulta y análisis."],
   "bufete-umg": ["Sistema de expedientes para bufete | Bufete UMG", "Caso de estudio de software jurídico para expedientes, documentos, seguimiento y gestión de un bufete universitario."]
 };
