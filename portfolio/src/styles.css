@@ -269,3 +269,27 @@ html { scroll-padding-top: 80px; }
 :root[data-theme=light] .process-copy strong { color:#10335c; }:root[data-theme=light] .process-copy small { color:#4c6480; }
 @media(prefers-reduced-motion:no-preference) { .process-signals { animation:process-signals 2.6s linear infinite; } .process-art { animation:process-float 4s ease-in-out infinite; } .process-card:nth-child(2n) .process-art { animation-delay:-2s; } @keyframes process-signals { to { stroke-dashoffset:-86; } } @keyframes process-float { 50% { transform:translateY(-4px); } } }
 @media(max-width:600px) { .process-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .process-card:nth-child(n) { grid-column:auto; } .process-card { flex-direction:column; text-align:center; min-height:152px; gap:4px; padding:10px 7px; } .process-art { flex:0 0 auto; width:62px; } .process-copy strong { font-size:.76rem; }.process-copy small { font-size:.67rem; } .process-hub { position:relative; left:auto; top:auto; transform:none; width:90px; height:90px; margin:0 auto 18px; } .process-hub strong { font-size:.7rem; } .process-hub span { font-size:.55rem; } .process-connections { display:none; } }
+/* Connected capability overview: a balanced, responsive system map. */
+.flow-section { grid-template-columns:1fr; gap:30px; }
+.flow-section-copy { max-width:760px; }
+.flow-section-copy p:last-child { max-width:720px; }
+.flow-section-copy h2 { margin-bottom:14px; }
+.flow-map { padding:clamp(22px,4vw,42px); border-radius:24px; background:linear-gradient(150deg,#0b203d,#102d50); }
+.flow-map::before { opacity:.3; }
+.flow-map figcaption { gap:6px 15px; }
+.flow-map figcaption strong { font-size:clamp(1.25rem,2vw,1.6rem); }
+.process-stage { margin:28px 0 24px; }
+.process-hub { position:relative; top:auto; left:auto; transform:none; width:auto; height:auto; margin:0 0 18px; padding:18px 22px; border-radius:14px; flex-direction:row; justify-content:space-between; gap:14px; text-align:left; box-shadow:none; background:linear-gradient(120deg,#19569a,#0e345e); }
+.process-hub span { font-size:.64rem; letter-spacing:.12em; }
+.process-hub strong { font-size:1rem; text-align:right; margin:0; }
+.process-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+.process-card:nth-child(n) { position:relative; width:calc((100% - 24px)/3); min-height:116px; padding:16px; gap:14px; border-radius:14px; background:#173659; border-color:#476c93; box-shadow:none; text-align:left; }
+.process-art { flex:0 0 70px; width:70px; }
+.process-copy strong { font-size:.92rem; }
+.process-copy small { font-size:.75rem; line-height:1.4; }
+.flow-technologies { padding-top:20px; }
+:root[data-theme=light] .flow-map { background:linear-gradient(145deg,#f6faff,#eaf4ff); }
+:root[data-theme=light] .process-card { background:#fff; border-color:#d4e2ef; box-shadow:0 6px 22px #23548a0b; }
+:root[data-theme=light] .process-hub { background:linear-gradient(110deg,#175cad,#123a69); }
+@media (max-width:850px) { .process-card:nth-child(n) { width:calc((100% - 12px)/2); } }
+@media (max-width:600px) { .flow-map { padding:22px 16px; border-radius:18px; }.process-stage { margin:22px 0; }.process-hub { flex-direction:column; align-items:flex-start; gap:5px; margin:0 0 12px; width:auto; height:auto; padding:14px 16px; }.process-hub strong { text-align:left; font-size:.9rem; }.process-hub span { font-size:.58rem; }.process-grid { gap:10px; }.process-card:nth-child(n) { width:calc((100% - 10px)/2); min-height:150px; padding:12px 10px; flex-direction:column; align-items:flex-start; justify-content:flex-start; text-align:left; gap:7px; }.process-art { width:58px; flex:0 0 auto; }.process-copy strong { font-size:.78rem; }.process-copy small { font-size:.7rem; }.flow-technologies { gap:10px; } }

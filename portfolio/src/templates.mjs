@@ -58,35 +58,35 @@ const flowIconSets = {
 };
 const projectFlows = {
   "renova-puntos": [
-    ["Ventas", "Compras registradas", "shop"], ["Clientes", "Gestión de socios", "person"],
-    ["Puntos", "Acumulación y reglas", "points"], ["Movimientos", "Historial trazable", "data"],
-    ["Recompensas", "Opciones de canje", "points"], ["Integración SAP", "Adaptador empresarial", "gateway"]
+    ["Ventas", "Compras registradas", "receipt"], ["Clientes", "Gestión de socios", "person"],
+    ["Puntos", "Acumulación y reglas", "points"], ["Movimientos", "Historial trazable", "compare"],
+    ["Recompensas", "Opciones de canje", "shop"], ["Integración SAP", "Adaptador empresarial", "gateway"]
   ],
   "renova-sales": [
-    ["Vendedores", "Operación en campo", "person"], ["Catálogo", "Productos y existencias", "shop"],
-    ["Cotizaciones", "Preparación comercial", "document"], ["Sin conexión", "Persistencia local", "phone"],
+    ["Vendedores", "Operación en campo", "field"], ["Catálogo", "Productos y existencias", "stock"],
+    ["Cotizaciones", "Preparación comercial", "receipt"], ["Sin conexión", "Persistencia local", "phone"],
     ["Sincronización", "Actualización de datos", "data"], ["Supervisión", "Rutas y seguimiento", "chart"]
   ],
   "agri-flow": [
-    ["Operaciones", "Envíos y traslados", "document"], ["Bodega", "Despacho y entradas", "warehouse"],
+    ["Operaciones", "Envíos y traslados", "operations"], ["Bodega", "Despacho y entradas", "warehouse"],
     ["Documentos SAP", "Archivos vinculados", "folder"], ["Transporte", "Seguimiento de etapas", "truck"],
-    ["Recepción", "Registro de entradas", "document"], ["Reportes", "Análisis operativo", "chart"],
+    ["Recepción", "Registro de entradas", "reception"], ["Reportes", "Análisis operativo", "chart"],
     ["Accesos", "Control por roles", "shield"]
   ],
   "asistencia-hikvision": [
-    ["Dispositivos", "Eventos de marcación", "phone"], ["Gateway", "Recepción de eventos", "gateway"],
-    ["Historial", "Sincronización de datos", "data"], ["Consultas", "Revisión por rango", "person"],
+    ["Dispositivos", "Eventos de marcación", "biometric"], ["Gateway", "Recepción de eventos", "gateway"],
+    ["Historial", "Sincronización de datos", "data"], ["Consultas", "Revisión por rango", "calendar"],
     ["Ajustes", "Gestión de registros", "document"], ["Reportes", "Preparación programada", "chart"]
   ],
   "streamline": [
-    ["SAP", "Lectura de datos", "data"], ["Worker", "Extracción programada", "gateway"],
+    ["SAP", "Lectura de datos", "data"], ["Worker", "Extracción de datos", "gateway"],
     ["Staging", "Información preparada", "data"], ["Validación", "Revisión de esquema", "shield"],
-    ["Custom API", "Consulta de datos", "phone"], ["Comparación", "Reportes de diferencias", "chart"]
+    ["Custom API", "Consulta de datos", "api"], ["Comparación", "Reportes de diferencias", "compare"]
   ],
   "bufete-umg": [
     ["Recepción", "Ingreso de casos", "person"], ["Expedientes", "Gestión jurídica", "folder"],
     ["Documentos", "Archivo digital", "document"], ["Seguimiento", "Cronología procesal", "chart"],
-    ["Alumnos", "Asignación de casos", "person"], ["Notificaciones", "Revisiones y avisos", "phone"],
+    ["Alumnos", "Asignación de casos", "team"], ["Notificaciones", "Revisiones y avisos", "notification"],
     ["Auditoría", "Roles y trazabilidad", "shield"]
   ]
 };
@@ -102,14 +102,9 @@ export function flow(project, large=false) {
   const brand = flowBrands[project.slug];
   const steps = projectFlows[project.slug];
   const techLogos = brand.tech.map(name => technology(name)).join("");
-  const rows = Math.ceil(steps.length / 2);
-  const connections = steps.map((_, i) => {
-    const y = (Math.floor(i / 2) + .5) * 1000 / rows;
-    const x = i % 2 ? 840 : 160;
-    return `M500 500 C${i % 2 ? 660 : 340} 500 ${i % 2 ? 660 : 340} ${y} ${x} ${y}`;
-  }).join(" ");
+
   const nodes = steps.map(([title, detail, artwork], i) => '<li class="process-card"><span class="process-art">'+processArt(artwork)+'</span><span class="process-copy"><strong>'+escape(title)+'</strong><small>'+escape(detail)+'</small></span></li>').join("");
-  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="process-stage"><svg class="process-connections" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path d="'+connections+'"/><path class="process-signals" d="'+connections+'"/></svg><div class="process-hub"><span>SISTEMA</span><strong>'+escape(project.title)+'</strong></div><ol class="process-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
+  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="process-stage"><div class="process-hub"><span>UNA PLATAFORMA, VARIOS PROCESOS</span><strong>'+escape(project.title)+'</strong></div><ol class="process-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
 }
 const capabilityHeadings = {
   "renova-puntos": ["Programa de fidelización", "Puntos y canjes", "Experiencia digital", "Integración empresarial"],
