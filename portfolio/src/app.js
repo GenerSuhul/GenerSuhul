@@ -98,3 +98,18 @@ function syncBackToTop() { backToTop.hidden = window.scrollY < 500; }
 window.addEventListener('scroll', syncBackToTop, { passive: true });
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: motion.matches ? 'instant' : 'smooth' }));
 syncBackToTop();
+
+// Display only a real total; do not fabricate a count when the service is unavailable.
+(async () => {
+  try {
+    let counted = false;
+    try { counted = sessionStorage.getItem('portfolio-visit-counted') === '1'; } catch {}
+    const response = await fetch('/api/visits', { method: counted ? 'GET' : 'POST', cache: 'no-store' });
+    if (!response.ok || response.status === 204) return;
+    const data = await response.json();
+    if (!Number.isSafeInteger(data.visits) || data.visits < 0) return;
+    document.querySelector('[data-visit-count]').textContent = new Intl.NumberFormat('es-GT').format(data.visits);
+    document.querySelector('.visit-counter').hidden = false;
+    if (!counted) { try { sessionStorage.setItem('portfolio-visit-counted', '1'); } catch {} }
+  } catch {}
+})();

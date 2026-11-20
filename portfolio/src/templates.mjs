@@ -46,28 +46,7 @@ const stackGroups = [
 ];
 const list = (items) => '<ul class="checklist">'+items.map(item=>'<li>'+escape(item)+'</li>').join("")+'</ul>';
 const icon = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10 4 20l10 10M26 10l10 10-10 10M23 6l-6 28" fill="none" stroke="currentColor" stroke-width="3"/></svg>';
-const flowIcons = {
-  sale: '<path d="M3 8h18l-2 12H5L3 8Z"/><path d="M7 8a5 5 0 0 1 10 0M8 12h8"/>',
-  reward: '<path d="M12 3v18M4 10h16v10H4zM3 7h18v3H3z"/><path d="M12 7C7 7 7 3 9.5 3 11 3 12 5 12 7Zm0 0c5 0 5-4 2.5-4C13 3 12 5 12 7Z"/>',
-  history: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M3 7v4h4"/>',
-  check: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
-  person: '<circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/>',
-  device: '<rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M10 18h4M9 6h6"/>',
-  sync: '<path d="M20 7h-4V3M4 17h4v4"/><path d="M5 10a7 7 0 0 1 12-4l3 1M19 14a7 7 0 0 1-12 4l-3-1"/>',
-  chart: '<path d="M4 20V5M4 20h16M8 16v-4M12 16V7M16 16v-6"/>',
-  document: '<path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/>',
-  warehouse: '<path d="m3 9 9-6 9 6v11H3zM7 20v-8h10v8M7 15h10"/>',
-  truck: '<path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>',
-  receive: '<path d="M4 12v8h16v-8M12 3v12m-4-4 4 4 4-4"/>',
-  gateway: '<rect x="4" y="8" width="16" height="10" rx="2"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 5a6 6 0 0 1 8 0"/>',
-  database: '<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3 3 7 3s7-1.3 7-3v-7"/>',
-  server: '<rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/>',
-  code: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
-  inbox: '<path d="M4 4h16v16H4zM4 13h5l1 3h4l1-3h5"/>',
-  folder: '<path d="M3 6h7l2 2h9v11H3z"/><path d="M7 12h10M7 15h7"/>',
-  search: '<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5M8 10h5M10.5 8v5"/>',
-  shield: '<path d="M12 3 20 6v5c0 5-3 8-8 10-5-2-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/>'
-};
+const flowIcons = Object.fromEntries(Object.entries({"sale": "shopping-bag", "reward": "gift", "history": "clock-counter-clockwise", "check": "check-circle", "person": "user-circle", "device": "device-mobile", "sync": "arrows-clockwise", "chart": "chart-bar", "document": "file-text", "warehouse": "warehouse", "truck": "truck", "receive": "tray-arrow-down", "gateway": "broadcast", "database": "database", "server": "hard-drives", "code": "code", "inbox": "tray", "folder": "folder-open", "search": "magnifying-glass", "shield": "shield-check"}).map(([key, name]) => [key, readFileSync(new URL("../public/process-icons/"+name+".svg", import.meta.url), "utf8").replace("<svg ", '<svg aria-hidden="true" focusable="false" ')]));
 const flowIconSets = {
   "renova-puntos": ["sale", "reward", "history", "check"],
   "renova-sales": ["person", "device", "sync", "chart"],
@@ -76,10 +55,41 @@ const flowIconSets = {
   "streamline": ["database", "server", "database", "code"],
   "bufete-umg": ["inbox", "folder", "search", "shield"]
 };
+const flowDetails = {
+  "renova-puntos": ["Compras registradas", "Reglas de fidelización", "Movimientos trazables", "Canje de recompensas"],
+  "renova-sales": ["Ventas en campo", "Trabajo sin conexión", "Datos conectados", "Seguimiento comercial"],
+  "agri-flow": ["Documentos vinculados", "Despachos de bodega", "Operación en ruta", "Registro de entradas"],
+  "asistencia-hikvision": ["Eventos del dispositivo", "Recepción de eventos", "Registros y consultas", "Reportes programados"],
+  "streamline": ["Datos empresariales", "Extracción y validación", "Información preparada", "Consulta de datos"],
+  "bufete-umg": ["Ingreso de casos", "Gestión documental", "Actividad procesal", "Roles y trazabilidad"]
+};
+const flowBrands = {
+  "renova-puntos": {tech:["React", "SAP B1", "AWS"]},
+  "renova-sales": {tech:["React", "SAP HANA", ".NET"]},
+  "agri-flow": {tech:["React", "PostgreSQL", "AWS"]},
+  "asistencia-hikvision": {tech:["Node.js", "PostgreSQL", "AWS"]},
+  "streamline": {tech:["C#", "SAP HANA", "AWS"]},
+  "bufete-umg": {tech:["ASP.NET Core 10", "PostgreSQL", "Azure"]}
+};
 export function flow(project, large=false) {
   const icons = flowIconSets[project.slug];
-  const nodes = project.flow.map((step, i) => '<li class="flow-card flow-card-'+i+'"><span class="flow-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">'+flowIcons[icons[i]]+'</svg></span><span><small>0'+(i+1)+'</small><strong>'+escape(step)+'</strong></span></li>').join("");
-  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="flow-map-stage"><svg class="flow-connections" viewBox="0 0 600 380" preserveAspectRatio="none" aria-hidden="true"><path d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/><path class="flow-signals" d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/></svg><div class="flow-hub"><span>PLATAFORMA</span><strong>'+escape(project.title)+'</strong></div><ol class="flow-map-grid">'+nodes+'</ol></div></figure>';
+  const brand = flowBrands[project.slug];
+
+  const techLogos = brand.tech.map(name => technology(name)).join("");
+  const nodes = project.flow.map((step, i) => '<li class="flow-card flow-card-'+i+'"><span class="flow-card-icon">'+flowIcons[icons[i]]+'</span><span><strong>'+escape(step)+'</strong><small>'+escape(flowDetails[project.slug][i])+'</small></span></li>').join("");
+  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="flow-map-stage"><svg class="flow-connections" viewBox="0 0 600 380" preserveAspectRatio="none" aria-hidden="true"><path d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/><path class="flow-signals" d="M300 190 C230 190 220 95 145 95 M300 190 C370 190 380 95 455 95 M300 190 C230 190 220 285 145 285 M300 190 C370 190 380 285 455 285"/></svg><div class="flow-hub"><strong>'+escape(project.title)+'</strong></div><ol class="flow-map-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
+}
+const capabilityHeadings = {
+  "renova-puntos": ["Programa de fidelización", "Puntos y canjes", "Experiencia digital", "Integración empresarial"],
+  "renova-sales": ["Información comercial", "Gestión de ventas", "Operación sin conexión", "Trabajo en campo"],
+  "agri-flow": ["Operaciones y traslados", "Bodega y despachos", "Documentos conectados", "Control y reportes"],
+  "asistencia-hikvision": ["Eventos de asistencia", "Historial centralizado", "Consultas y ajustes", "Reportes automáticos"],
+  "streamline": ["Servicios especializados", "Extracción y validación", "Datos disponibles", "Control de calidad"],
+  "bufete-umg": ["Gestión de casos", "Seguimiento procesal", "Archivo digital", "Control y auditoría"]
+};
+function capabilities(project) {
+  const icons = flowIconSets[project.slug];
+  return '<section class="container section capability-section"><div class="capability-heading"><p class="eyebrow">LA SOLUCIÓN EN ACCIÓN</p><h2>Funcionalidades destacadas</h2><p>Algunas de las capacidades que forman parte de '+escape(project.title)+'.</p></div><div class="capability-grid">'+project.implemented.map((description,i)=>'<article class="capability-card"><span class="capability-icon">'+flowIcons[icons[i]]+'</span><h3>'+escape(capabilityHeadings[project.slug][i])+'</h3><p>'+escape(description)+'</p></article>').join("")+'</div></section>';
 }
 function visual(project, linkToCase = true) {
   const image = project.evidence[0];
@@ -99,7 +109,7 @@ export function layout({title,description,path,body,images=[]}) {
 <link rel="icon" href="/public/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/styles.css?v=${cssVersion}">
 <script src="/src/theme.js?v=${themeVersion}"></script><script type="module" src="/src/app.js?v=${appVersion}"></script><script type="application/ld+json">${JSON.stringify([schema,...imageSchemas]).replace(/</g,"\\u003c")}</script></head>
 <body><a class="skip" href="#contenido">Saltar al contenido</a><header class="header"><div class="container header-inner"><a class="brand" href="/" aria-label="genersuhul. Inicio">${icon}<span>gener<span class="brand-muted">suhul.</span></span></a><button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navigation">Menú</button><nav id="navigation" aria-label="Navegación principal">${[["Inicio","inicio"],["Sobre mí","sobre-mi"],["Proyectos","proyectos"],["Impacto","impacto"],["Stack","tecnologias"],["Evidencia","evidencia"]].map(([label,id])=>'<a href="/#'+id+'">'+label+'</a>').join("")}</nav><div class="header-actions"><button id="theme" class="theme-toggle" type="button" aria-label="Activar tema claro">Claro</button><a class="header-contact" href="/#contacto">Contacto</a></div></div></header>
-<main id="contenido">${body}</main><footer class="footer"><div class="container"><a class="brand" href="/">gener<span class="brand-muted">suhul.</span></a><p>Gener Alexander Suhul Amador<br>Software · Backend · Integraciones</p><div><a href="https://github.com/GenerSuhul">GitHub</a><a href="mailto:generalexandersuhul22@gmail.com">Correo</a><a href="tel:+50246637327">4663-7327</a><a href="https://wa.me/50246637327" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="/public/gener-suhul-cv.pdf" download>Descargar CV</a></div><span>2026 · Guatemala</span></div></footer>
+<main id="contenido">${body}</main><footer class="footer"><div class="container"><a class="brand" href="/">gener<span class="brand-muted">suhul.</span></a><p>Gener Alexander Suhul Amador<br>Software · Backend · Integraciones</p><div><a href="https://github.com/GenerSuhul">GitHub</a><a href="mailto:generalexandersuhul22@gmail.com">Correo</a><a href="tel:+50246637327">4663-7327</a><a href="https://wa.me/50246637327" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="/public/gener-suhul-cv.pdf" download>Descargar CV</a></div><span>2026 · Guatemala <span class="visit-counter" hidden> · Visitas: <strong data-visit-count></strong></span></span></div></footer>
 <button type="button" class="back-to-top" aria-label="Volver al inicio" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><aside class="whatsapp-widget" aria-label="Contacto por WhatsApp"><div id="whatsapp-panel" class="whatsapp-panel" hidden><div class="whatsapp-head"><div class="whatsapp-person"><img src="/public/avatar-osi-web.webp" alt="" width="48" height="48"><span><strong>Gener Suhul</strong><small>Conversemos por WhatsApp</small></span></div><button type="button" class="whatsapp-close" aria-label="Cerrar contacto de WhatsApp">×</button></div><div class="whatsapp-body"><p>Hola, soy Gener. ¿Tienes un proyecto o una consulta? Cuéntame y conversemos.</p><a href="https://wa.me/50246637327?text=Hola%20Gener%2C%20me%20interesa%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 9-18 9 3-9-3-9zm3 9h15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Abrir conversación</a></div></div><button type="button" class="whatsapp-trigger" aria-label="Abrir contacto de WhatsApp" aria-expanded="false" aria-controls="whatsapp-panel"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 .8C7.8.8 1.1 7.4 1.1 15.6c0 2.6.7 5.1 1.9 7.3L1 31l8.3-2.2A14.8 14.8 0 0 0 16 30.4c8.2 0 14.9-6.6 14.9-14.8C30.9 7.4 24.2.8 16 .8zm0 27.1c-2.2 0-4.4-.6-6.3-1.7l-.5-.3-4.9 1.3 1.3-4.8-.3-.5a12.3 12.3 0 1 1 10.7 6zm6.8-9.2c-.4-.2-2.2-1.1-2.5-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.8-1.1-1-1.8-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.5-.6c.2-.2.3-.4.4-.6.1-.3 0-.5 0-.7l-1.1-2.6c-.3-.6-.6-.5-.9-.5h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.5 1.5 3.7c.2.3 2.6 4.1 6.4 5.6.9.4 1.6.6 2.2.7.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.5.2-1.7-.1-.2-.4-.3-.8-.5z"/></svg></button></aside><p class="sr-only" role="status" id="status"></p></body></html>`;
 }
 const heading=(label,title,text="")=>'<div class="section-heading"><p class="eyebrow">'+label+'</p><h2>'+title+'</h2>'+(text?'<p>'+text+'</p>':'')+'</div>';
@@ -121,7 +131,7 @@ ${heading("TRABAJO SELECCIONADO","Proyectos con contexto.<br><em>Decisiones con 
 }
 export function caseStudy(project) {
 return `<article class="case-study"><section class="case-hero container"><a class="plain-link" href="/#proyectos">Todos los proyectos</a><p class="eyebrow">${escape(project.category)}</p><h1>${escape(project.title)}</h1><p class="case-lead">${escape(project.summary)}</p>${tags(project.stack)}<span class="status-label">${escape(project.status)}</span></section><section class="container case-intro"><div><h2>El problema</h2><p>${escape(project.problem)}</p><h2>La solución</h2><p>${escape(project.solution)}</p><p class="case-context">Participación técnica en el contexto descrito. Los proyectos empresariales corresponden a trabajo de operación e integración, y Bufete UMG al ámbito académico.</p></div><div>${visual(project, false)}</div></section>
-<section class="container section"><div><p class="eyebrow">CÓDIGO REVISADO</p><h2>Implementado</h2>${list(project.implemented)}</div></section>
+${capabilities(project)}
 <section class="production-note container"><p class="eyebrow">ESTADO Y LÍMITES</p><h2>Qué acredita la evidencia</h2><p>${escape(project.production)}</p><p class="source-label">${escape(project.sourceLabel)} · Revisión del 19 de noviembre de 2026.</p>${project.source?'<a class="case-link" href="'+project.source+'">Revisar repositorio público</a>':""}</section>
 <section class="container section flow-section"><div class="flow-section-copy"><p class="eyebrow">IMPACTO FUNCIONAL</p><h2>Lo que aporta al proceso</h2><p>${escape(project.impact)}</p></div>${flow(project,true)}</section>
 <section id="evidencia" class="container section"><p class="eyebrow">EVIDENCIA VISUAL</p><h2>El sistema y su contexto</h2>${project.evidence.length?project.evidence.map(e=>'<figure class="evidence-large"><img src="'+escape(e.src)+'" alt="'+escape(e.alt)+'" title="'+escape(e.alt)+'" loading="lazy"></figure>').join(""):'<div class="evidence-pending"><h3>Arquitectura y flujos</h3><p>El diagrama explicativo presenta los componentes y el flujo técnico de esta solución.</p></div>'}</section>

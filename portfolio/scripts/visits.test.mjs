@@ -1,0 +1,7 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import handler from "../api/visits.js";
+function reply() { return {headers:{},setHeader(k,v){this.headers[k]=v},status(n){this.code=n;return this},json(v){this.body=v;return this},end(){return this}}; }
+const req=(method,origin="https://dev.kyrosoftgs.com")=>({method,headers:{origin,"user-agent":"Mozilla/5.0","x-forwarded-for":"192.0.2.42"}});
+test("visit endpoint refuses untrusted origins and missing storage",async()=>{const a=reply();await handler(req("POST","https://other.example"),a);assert.equal(a.code,403);const b=reply();await handler(req("GET"),b);assert.equal(b.code,503)});
+test("records a visit and requests notification when configured",async()=>{const oldFetch=globalThis.fetch;Object.assign(process.env,{UPSTASH_REDIS_REST_URL:"https://redis.example",UPSTASH_REDIS_REST_TOKEN:"test",VISIT_HASH_SECRET:"test-secret",RESEND_API_KEY:"test",VISIT_FROM_EMAIL:"Portafolio <test@example.com>"});const calls=[];globalThis.fetch=async(url,opts)=>{calls.push({url,body:JSON.parse(opts.body)});return url.includes('redis')?{ok:true,json:async()=>({result:[7,1]})}:{ok:true}};try{const r=reply();await handler(req("POST"),r);assert.equal(r.code,200);assert.equal(r.body.visits,7);assert.equal(calls[1].body.to[0],"generalexandersuhul22@gmail.com");assert(!JSON.stringify(calls).includes("192.0.2.42"));}finally{globalThis.fetch=oldFetch;for(const k of ['UPSTASH_REDIS_REST_URL','UPSTASH_REDIS_REST_TOKEN','VISIT_HASH_SECRET','RESEND_API_KEY','VISIT_FROM_EMAIL'])delete process.env[k]}});

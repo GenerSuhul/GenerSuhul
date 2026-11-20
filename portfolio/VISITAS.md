@@ -1,0 +1,7 @@
+# Visitas y notificaciones
+
+La función `api/visits.js` registra visitas mediante Upstash Redis y envía alertas a la dirección del propietario mediante Resend. El contador cuenta visitas registradas, no visitantes únicos: excluye agentes identificados como robots y limita registros de una misma conexión a uno cada 30 segundos. El navegador registra una visita por sesión y vuelve a consultar el total en las páginas siguientes. No se guardan direcciones IP; se calcula un identificador temporal con un secreto del servidor para limitar repeticiones. El contador es aproximado, no impide manipulación automatizada ni garantiza detección de bots.
+
+En Vercel, conectar Upstash Redis al proyecto y configurar las variables descritas en `.env.example`. Crear un dominio remitente verificado en Resend y configurar `RESEND_API_KEY` y `VISIT_FROM_EMAIL`. Usar una cadena aleatoria privada para `VISIT_HASH_SECRET`. Publicar un nuevo despliegue después de cambiar las variables. Si el almacenamiento no está configurado, el contador se mantiene oculto; si falta Resend, no se envía correo. Los envíos fallidos se registran en los logs de la función y no se reintentan automáticamente. Cada visita registrada genera un correo cuando el proveedor está configurado; consultar los límites de cuota y el coste del proveedor antes de activarlo.
+
+No agregar credenciales al repositorio. Las funciones de Vercel se reconocen en `api/` sin modificar `vercel.json`.

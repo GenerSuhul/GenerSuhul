@@ -204,3 +204,49 @@ html { scroll-padding-top: 80px; }
 @media (max-width:850px) { .flow-section { grid-template-columns:1fr; } .flow-section-copy p:last-child { max-width:650px; } }
 @media (max-width:600px) { .flow-map { padding:20px 15px 16px; border-radius:16px; } .flow-map-stage,.flow-map-compact .flow-map-stage { height:320px; } .flow-card,.flow-map-compact .flow-card { width:43%; padding:8px; min-height:68px; gap:7px; } .flow-card-icon,.flow-map-compact .flow-card-icon { width:34px; height:34px; } .flow-card-icon svg,.flow-map-compact .flow-card-icon svg { width:21px; height:21px; } .flow-card strong,.flow-map-compact .flow-card strong { font-size:.72rem; } .flow-hub,.flow-map-compact .flow-hub { width:104px; height:104px; } .flow-hub strong { font-size:.72rem; } }
 @media (max-width:600px) { .flow-card,.flow-map-compact .flow-card { width:46%; gap:6px; } .flow-card-icon,.flow-map-compact .flow-card-icon { width:28px; height:28px; } .flow-card-icon svg,.flow-map-compact .flow-card-icon svg { width:19px; height:19px; } .flow-card strong,.flow-map-compact .flow-card strong { font-size:.7rem; } }
+/* Project visuals and technology marks */
+.flow-map-stage { height:390px; }
+.flow-card { width:37%; min-height:96px; gap:12px; }
+.flow-card-icon,.flow-map-compact .flow-card-icon { width:58px; height:58px; border:0; background:none; }
+.flow-card-icon svg,.flow-map-compact .flow-card-icon svg { width:58px; height:58px; filter:drop-shadow(0 5px 10px #0004); }
+.flow-card-0 { --illustration-bg:#166bd1; --illustration-spark:#59dded; }
+.flow-card-1 { --illustration-bg:#6749c9; --illustration-spark:#f3a5ff; }
+.flow-card-2 { --illustration-bg:#008e91; --illustration-spark:#92f2d3; }
+.flow-card-3 { --illustration-bg:#df7935; --illustration-spark:#ffe294; }
+.flow-card strong { font-size:.83rem; margin:0 0 5px; }
+.flow-card small { font-size:.68rem; color:#c7d9ed; line-height:1.35; letter-spacing:0; font-weight:400; }
+.flow-brand-logo { display:block; width:82px; max-height:40px; object-fit:contain; margin-bottom:7px; }
+.flow-hub strong { font-size:.8rem; }
+.flow-technologies { position:relative; display:flex; align-items:center; flex-wrap:wrap; gap:10px 14px; border-top:1px solid #4e709650; padding-top:16px; }
+.flow-technologies>span { color:#a8ccec; font-size:.65rem; font-weight:700; letter-spacing:.1em; }
+.flow-technologies>div { display:flex; flex-wrap:wrap; gap:7px; }
+.flow-technologies .tech-icon { min-height:34px; padding:5px 8px; background:#183a61; border-color:#46709b; }
+.flow-technologies .tech-name { color:#fff; font-size:.7rem; }
+.flow-technologies .tech-icon-image,.flow-technologies .tech-icon-mark { width:20px; height:20px; flex-basis:20px; }
+.flow-map-compact .flow-map-stage { height:320px; }
+.flow-map-compact .flow-card { min-height:88px; }
+.flow-map-compact .flow-card-icon,.flow-map-compact .flow-card-icon svg { width:42px; height:42px; }
+.flow-map-compact .flow-card small { font-size:.6rem; }
+@media(prefers-reduced-motion:no-preference) { .flow-card-icon svg { animation:flow-icon-float 3.6s ease-in-out infinite; } .flow-card-1 .flow-card-icon svg { animation-delay:-.9s; } .flow-card-2 .flow-card-icon svg { animation-delay:-1.8s; } .flow-card-3 .flow-card-icon svg { animation-delay:-2.7s; } .flow-signals { stroke-width:5; stroke-dasharray:2 19; animation-duration:1.8s; } @keyframes flow-icon-float { 50% { transform:translateY(-5px) scale(1.05); } } }
+.capability-heading { max-width:720px; margin-bottom:32px; }
+.capability-heading h2 { margin-bottom:14px; }
+.capability-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.capability-card { padding:24px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+.capability-icon { display:grid; place-items:center; width:45px; height:45px; border:1px solid var(--line); border-radius:12px; color:var(--accent); background:var(--raised); margin-bottom:22px; }
+.capability-icon svg { width:25px; height:25px; }
+.capability-card h3 { font-size:1rem; line-height:1.3; margin-bottom:12px; }
+.capability-card p { margin:0; font-size:.9rem; line-height:1.65; }
+@media(max-width:850px) { .capability-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .flow-map-stage,.flow-map-compact .flow-map-stage { height:360px; } .flow-card,.flow-map-compact .flow-card { width:47%; min-height:87px; padding:8px; gap:7px; } .flow-card-icon,.flow-card-icon svg,.flow-map-compact .flow-card-icon,.flow-map-compact .flow-card-icon svg { width:36px; height:36px; } .flow-card strong,.flow-map-compact .flow-card strong { font-size:.7rem; } .flow-card small,.flow-map-compact .flow-card small { font-size:.62rem; } .flow-brand-logo { width:68px; max-height:30px; } .capability-grid { grid-template-columns:1fr; } .capability-card { padding:20px; } .capability-icon { margin-bottom:14px; } }
+/* Adapt the process map to the selected color scheme. */
+.flow-card-icon svg { color:#c8efff; }
+:root[data-theme=light] .flow-map { --map-line:#4382bc; --map-text:#0b2d6b; --map-muted:#4b6481; background:radial-gradient(circle at 50% 55%,#c8e5ff,transparent 48%),linear-gradient(145deg,#f7fbff,#e8f3ff); border-color:#bed3eb; box-shadow:0 22px 60px #315f8c1c; }
+:root[data-theme=light] .flow-map::before { background-image:radial-gradient(#4179ad30 1px,transparent 1px); }
+:root[data-theme=light] .flow-map figcaption span,:root[data-theme=light] .flow-technologies>span { color:#205aaa; }
+:root[data-theme=light] .flow-card { background:#fff; border-color:#c4d9ed; box-shadow:0 8px 22px #315f8c18; }
+:root[data-theme=light] .flow-card strong { color:#10335c; }
+:root[data-theme=light] .flow-card small { color:#4c6480; }
+:root[data-theme=light] .flow-card-icon svg { color:var(--illustration-bg); filter:none; }
+:root[data-theme=light] .flow-technologies { border-color:#bfd4e7; }
+:root[data-theme=light] .flow-technologies .tech-icon { background:#fff; border-color:#c4d9ed; }
+:root[data-theme=light] .flow-technologies .tech-name { color:#10335c; }
