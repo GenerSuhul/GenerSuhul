@@ -14,6 +14,7 @@ test("six complete cases with explicit status and valid evidence files", async (
     }
     const html=await readFile(new URL("../casos/"+project.slug+"/index.html",import.meta.url),"utf8");
     assert(html.includes(project.title));
-    assert(html.includes("Qué acredita la evidencia"));
+    assert(html.includes("Lo que aporta al proceso"));
+    assert(!html.includes("Qué acredita la evidencia"));
   }
 });
