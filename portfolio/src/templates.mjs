@@ -103,8 +103,13 @@ export function flow(project, large=false) {
   const steps = projectFlows[project.slug];
   const techLogos = brand.tech.map(name => technology(name)).join("");
 
-  const nodes = steps.map(([title, detail, artwork], i) => '<li class="process-card"><span class="process-art">'+processArt(artwork)+'</span><span class="process-copy"><strong>'+escape(title)+'</strong><small>'+escape(detail)+'</small></span></li>').join("");
-  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="process-stage"><div class="process-hub"><span>UNA PLATAFORMA, VARIOS PROCESOS</span><strong>'+escape(project.title)+'</strong></div><ol class="process-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
+  const positions = steps.map((_, i) => {
+    const angle = 2 * Math.PI * i / steps.length;
+    return { x:50 + 35*Math.sin(angle), y:50 - 39*Math.cos(angle) };
+  });
+  const paths = positions.map(({x,y}) => `M500 500 Q${500+(x*10-500)*.55} ${500+(y*10-500)*.35} ${x*10} ${y*10}`).join(" ");
+  const nodes = steps.map(([title, detail, artwork], i) => '<li class="process-card" style="--node-x:'+positions[i].x.toFixed(3)+'%;--node-y:'+positions[i].y.toFixed(3)+'%;--node-delay:'+((i%4)*-.55)+'s"><span class="process-art">'+processArt(artwork)+'</span><span class="process-copy"><strong>'+escape(title)+'</strong><small>'+escape(detail)+'</small></span></li>').join("");
+  return '<figure class="flow-map '+(large?'flow-map-large':'flow-map-compact')+'"><figcaption><span>PROCESOS CONECTADOS</span><strong>Así funciona '+escape(project.title)+'</strong><small>Diagrama conceptual</small></figcaption><div class="process-stage"><svg class="orbit-connections" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path class="orbit-path" d="'+paths+'"/><path class="orbit-pulse" d="'+paths+'"/></svg><div class="process-hub"><span>PLATAFORMA</span><strong>'+escape(project.title)+'</strong></div><ol class="process-grid">'+nodes+'</ol></div><div class="flow-technologies" aria-label="Tecnologías del proyecto"><span>TECNOLOGÍAS</span><div>'+techLogos+'</div></div></figure>';
 }
 const capabilityHeadings = {
   "renova-puntos": ["Programa de fidelización", "Puntos y canjes", "Experiencia digital", "Integración empresarial"],
