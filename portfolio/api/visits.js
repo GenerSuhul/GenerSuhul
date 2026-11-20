@@ -24,8 +24,9 @@ export default async function handler(req, res) {
     if (!process.env.VISIT_HASH_SECRET) throw new Error("Visit protection unavailable");
     const rateKey = "portfolio:visits:rate:"+createHash("sha256").update(process.env.VISIT_HASH_SECRET+ip).digest("hex");
     const [visits, added] = await redis(["EVAL",lua,2,counterKey,rateKey]);
+    const guatemalaTime = new Intl.DateTimeFormat("es-GT", { timeZone:"America/Guatemala", dateStyle:"full", timeStyle:"medium" }).format(new Date());
     if (added && process.env.RESEND_API_KEY && process.env.VISIT_FROM_EMAIL) {
-      const result = await fetch("https://api.resend.com/emails", {method:"POST",headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,"Content-Type":"application/json"},body:JSON.stringify({from:process.env.VISIT_FROM_EMAIL,to:["generalexandersuhul22@gmail.com"],subject:"Nueva visita a tu portafolio",text:`Tu portafolio recibió una visita.\nVisitas registradas: ${visits}\nFecha: ${new Date().toISOString()}\nhttps://dev.kyrosoftgs.com/`}),signal:AbortSignal.timeout(5000)}).catch(()=>null);
+      const result = await fetch("https://api.resend.com/emails", {method:"POST",headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,"Content-Type":"application/json"},body:JSON.stringify({from:process.env.VISIT_FROM_EMAIL,to:["generalexandersuhul22@gmail.com"],subject:"Nueva visita a tu portafolio",text:`Tu portafolio recibió una visita.\nVisitas registradas: ${visits}\nFecha: ${guatemalaTime} (hora de Guatemala)\nhttps://dev.kyrosoftgs.com/`}),signal:AbortSignal.timeout(5000)}).catch(()=>null);
       if (!result?.ok) console.error("Visit notification failed");
     }
     return res.status(200).json({visits:Number(visits)});
