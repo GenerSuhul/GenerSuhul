@@ -10,7 +10,7 @@ const seo = {
   "renova-sales": ["Aplicación de ventas en campo | RENOVA Sales", "Caso de estudio de ventas en campo con Android, PWA, cotizaciones, inventario y sincronización con SAP Business One."],
   "agri-flow": ["Sistema de logística y seguimiento | AgriFlow", "Caso de estudio de software logístico para envíos, despachos, documentos y seguimiento de operaciones."],
   "asistencia-hikvision": ["Control de asistencia y acceso | Hikvision", "Caso de estudio de sistema de asistencia, dispositivos Hikvision, control de acceso y reportes automatizados."],
-  "streamline": ["Integración SAP Business One y Streamline | Middleware", "Caso de estudio de integración empresarial con SAP HANA, Service Layer, middleware .NET y API de datos."],
+  "streamline": ["Integración SAP Business One y Streamline | Middleware", "Caso de estudio de integración de información empresarial para su consulta y análisis."],
   "bufete-umg": ["Sistema de expedientes para bufete | Bufete UMG", "Caso de estudio de software jurídico para expedientes, documentos, seguimiento y gestión de un bufete universitario."]
 };
 await writeFile(root + "index.html", layout({images:projects.flatMap(p=>p.evidence),title:"Gener Suhul | Backend e integraciones empresariales",description:"Portafolio de Gener Alexander Suhul Amador. Backend, Java, .NET, APIs, SAP Business One, AWS y Azure. Casos de estudio de ventas, logística y sistemas empresariales.",path:"/",body:home(projects)}));

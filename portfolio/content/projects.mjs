@@ -67,15 +67,15 @@ export const projects = [
   {
     slug: "streamline", title: "Streamline + SAP", category: "MIDDLEWARE / INTEGRACIÓN DE DATOS",
     summary: "Datos empresariales preparados para una integración consistente.",
-    problem: "Los datos de SAP y el contrato requerido por Streamline necesitan alinearse en estructura, validaciones y disponibilidad.",
-    solution: "Un Worker .NET extrae información de lectura, la transforma y mantiene staging. Una Custom API expone el contrato para Streamline.",
+    problem: "La información empresarial necesita estar disponible y organizada para su análisis.",
+    solution: "Una solución de integración de información empresarial orientada a su consulta y análisis.",
     stack: ["C#", ".NET", "SAP HANA", "Service Layer", "PostgreSQL", "Supabase", "Windows Service", "AWS"],
-    implemented: ["Worker y API separados por responsabilidades.", "Lectura SAP, snapshots de staging y validadores de esquema.", "Endpoints de artículos, transacciones y documentos.", "Comparación de paridad con plantilla Excel y reportes de diferencias."],
-    pending: ["Aceptación end-to-end con el consumidor Streamline.", "Creación de órdenes de compra, traslado y fabricación, que devuelve 501 en fase 1."],
-    production: "La solución utiliza AWS según la información del proyecto. El repositorio describe su arquitectura y una Custom API. Esta revisión no aporta una prueba independiente de aceptación productiva de todo el flujo.",
-    status: "Fase 1 · lectura", impact: "Hace explícito el contrato de datos y permite revisar diferencias antes del consumo. El staging separa la extracción del ERP de la consulta externa.",
-    flow: ["SAP", "Worker", "Staging", "Custom API"],
-    source: "", sourceLabel: "Repositorio privado · README y código de Worker/API revisados",
+    implemented: ["Organización de información empresarial.", "Validación de datos para su consulta.", "Información de artículos y documentos.", "Revisión de consistencia de la información."],
+    pending: [],
+    production: "La solución utiliza AWS según la información del proyecto. La implementación se describe de forma general para proteger sus detalles internos.",
+    status: "Integración empresarial", impact: "Facilita la consulta y revisión de información empresarial para apoyar el análisis.",
+    flow: [],
+    source: "", sourceLabel: "Proyecto de integración empresarial",
     evidence: []
   },
   {

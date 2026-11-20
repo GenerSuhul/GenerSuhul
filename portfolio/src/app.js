@@ -127,3 +127,15 @@ if ('ResizeObserver' in window) {
   updateDiagrams();
   window.addEventListener('resize', updateDiagrams, { passive:true });
 }
+
+// Contact choices remain usable as native links; only the message is edited here.
+document.querySelectorAll('.contact-menu').forEach(menu => {
+  const field = menu.querySelector('textarea');
+  const link = menu.querySelector('[data-whatsapp-link]');
+  const summary = menu.querySelector('summary');
+  menu.addEventListener('toggle', () => { if (menu.open) { whatsappInteracted = true; setWhatsappOpen(false); } });
+  field.addEventListener('input', () => { link.href = 'https://wa.me/50246637327?text=' + encodeURIComponent(field.value.trim()); });
+  menu.querySelector('.contact-menu-close').addEventListener('click', () => { menu.open = false; summary.focus(); });
+  menu.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.open) { event.stopPropagation(); menu.open = false; summary.focus(); } });
+  document.addEventListener('click', event => { if (menu.open && !menu.contains(event.target)) menu.open = false; });
+});

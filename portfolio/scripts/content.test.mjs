@@ -7,7 +7,7 @@ test("six complete cases with explicit status and valid evidence files", async (
   assert.equal(new Set(projects.map(p=>p.slug)).size,6);
   for(const project of projects) {
     for(const field of ["title","problem","solution","production","impact","sourceLabel"])assert(project[field]?.trim(),project.slug+":"+field);
-    assert(project.implemented.length>0);assert(project.pending.length>0);
+    assert(project.implemented.length>0);assert(Array.isArray(project.pending));
     for(const evidence of project.evidence) {
       assert(evidence.caption);assert(evidence.alt);
       await access(new URL(".."+evidence.src,import.meta.url));
