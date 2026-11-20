@@ -1,16 +1,25 @@
 const root = document.documentElement;
 const themeButton = document.querySelector("#theme");
+const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)");
+let hasManualTheme = false;
+try { hasManualTheme = ["light", "dark"].includes(localStorage.getItem("gs-portfolio-theme")); } catch {}
 function syncTheme() {
   const dark = root.dataset.theme !== "light";
   themeButton.textContent = dark ? "Claro" : "Oscuro";
   themeButton.setAttribute("aria-label", dark ? "Activar tema claro" : "Activar tema oscuro");
 }
 themeButton.addEventListener("click", () => {
+  hasManualTheme = true;
   root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
   try { localStorage.setItem("gs-portfolio-theme", root.dataset.theme); } catch {}
   syncTheme();
 });
 syncTheme();
+deviceTheme.addEventListener("change", (event) => {
+  if (hasManualTheme) return;
+  root.dataset.theme = event.matches ? "dark" : "light";
+  syncTheme();
+});
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#navigation");
 function closeMenu() { navigation.classList.remove("open"); menuButton.setAttribute("aria-expanded", "false"); }
