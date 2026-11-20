@@ -363,3 +363,24 @@ html { scroll-padding-top: 80px; }
 .process-hub,.flow-map-compact .process-hub { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:124px; height:124px; margin:0; padding:16px; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
 .process-hub strong,.flow-map-compact .process-hub strong { text-align:center; font-size:.9rem; }
 .orbit-connections { display:block; }
+/* Make the radial map use the frame instead of surrounding it with empty space. */
+.flow-section { gap:18px; }
+.flow-section-copy p:last-child { margin-bottom:0; }
+.flow-map-large { max-width:900px; padding:24px; }
+.flow-map-large .process-viewport { max-width:850px; margin-bottom:4px; }
+.flow-map-large .flow-technologies { padding-top:12px; }
+.process-readable { display:none; }
+@media(max-width:700px) {
+  .flow-section.container { width:calc(100% - 24px); }
+  .flow-section { gap:14px; }
+  .flow-section-copy { padding-inline:8px; }
+  .flow-map-large { padding:18px 10px; }
+  .flow-map-large figcaption,.flow-map-large .flow-technologies { margin-inline:7px; }
+  .flow-map-large .process-viewport { max-width:none; margin:0 auto 4px; }
+  .process-readable { display:block; margin:2px 7px 12px; }
+  .process-readable summary { color:var(--accent); font-weight:600; font-size:.82rem; cursor:pointer; padding:8px 0; }
+  .process-readable ul { list-style:none; padding:0; margin:0; }
+  .process-readable li { display:flex; flex-direction:column; padding:8px 0; border-bottom:1px solid var(--line); font-size:.82rem; line-height:1.4; }
+  .process-readable li strong { color:var(--text); }
+  .process-readable li span { color:var(--muted); }
+}
