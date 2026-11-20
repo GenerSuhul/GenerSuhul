@@ -350,3 +350,16 @@ html { scroll-padding-top: 80px; }
   .process-grid::before { width:3px; background:linear-gradient(to bottom,#258cda 0%,#83eaff 25%,#258cda 50%,#83eaff 75%,#258cda 100%); background-size:100% 140px; }
 }
 @media(max-width:700px) and (prefers-reduced-motion:no-preference) { .process-grid::before { animation:mobile-flow 1.5s linear infinite; } @keyframes mobile-flow { to { background-position:0 140px; } } }
+/* The same 900×500 radial composition is uniformly scaled at every width. */
+.flow-map-large { max-width:790px; }
+.process-viewport { position:relative; width:100%; max-width:720px; aspect-ratio:9 / 5; margin:0 auto 14px; overflow:hidden; }
+.process-stage,.flow-map-compact .process-stage { position:absolute; inset:0 auto auto 0; width:900px; height:500px; margin:0; transform:scale(var(--diagram-scale, .5)); transform-origin:top left; }
+.process-grid { position:absolute; inset:0; display:block; margin:0; padding:0; }
+.process-grid::before,.process-card::before,.process-card::after { content:none; }
+.process-card:nth-child(n),.flow-map-compact .process-card:nth-child(n) { position:absolute; left:var(--node-x); top:var(--node-y); transform:translate(-50%,-50%); width:26%; min-height:78px; padding:9px 11px; display:flex; flex-direction:row; gap:9px; align-items:center; text-align:left; }
+.process-art,.flow-map-compact .process-art { width:51px; flex:0 0 51px; }
+.process-copy strong,.flow-map-compact .process-copy strong { font-size:.85rem; }
+.process-copy small,.flow-map-compact .process-copy small { font-size:.72rem; }
+.process-hub,.flow-map-compact .process-hub { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:124px; height:124px; margin:0; padding:16px; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.process-hub strong,.flow-map-compact .process-hub strong { text-align:center; font-size:.9rem; }
+.orbit-connections { display:block; }

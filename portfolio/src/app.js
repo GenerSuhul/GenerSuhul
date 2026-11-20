@@ -113,3 +113,17 @@ syncBackToTop();
     if (!counted) { try { sessionStorage.setItem('portfolio-visit-counted', '1'); } catch {} }
   } catch {}
 })();
+
+// Scale the same radial composition uniformly within its available width.
+const diagramViewports = document.querySelectorAll('.process-viewport');
+function scaleDiagram(viewport) {
+  viewport.style.setProperty('--diagram-scale', String(viewport.clientWidth / 900));
+}
+if ('ResizeObserver' in window) {
+  const diagramObserver = new ResizeObserver(entries => entries.forEach(entry => scaleDiagram(entry.target)));
+  diagramViewports.forEach(viewport => { scaleDiagram(viewport); diagramObserver.observe(viewport); });
+} else {
+  const updateDiagrams = () => diagramViewports.forEach(scaleDiagram);
+  updateDiagrams();
+  window.addEventListener('resize', updateDiagrams, { passive:true });
+}
