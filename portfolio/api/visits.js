@@ -3,8 +3,8 @@ import { createHash } from "node:crypto";
 const counterKey = "portfolio:visits:total";
 const lua = `local ok=redis.call('SET',KEYS[2],'1','NX','EX',30); if not ok then return {tonumber(redis.call('GET',KEYS[1]) or '0'),0} end; return {redis.call('INCR',KEYS[1]),1}`;
 async function redis(command) {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
   if (!url || !token) throw new Error("Storage unavailable");
   const response = await fetch(url, { method:"POST", headers:{Authorization:`Bearer ${token}`,"Content-Type":"application/json"}, body:JSON.stringify(command), signal:AbortSignal.timeout(5000) });
   const payload = await response.json();

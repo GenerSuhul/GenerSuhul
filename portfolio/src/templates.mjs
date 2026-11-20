@@ -75,8 +75,8 @@ const projectFlows = {
   ],
   "asistencia-hikvision": [
     ["Dispositivos", "Eventos de marcación", "biometric"], ["Gateway", "Recepción de eventos", "gateway"],
-    ["Historial", "Sincronización de datos", "data"], ["Consultas", "Revisión por rango", "calendar"],
-    ["Ajustes", "Gestión de registros", "document"], ["Reportes", "Preparación programada", "chart"]
+    ["Historial", "Sincronización de datos", "data"], ["Envío automático", "Reportes por correo", "notification"],
+    ["Ajustes", "Gestión de registros", "document"], ["Asistencia", "Registro de marcaciones", "calendar"]
   ],
   "streamline": [
     ["Información", "Datos empresariales", "document"], ["Artículos", "Información de productos", "stock"],
