@@ -458,10 +458,3 @@ html { scroll-padding-top: 80px; }
 .project-private-visual span { color:var(--accent); font-size:.7rem; letter-spacing:.12em; font-weight:700; }
 .project-private-visual strong { color:var(--text); font:600 clamp(1.5rem,3vw,2rem)/1.15 Inter,sans-serif; }
 .project-private-visual p { margin:0; color:var(--muted); font-size:.9rem; }
-.solutions-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-.solutions-grid article { padding:24px; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
-.solutions-grid h3 { font-size:1.06rem; line-height:1.35; margin-bottom:12px; }
-.solutions-grid h3 a:hover { color:var(--accent); }
-.solutions-grid p { font-size:.9rem; line-height:1.7; margin-bottom:12px; }
-@media(max-width:850px){.solutions-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media(max-width:600px){.solutions-grid{grid-template-columns:1fr;}.solutions-grid article{padding:20px;}}
