@@ -11,7 +11,7 @@ const seo = {
   "agri-flow": ["Software de logística, bodega y picking | AgriFlow", "Sistema de logística en Guatemala: envíos, traslados, picking, preparación de pedidos y despachos de bodega. Desarrollo en Petén."],
   "asistencia-hikvision": ["Tiempo y asistencia Hikvision en Guatemala", "Sistema de tiempo y asistencia Hikvision: marcaciones, horarios y reportes automatizados para sucursales. Desarrollo de software en Guatemala."],
   "streamline": ["Integración SAP Business One y Streamline | Middleware", "Caso de estudio de integración de información empresarial para su consulta y análisis."],
-  "bufete-umg": ["Sistema de expedientes para bufete | Bufete UMG", "Caso de estudio de software jurídico para expedientes, documentos, seguimiento y gestión de un bufete universitario."]
+  "bufete-umg": ["Sistema de gestión jurídica | Bufete Popular UMG Petén", "Sistema de expedientes entregado al Bufete Popular UMG de Petén, con plan piloto para su implementación en otras sedes de Guatemala."]
 };
 await writeFile(root + "index.html", layout({images:projects.flatMap(p=>p.evidence.slice(0,1)),title:"Gener Suhul | Desarrollador de software en Guatemala",description:"Desarrollo de software, sistemas de ventas, logística y asistencia, integraciones SAP y soluciones cloud. Portafolio de Gener Suhul, Petén, Guatemala.",path:"/",body:home(projects)}));
 for (const project of projects) {

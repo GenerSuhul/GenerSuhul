@@ -79,15 +79,15 @@ export const projects = [
     evidence: []
   },
   {
-    slug: "bufete-umg", title: "Bufete UMG", category: "GESTIÓN JURÍDICA / PROYECTO ACADÉMICO",
-    summary: "El expediente como eje del seguimiento jurídico y académico.",
+    slug: "bufete-umg", title: "Bufete UMG", category: "GESTIÓN JURÍDICA / IMPACTO INSTITUCIONAL",
+    summary: "Sistema entregado al Bufete Popular UMG de Petén, con un plan piloto para su implementación en otras sedes de Guatemala.",
     problem: "La recepción, los documentos y las actividades del caso deben conservar una relación clara y un acceso acorde a la responsabilidad de cada usuario.",
-    solution: "Una plataforma interna por capas que organiza expedientes, documentos y práctica de alumnos, con permisos y auditoría.",
+    solution: "Una plataforma entregada al Bufete Popular UMG, sede Petén, que organiza expedientes, documentos y la práctica supervisada, con permisos y auditoría. Su implementación en otras sedes de Guatemala se contempla como plan piloto.",
     stack: ["ASP.NET Core 10", "C#", "Next.js", "React 19", "PostgreSQL 18", "EF Core", "S3 / MinIO", "Azure"],
     implemented: ["Recepción, expedientes y asignación de casos a alumnos.", "Cronología procesal, revisiones y notificaciones.", "Documentos versionados y digitalización multipágina.", "Búsqueda, reportes, roles y auditoría."],
-    pending: ["Confirmación del estado de despliegue y aceptación institucional.", "Configuración, despliegue y aceptación institucional en destino."],
-    production: "La aplicación se despliega en Azure según la información del proyecto. El repositorio contiene código, pruebas y guías; la aceptación institucional requiere confirmación.",
-    status: "Código público · estado por confirmar", impact: "Organiza el seguimiento del expediente, conserva la autoría de acciones y conecta los documentos con la actividad académica y jurídica.",
+    pending: ["Implementación del plan piloto en otras sedes de Guatemala."],
+    production: "Sistema entregado al Bufete Popular UMG, sede Petén. Se contempla un plan piloto de implementación en otras sedes de Guatemala.",
+    status: "Entregado · plan piloto", impact: "Apoya la atención y el seguimiento jurídico del Bufete Popular UMG en Petén: organiza expedientes y documentos, conserva la trazabilidad de las acciones y acompaña la práctica supervisada. El plan piloto contempla extender la solución a otras sedes del país.",
     flow: ["Recepción", "Expediente", "Seguimiento", "Auditoría"],
     source: "https://github.com/GenerSuhul/buefete-umg", sourceLabel: "Repositorio público · arquitectura y código disponibles",
     evidence: [{src:"/public/evidence/bufete-umg/captura-proporcionada.png",alt:"Resumen operativo de Bufete Popular UMG.",caption:"Captura del panel del Bufete Popular UMG proporcionada por Gener Suhul."}]
