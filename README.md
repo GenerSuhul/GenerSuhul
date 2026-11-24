@@ -1,4 +1,4 @@
-<a href="https://gener-suhul-portfolio.vercel.app/">
+<a href="https://dev.kyrosoftgs.com/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-dark.gif">
     <source media="(prefers-color-scheme: light)" srcset="./assets/profile-light.gif">
@@ -7,7 +7,7 @@
 </a>
 
 <p align="center">
-  <a href="https://gener-suhul-portfolio.vercel.app/">Sitio web</a> &nbsp;·&nbsp;
+  <a href="https://dev.kyrosoftgs.com/">Gener Suhul · Sitio web</a> &nbsp;·&nbsp;
   <a href="https://github.com/GenerSuhul?tab=repositories">Repositorios</a> &nbsp;·&nbsp;
   <a href="mailto:gsuhula1@miumg.edu.gt">Correo</a>
 </p>

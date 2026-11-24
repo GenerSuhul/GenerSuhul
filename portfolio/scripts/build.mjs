@@ -13,7 +13,7 @@ const seo = {
   "streamline": ["Integración SAP Business One y Streamline | Middleware", "Caso de estudio de integración de información empresarial para su consulta y análisis."],
   "bufete-umg": ["Sistema de gestión jurídica | Bufete Popular UMG Petén", "Sistema de expedientes entregado al Bufete Popular UMG de Petén, con plan piloto para su implementación en otras sedes de Guatemala."]
 };
-await writeFile(root + "index.html", layout({images:projects.flatMap(p=>p.evidence.slice(0,1)),title:"Gener Suhul | Desarrollador de software en Guatemala",description:"Desarrollo de software, sistemas de ventas, logística y asistencia, integraciones SAP y soluciones cloud. Portafolio de Gener Suhul, Petén, Guatemala.",path:"/",body:home(projects)}));
+await writeFile(root + "index.html", layout({images:projects.flatMap(p=>p.evidence.slice(0,1)),title:"Gener Suhul | Desarrollador de software en Guatemala",description:"Gener Suhul, desarrollador de software de Poptún, Petén, Guatemala. Conoce sus proyectos de ventas, logística, asistencia e integraciones SAP.",path:"/",body:home(projects)}));
 for (const project of projects) {
   const directory = root + "casos/" + project.slug;
   await mkdir(directory, {recursive:true});
